@@ -1375,6 +1375,7 @@ section {
 
 /* The message box is shown when the user clicks on the password field */
 #message {
+<<<<<<< HEAD
 display:none;
 background: #f1f1f1;
 color: #000;
@@ -1387,6 +1388,20 @@ margin-left: 30%;
 #message p {
 padding: 0px 30px;
 font-size: 14px;
+=======
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: fixed;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 30%;
+}
+
+#message p {
+  padding: 0px 30px;
+  font-size: 14px;
+>>>>>>> ae3b9f36c376d5f245e6abcfe51356aff951b449
 }
 
 /* Add a green text color and a checkmark when the requirements are right */
