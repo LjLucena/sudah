@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-md-6">
                               <label for="">Date of Birth</label>
-                              <input type="date" name="bday" id="" max="{{date("Y-m-d")}}" class="form-control" required>
+                              <input type="date" name="bday" id="" max="{{date('Y-m-d')}}" class="form-control" required>
                             </div>
                           </div>
                   </div>

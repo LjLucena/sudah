@@ -11,7 +11,6 @@
             background-color: #ffffff;
             opacity: 0.8;
             background-size: 6px 6px;
-            background-image: repeating-linear-gradient(45deg, #e5e5e5 0, #e5e5e5 0.6000000000000001px, #ffffff 0, #ffffff 50%);
         /* height: 100vh; */
         }
         .nav-header{

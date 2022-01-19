@@ -36,8 +36,8 @@ Route::get('/assign/account/{id}/branch', 'AccountController@assign_branch_form'
 Route::post('/assign/account/', 'AccountController@assign_branch');
 Route::get('/update/account/', 'AccountController@account_update');
 Route::post('/update/account/', 'AccountController@account_update_save');
-Route::get('/update/pass/', 'AccountController@pass_edit');
-Route::post('/update/pass/', 'AccountController@update_pass');
+Route::get('/update/pass/{id}', 'AccountController@pass_edit')->middleware('auth');
+Route::post('/update/pass/{id}', 'AccountController@update_pass')->middleware('auth');
 
 //branch
 Route::get('/new/branch', 'BranchController@form_branch')->middleware('auth');
@@ -99,3 +99,10 @@ Route::get('/new/color', 'ColorController@add')->middleware('auth');
 Route::post('/new/color', 'ColorController@save')->middleware('auth');
 Route::get('/update/color/{id}', 'ColorController@update')->middleware('auth');
 Route::post('/update/color/{id}', 'ColorController@update_save')->middleware('auth');
+
+//Admin
+Route::get('/view/details/{id}', 'AccountController@acc_details')->middleware('auth');
+Route::get('/edit/account/{id}', 'AccountController@acc_details_edit')->middleware('auth');
+Route::post('/edit/account/{id}', 'AccountController@acc_details_update')->middleware('auth');
+Route::get('/archive/{id}', 'AccountController@archive')->middleware('auth');
+Route::get('/archive/list/{role}', 'AccountController@archive_list');
