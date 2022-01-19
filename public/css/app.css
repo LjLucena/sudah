@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -2338,7 +2337,6 @@ textarea.form-control {
 }
 
 .form-inline {
-  display: flex;
   flex-flow: row wrap;
   align-items: center;
 }

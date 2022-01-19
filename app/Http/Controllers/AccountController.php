@@ -16,14 +16,15 @@ class AccountController extends Controller
 
         $roles = Role::where('role',ucfirst($role))->first();
         $accounts = Account::where('role_id',$roles->id)->where('stat', 1)->get();
-        // return $accounts[0]->UserProfileI;
+        //return $accounts[0]->UserProfileI;
         return view('user.list')->with('role',$role)->with('accounts',$accounts);
 
     }
     public function account_form($role){
         $roles = Role::where('role',ucfirst($role))->first();
         $accounts = Account::where('role_id',$roles->id)->get();
-        return view('user.form')->with('role',$role)->with('roles',$roles)->with('accounts',$accounts);
+        $branch = Branch::all();
+        return view('user.form')->with('branchs', $branch)->with('role',$role)->with('roles',$roles)->with('accounts',$accounts);
     }
     public function account_save(Request $request){
         // return dd($request);
@@ -50,6 +51,8 @@ class AccountController extends Controller
         $user->email = $request->email;
         $user->username = $request->u;
         $user->password = md5($request->p);
+        $user->branch_id = $request->branch;
+        $user->stat = 1;
         $user->save();
         if($request->role_id == 1) return redirect()->back()->with('success','Account Created Please Login');
         else  return redirect()->back()->with('success','Account Created');
@@ -106,7 +109,6 @@ class AccountController extends Controller
         $profile->brgy= $request->barangay;
         $profile->municipality= $request->cm;
         $profile->province= $request->province;
-        $profile->zipcode= $request->zip;
         $profile->dob= $request->dob;
         $profile->save();
 
@@ -216,7 +218,6 @@ class AccountController extends Controller
         $profile->brgy= $request->barangay;
         $profile->municipality= $request->cm;
         $profile->province= $request->province;
-        $profile->zipcode= $request->zip;
         $profile->dob= $request->dob;
         $profile->save();
 
@@ -226,11 +227,21 @@ class AccountController extends Controller
 
     public function archive($id){
         
-        $acc = User::find(base64_decode($id)); 
+        $acc = User::find($id); 
         $acc->stat = 0;
         $acc->save();
 
         return redirect()->back()->with('success','Account Decativated!');
+        
+    }
+
+    public function activate($id){
+        
+        $acc = User::find($id); 
+        $acc->stat = 1;
+        $acc->save();
+
+        return redirect()->back()->with('success','Account Activated!');
         
     }
 

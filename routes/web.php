@@ -26,7 +26,6 @@ Route::get('/patient', 'PetController@pets');
 
 
 
-
 // Accounts
 Route::get('/accounts/{role}', 'AccountController@accounts');
 Route::get('/add/new/account/{role}', 'AccountController@account_form');
@@ -105,4 +104,5 @@ Route::get('/view/details/{id}', 'AccountController@acc_details')->middleware('a
 Route::get('/edit/account/{id}', 'AccountController@acc_details_edit')->middleware('auth');
 Route::post('/edit/account/{id}', 'AccountController@acc_details_update')->middleware('auth');
 Route::get('/archive/{id}', 'AccountController@archive')->middleware('auth');
+Route::get('/activate/{id}', 'AccountController@activate')->middleware('auth');
 Route::get('/archive/list/{role}', 'AccountController@archive_list');

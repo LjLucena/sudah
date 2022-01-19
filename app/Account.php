@@ -15,4 +15,7 @@ class Account extends Model
         return $this->hasOne('App\Profile','id','profile_id');
     }
     
+    public function BranchName(){
+        return $this->hasOne('App\Branch','id','branch_id');
+    }
 }

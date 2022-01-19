@@ -140,4 +140,8 @@ class PagesController extends Controller
         // return Auth::user();
         return view ('site.services');
     }
+    
 }
+
+
+
