@@ -22,6 +22,14 @@ Route::post('/login', 'Auth\LoginController@attemptLogin')->name('AttempLogin');
 
 Route::get('/branches', 'BranchController@branches');
 Route::get('/patient', 'PetController@pets');
+Route::get('/schedules', 'SchedulesController@schedules');
+
+//Schedules
+Route::get('/view/branch_schedules/{id}', 'SchedulesController@branch_schedules')->middleware('auth');
+Route::get('/edit/branch_sched/{id}', 'SchedulesController@sched_edit')->middleware('auth');
+Route::post('/edit/branch_sched/{id}', 'SchedulesController@sched_update')->middleware('auth');
+Route::get('/new/sched/{id}', 'SchedulesController@add_sched')->middleware('auth');
+Route::post('/new/sched/{id}', 'SchedulesController@save_sched')->middleware('auth');
 
 
 
@@ -41,6 +49,8 @@ Route::post('/update/pass/{id}', 'AccountController@update_pass')->middleware('a
 //branch
 Route::get('/new/branch', 'BranchController@form_branch')->middleware('auth');
 Route::post('/new/branch', 'BranchController@store_branch')->middleware('auth');
+Route::get('/edit/branch/{id}', 'BranchController@branch_edit')->middleware('auth');
+Route::post('/edit/branch/{id}', 'BranchController@branch_update')->middleware('auth');
 
 // site
 Route::get('/services', 'PagesController@services')->middleware('auth');

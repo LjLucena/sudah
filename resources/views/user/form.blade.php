@@ -91,7 +91,7 @@ Account Creation for {{ucfirst($role)}}
                         <div class="col-md-6">
                             <label for="dob">Birth Date</label>
                             @if($role == "vet")                         
-                                <input type="date" name="dob" id="dob" max="2000-12-12" class="form-control" required>   
+                                <input type="date" name="dob" id="vet_dob" class="form-control" required>   
                             @else                               
                                 <input type="date" name="dob" id="dob" max="<?php echo date("Y-m-d"); ?>" class="form-control" required> 
                             @endif
@@ -153,5 +153,24 @@ Account Creation for {{ucfirst($role)}}
     return /^[a-z]*$/i.test(value); 
   });
 
+</script>
+@endsection
+@section('script')
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear()-21;
+
+    if (dd < 10) {
+    dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+    mm = '0' + mm;
+    } 
+    
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("vet_dob").setAttribute("max", today);
 </script>
 @endsection

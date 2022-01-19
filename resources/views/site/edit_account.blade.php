@@ -41,8 +41,12 @@
                             <input type="text" name="cm" id="cm" class="form-control"  value="{{$data->UserProfile->municipality}}" required>
                             <label for="province">Province:</label>
                             <input type="text" name="province" id="province" class="form-control"  value="{{$data->UserProfile->province}}" required>
-                            <label for="zip">Zipcode:</label>
-                            <input type="number" name="zip" id="zip" class="form-control"  value="{{$data->UserProfile->zipcode}}" required>
+                            <label for="dob">Birth Date</label>
+                            @if($data->role_id == 2)                         
+                                <input type="date" name="dob" id="vet_dob" class="form-control" required>   
+                            @else                               
+                                <input type="date" name="dob" id="dob" max="<?php echo date("Y-m-d"); ?>" class="form-control" required> 
+                            @endif
                             <label for="contact">Contact Info:</label>
                             <input type="text" name="contact" id="contact" class="form-control number-only"  value="{{$data->UserProfile->contact}}" required>
                         </div>
@@ -59,4 +63,24 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear()-21;
+
+    if (dd < 10) {
+    dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+    mm = '0' + mm;
+    } 
+    
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("vet_dob").setAttribute("max", today);
+</script>
 @endsection

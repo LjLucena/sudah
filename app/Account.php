@@ -18,4 +18,8 @@ class Account extends Model
     public function BranchName(){
         return $this->hasOne('App\Branch','id','branch_id');
     }
+
+    public function VetProfile(){
+        return $this->hasOne('App\Profile','id','vet_id');
+    }
 }

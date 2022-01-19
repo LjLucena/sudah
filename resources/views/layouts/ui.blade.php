@@ -27,6 +27,9 @@
             color:#09F !important;
             /* text-decoration: underline; */
         }
+        .pagination{
+            float:right;
+        }
     </style>
     
 </head>
@@ -89,11 +92,20 @@
                     <a class="nav-link {{Request::path() == 'branches' ?  'active' : ''}}" href="/branches">Branch</a>
                     <a class="nav-link {{Request::path() == 'patient' ?  'active' : ''}}" href="/patient">Patient</a>
 
+                    <a class="nav-link nav-header" ><strong>Inventory Management</strong></a>
+                    
+                    <a class="nav-link {{Request::path() == 'inventory' ?  'active' : ''}}" href="/inventory">Inventory</a>
+
                     <a class="nav-link nav-header" ><strong>File Management</strong></a>
                     
                     <a class="nav-link {{Request::path() == 'breed' ?  'active' : ''}}" href="/breed">Breed</a>
                     <a class="nav-link {{Request::path() == 'species' ?  'active' : ''}}" href="/species">Species</a>
                     <a class="nav-link {{Request::path() == 'color' ?  'active' : ''}}" href="/color">Color</a>
+
+                    
+                    <a class="nav-link nav-header" ><strong>Reports Management</strong></a>
+                    
+                    <a class="nav-link {{Request::path() == 'reports' ?  'active' : ''}}" href="/reports">Reports</a>
 
                   </nav>
             </div>
@@ -137,12 +149,12 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script>
     $(document).ready(function() {
-          $('#table').DataTable();
-      } );
-</script>
+          $('#table').DataTable({
+          });
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.12.3.js"></script>
+          
+      });
+</script>
 <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 

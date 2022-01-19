@@ -93,24 +93,5 @@
 
 
 @section('script')
-    <script>
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var data_id =$(event.relatedTarget).data('id');
-            var modal = $(this)
-            modal.find('.modal-title').text('Assign Branch to User');
-            modal.find('.modal-body').load('/assign/account/'+data_id+'/branch');
-           // modal.find('.modal-body input').val(recipient)
-        });
-        $('#exampleModal').on('hidden.bs.modal', function (e) {
-            var modal = $(this);
-            modal.find('.modal-body').html('<center><div class="spinner-border text-danger" style="width: 150px;height:150px" role="status"><span class="sr-only">Loading...</span></div></center>');
-        });
-        function submit_form(){
-            $('#assigning_form').submit();
-        }
-    </script>
+    
 @endsection

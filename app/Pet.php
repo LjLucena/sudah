@@ -18,4 +18,8 @@ class Pet extends Model
     public function owner(){
         return $this->hasOne('App\User','id','user_id');
     }
+
+    public function UserProfile(){
+        return $this->hasOne('App\Profile','id','profile_id');
+    }
 }

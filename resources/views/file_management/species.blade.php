@@ -1,5 +1,5 @@
 @extends('layouts.ui')
-@section('htitle') Accounts @endsection
+@section('htitle') File Management @endsection
 @section('panel-title')
     Species
 @endsection
@@ -18,26 +18,25 @@ Search
 </a>
 @endsection
 @section('content')
-<div class="row">
+<div class="row" style="margin-top:20px;">
     <div class="col-12">
-        <table class="table table-hover">
+        <table class="table table-hover" id="table">
             <thead>
                 <tr style="text-transform: uppercase;">                    
-                    <th>Species</th>
-                    <th>Option</th>
+                    <th class="text-center">Species</th>
+                    <th class="text-center">Option</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($species as $data)
                   <tr>
-                      <td>{{$data->species_name}}</td>
-                      <td><a class="btn btn-sm btn-primary" href="update/species/{{$data->id}}">Update</a></td>
+                      <td class="text-center">{{$data->species_name}}</td>
+                      <td class="text-center"><a class="btn btn-sm btn-primary" href="update/species/{{$data->id}}">Edit</a></td>
                   </tr>
                 @endforeach
               </tbody>
             </tbody>
         </table>
-        {{$species->links()}}
     </div>
 </div>
 

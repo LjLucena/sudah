@@ -34,4 +34,24 @@ class BranchController extends Controller
         // return $appointments;
         return view('branch_portal.appointment')->with('appointments',$appointments);
     }
+
+    public function branch_edit($id){
+
+        $branch = Branch::find($id);
+            return view('branch.edit')->with('branchs', $branch);
+
+    }
+
+    public function branch_update(Request $request){
+
+        $branch = Branch::find($request->id);
+        $branch->name = $request->name;
+        $branch->address = $request->address;
+        $branch->b_number = $request->contact;
+        $branch->save();
+
+        return redirect()->back()->with('success','Branch Updated!');
+
+
+    }
 }

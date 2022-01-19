@@ -194,9 +194,10 @@ class AccountController extends Controller
 
     public function acc_details_edit($id){
 
-        $acc = User::find(base64_decode($id));        
+        $acc = Account::find(base64_decode($id));        
         $role = Role::find($acc->role_id);
-            return view('user.edit_details')->with('data',$acc)->with('role',$role->role);
+        $branch = Branch::all();
+            return view('user.edit_details')->with('branchs', $branch)->with('data',$acc)->with('role',$role->role);
 
     }
 
@@ -205,7 +206,8 @@ class AccountController extends Controller
         
         $user = User::find($request->id);
         $user->email = $request->email;
-        $user->username = $request->u;
+        $user->username = $request->u;        
+        $user->branch_id = $request->branch;
         $user->save();
 
         $profile = Profile::find($user->profile_id);

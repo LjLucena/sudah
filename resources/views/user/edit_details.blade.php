@@ -43,9 +43,24 @@
                             <input type="text" name="contact" id="contact" class="form-control number-only"  value="{{$data->UserProfile->contact}}" required>
                             <label for="dob">Birth Date:</label>
                             @if($role=="Vet")   
-                                <input type="date" name="dob" id="dob" max="2000-12-12" class="form-control" value="{{$data->UserProfile->dob}}"  required>
+                                <input type="date" name="dob" id="vet_dob" class="form-control" value="{{$data->UserProfile->dob}}"  required>
                             @else                               
                                 <input type="date" name="dob" id="dob" max="<?php echo date("Y-m-d"); ?>" value="{{$data->UserProfile->dob}}" class="form-control" required> 
+                            @endif
+                        </div>
+                        <div class="col-md-4">
+                            @if($role=="Vet" || $role=="Secretary")
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label for="branch">Assigned to Branch:</label>
+                                    <select class="form-control" name="branch" id="" required>
+                                        <option value="{{$data->branch_id}}" disabled="true">{{$data->BranchName->name}}</option>
+                                        @foreach ($branchs as $branch)
+                                            <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             @endif
                         </div>
                     </div>
@@ -61,4 +76,23 @@
     </div>
 </div>
 
+@endsection
+@section('script')
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear()-21;
+
+    if (dd < 10) {
+    dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+    mm = '0' + mm;
+    } 
+    
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("vet_dob").setAttribute("max", today);
+</script>
 @endsection

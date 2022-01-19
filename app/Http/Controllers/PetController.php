@@ -12,18 +12,20 @@ use App\Medical;
 class PetController extends Controller
 {
     public function pets(){
-        return view('patient.list');
+        
+        $pets = Pet::all();
+        return view('patient.list')->with('pets', $pets);
     }
     public function breed(){
-        $breeds = Breed::paginate(10);
+        $breeds = Breed::all();
         return view('file_management.breed')->with('breeds',$breeds);
     }
     public function color(){
-        $colors = Color::paginate(10);
+        $colors = Color::all();
         return view('file_management.color')->with('colors',$colors);
     }
     public function species(){
-        $species = Species::paginate(10);
+        $species = Species::all();
         return view('file_management.species')->with('species',$species);
     }
     public function pet_profile($id){
