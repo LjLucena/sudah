@@ -159,27 +159,27 @@
                       <label for="mn">Middle Name</label>
                       <input type="text" name="mn" id="mn" class="form-control"  placeholder="Enter Middle Name">
                   </div>
-                  <div class="col-md-3">
+                  <!--div class="col-md-3">
                       <label for="s">Suffix</label>
                       <input type="text" name="s" id="s" class="form-control"  placeholder="Enter Suffix">
-                  </div>
+                  </div-->
               </div>
               <div class="row">
                   <div class="col-md-3">
-                      <label for="house">House Street</label>
-                      <input type="text" name="house" id="house" class="form-control"  placeholder="Enter House Street" required>
-                  </div>
-                  <div class="col-md-3">
-                      <label for="barangay">Barangay</label>
-                      <input type="text" name="barangay" id="barangay" class="form-control"  placeholder="Enter Barangay" required>
+                      <label for="province">Province</label>
+                      <input type="text" name="province" id="province" class="form-control"  placeholder="Enter Province" required>
                   </div>
                   <div class="col-md-3">
                       <label for="cm">City/Municipality</label>
                       <input type="text" name="cm" id="cm" class="form-control"  placeholder="Enter City/Municipality" required>
                   </div>
                   <div class="col-md-3">
-                      <label for="province">Province</label>
-                      <input type="text" name="province" id="province" class="form-control"  placeholder="Enter Province" required>
+                      <label for="barangay">Barangay</label>
+                      <input type="text" name="barangay" id="barangay" class="form-control"  placeholder="Enter Barangay" required>
+                  </div>
+                  <div class="col-md-3">
+                      <label for="house">House Street</label>
+                      <input type="text" name="house" id="house" class="form-control"  placeholder="Enter House Street" required>
                   </div>
               </div>
               
@@ -379,6 +379,18 @@
       return false;
     }
     return /^\d*$/.test(value); 
+  });
+  setInputFilter(document.getElementById("province"), function(value) {
+    return /^[a-z]*$/i.test(value);
+  });
+  setInputFilter(document.getElementById("cm"), function(value) {
+    return /^[a-z]*$/i.test(value);
+  });
+  setInputFilter(document.getElementById("u"), function(value) {
+    return /^[a-z]*$/i.test(value);
+  });
+  setInputFilter(document.getElementById("fn"), function(value) {
+    return /^[a-z]*$/i.test(value);
   });
   setInputFilter(document.getElementById("ln"), function(value) {
     return /^[a-z]*$/i.test(value);
