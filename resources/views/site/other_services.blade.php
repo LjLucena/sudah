@@ -14,7 +14,7 @@
         <ul>
           <li><a class="nav-link scrollto" href="{{route('index')}}">Home</a></li>
           <li><a class="nav-link scrollto" href="{{route('index',['#about'])}}">About</a></li>
-          <li><a class="nav-link scrollto active" href="services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="diagnostic_services">Services</a></li>
           <li><a class="nav-link scrollto" href="{{route('index',['#team'])}}">Team</a></li>
           <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -99,7 +99,7 @@
             <div class="container" data-aos="fade-up">
 
             <div class="row">
-                <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/laboratory.jpg");' data-aos="fade-right"></div>
+                <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/spay.png");' data-aos="fade-right"></div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                   <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                     <h4>Spay and Neuter</h4>
@@ -115,7 +115,7 @@
             </div>
 
             <div class="row mt-5">
-              <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/ultrasound.png");' data-aos="fade-right"></div>
+              <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/grooming.png");' data-aos="fade-right"></div>
               <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                 <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                   <h4>Grooming</h4>
@@ -133,7 +133,7 @@
             </div>
 
             <div class="row mt-5">
-                <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/ultrasound.png");' data-aos="fade-right"></div>
+                <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/pick.png");' data-aos="fade-right"></div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                   <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                     <h4>Home Service <br>
@@ -147,7 +147,7 @@
               </div>
 
             <div class="row mt-5">
-              <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/radiography.jpg");' data-aos="fade-right"></div>
+              <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/emergency.png");' data-aos="fade-right"></div>
               <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                 <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                   <h4>Emergency Services <br>
@@ -159,7 +159,7 @@
             </div>
 
             <div class="row mt-5">
-                <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/radiography.jpg");' data-aos="fade-right"></div>
+                <div class="image col-lg-6" style='background-image: url("ui/assets/img/services/supplies.png");' data-aos="fade-right"></div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                   <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                     <h4>Pet Supplies
