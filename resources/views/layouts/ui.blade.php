@@ -7,6 +7,8 @@
     <title>Sudah | @yield('htitle')</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('ui/assets/css/dataTables.bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>  -->
     <style>
         #content {
             background-color: #ffffff;
@@ -146,16 +148,98 @@
   
 </body>
 @yield('script')
+
 <script src="{{asset('js/app.js')}}"></script>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>-->
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
     $(document).ready(function() {
           $('#table').DataTable({
           });
 
-          
-      });
+          $('#exampleModal').on('shown.bs.modal', function (event) {
+            // var button = $(event.relatedTarget) // Button that triggered the modal
+            // var recipient = button.data('whatever') // Extract info from data-* attributes
+            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data_id =$(event.relatedTarget).data('id');
+            var data_fn =$(event.relatedTarget).data('fn');
+            var data_ln =$(event.relatedTarget).data('ln');
+            var modal = $(this);
+            modal.find('.modal-title').text('Deactivate');
+            modal.find('.modal-body').text('Are you sure to deactivate '+data_fn+' '+data_ln+'?');
+            modal.find('.modal-footer').html('<a href="/archive/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
+           // modal.find('.modal-body input').val(recipient)
+        });
+
+        $('#activate').on('shown.bs.modal', function (event) {
+            // var button = $(event.relatedTarget) // Button that triggered the modal
+            // var recipient = button.data('whatever') // Extract info from data-* attributes
+            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data_id =$(event.relatedTarget).data('id');
+            var data_fn =$(event.relatedTarget).data('fn');
+            var data_ln =$(event.relatedTarget).data('ln');
+            console.log(data_id);
+            var modal = $(this);
+            modal.find('.modal-title').text('Activate');
+            modal.find('.modal-body').text('Are you sure to activate '+data_fn+' '+data_ln+' account?');
+            modal.find('.modal-footer').html('<a href="/activate/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
+           // modal.find('.modal-body input').val(recipient)
+        });
+
+         /* $('#datepicker').datepicker({
+            multidate: true,
+            dateFormat: 'yy-mm-dd',            
+            startDate: new Date()
+            });*/
+
+            //$('input[name="dates"]').daterangepicker();
+
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 2; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+            dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+            mm = '0' + mm;
+            } 
+        
+            today = yyyy + '-' + mm + '-' + dd;
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'January' : [],
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(start, end);
+            });
 </script>
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
 </html>

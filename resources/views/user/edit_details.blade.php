@@ -4,7 +4,7 @@
     {{$role}} Accounts
 @endsection
 @section('panel-option')
-<a href="{{ URL::previous()}}" class="btn btn-sm btn-primary">Back</a>
+<a href="/view/details/{{base64_encode($data->id)}}" class="btn btn-sm btn-primary">Back</a>
 @endsection
 @section('content')
 <div class="row">

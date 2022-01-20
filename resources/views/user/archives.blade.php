@@ -31,9 +31,8 @@
                     <td></td>
                     @endif
                     <td>
-                        <a href="/view/details/{{base64_encode($account->id)}}" class="btn btn-primary btn-sm" >View</a>
-                        <input type="hidden" id="acc_id" value="{{$account->id}}">
-                        <a href="" class="btn btn-danger btn-sm" data-title="Deactivate Account" id="id"  data-id="{{base64_encode($account->id)}}" data-toggle="modal"  data-target="#deactivate">Activate</a>
+                        <a href="/view/details/{{base64_encode($account->id)}}" class="btn btn-primary btn-sm" >View</a>   
+                        <a href="" class="btn btn-danger btn-sm" id="acc_id" data-fn="{{$account->UserProfile->first_name}}" data-ln="{{$account->UserProfile->last_name}}"  data-id="{{$account->id}}" data-toggle="modal"  data-target="#activate">Activate</a>
                     </td>
                   </tr>
               @endforeach
@@ -47,7 +46,7 @@
 
 
 @section('modal')
-<div class="modal fade" id="deactivate" tabindex="-1" role="dialog" aria-labelledby="deactivateModal" aria-hidden="true">
+<div class="modal fade" id="activate" tabindex="-1" role="dialog" aria-labelledby="deactivateModal" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -56,8 +55,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <div class="modal-body">          
+        </div>
         <div class="modal-footer">          
-        <button href="" class="btn btn-danger" onclick="submit_form()">Yes</button>
         </div>
       </div>
     </div>
@@ -67,10 +67,4 @@
 
 
 @section('script')
-<script>
-        function submit_form(){
-          var data_id =$('#acc_id').val();
-          document.location.href = '/activate/'+data_id;
-        }
-    </script>
 @endsection

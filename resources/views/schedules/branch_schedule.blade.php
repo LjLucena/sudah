@@ -10,6 +10,7 @@
     </svg>
     Add New Schedule
 </a>
+<a href="/schedules" class="btn btn-sm btn-primary">Back</a>
 @endsection
 @section('content')
   <div class="row" style="margin-top:20px;">

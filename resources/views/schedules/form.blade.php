@@ -28,9 +28,15 @@ Add Schedule for {{$branch->name}} Branch
                                     @endforeach
                                 @endif
                             </select>
+                            
+                            <label for="date">Select Date:</label>  
+                            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                <i class="fa fa-calendar"></i>&nbsp;
+                                <span></span> <i class="fa fa-caret-down"></i>
+                            </div>
 
                             <label for="date">Select Date:</label>
-                              <input type="date" name="date" id="date" class="form-control date"  required/>
+                              <input type="" name="dates" id="datepicker" class="form-control" placeholder="Select date" required/>
                         </div>
                         <div class="col-md-6">                 
                                 <label for="am">Max # of Appointment for AM:</label>
@@ -54,22 +60,6 @@ Add Schedule for {{$branch->name}} Branch
 @endsection
 
 @section('script')
-<script>
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 2; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if (dd < 10) {
-    dd = '0' + dd;
-    }
-
-    if (mm < 10) {
-    mm = '0' + mm;
-    } 
-    
-    today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("date").setAttribute("min", today);
-        
+<script type="text/javascript">
 </script>
 @endsection
