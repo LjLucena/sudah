@@ -580,7 +580,7 @@
                 <div class="email">
                   <i class="bi bi-envelope"></i>
                   <h4>Email:</h4>
-                  <p>sudahveterinary@gmail.com</p>
+                  <p><a href="mailto:sudahveterinary@gmail.com">sudahveterinary@gmail.com</a><p>
                 </div>
 
               </div>
