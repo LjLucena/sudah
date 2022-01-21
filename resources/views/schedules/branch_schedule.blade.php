@@ -18,9 +18,8 @@
       <table class="table table-hover" id="table">
               <thead>
                   <tr style="text-transform: uppercase;">
-                      <th class="text-center">Branch</th>
-                      <th class="text-center">Vet</th>
                       <th class="text-center">Date</th>
+                      <th class="text-center">Vet</th>
                       <th class="text-center">MAX AM</th>
                       <th class="text-center">MAX PM</th>
                       <th class="text-center" width="20%">Option</th>
@@ -29,9 +28,8 @@
               <tbody>
                 @foreach ($scheds as $sched)
                     <tr>
-                      <td class="text-center">{{$branch->name}}</td>
+                      <td class="text-center">{{$sched->date}}</td>  
                       <td class="text-center">Dr. {{$sched->Vet->UserProfile->first_name}} {{$sched->Vet->UserProfile->middle_name}} {{$sched->Vet->UserProfile->last_name}} {{$sched->Vet->UserProfile->suffix}}</td>
-                      <td class="text-center">{{$sched->date}}</td>
                       <td class="text-center">{{$sched->am_max}}</td>
                       <td class="text-center">{{$sched->pm_max}}</td>
                       <td class="text-center">                         

@@ -42,11 +42,33 @@ class SchedulesController extends Controller
 
     public function add_sched($id) {
         $branch = Branch::where('id',$id)->first();
+        $sched = Schedules::where('branch_id',$id)->get();
+        foreach($sched as $sched){            
+            $disable[] = $sched->date;
+        }
         $accounts = Account::where('branch_id',$id)->where('role_id', 2)->get();
-        return view('schedules.form')->with(['branch'=> $branch,'accounts'=>$accounts]);
+        return view('schedules.form')->with(['branch'=> $branch,'accounts'=>$accounts,'disableDate' => $disable]);
     }
 
     public function save_sched(Request $request) {
+
+        $dates = $request->date;
+        //Multiple insert queries
+        $date = explode(',',$dates);
+        $schedule = Schedules::where('branch_id',$request->branch)->get();
+        foreach($date as $date) {
+            $sched = new Schedules;
+            $sched->date = $date;
+            $sched->branch_id = $request->branch;
+            $sched->vet_id = $request->vet;
+            $sched->am_max = $request->am;
+            $sched->pm_max = $request->pm;
+            $sched->save();
+        }
+        return redirect()->back()->with('success','Schedule Added!');
+    }
+
+    public function store_sched(Request $request) {
 
         $sched = new Schedules;
         $sched->date = $request->date;
@@ -55,6 +77,7 @@ class SchedulesController extends Controller
         $sched->am_max = $request->am;
         $sched->pm_max = $request->pm;
         $sched->save();
-        return redirect()->back()->with('success','Schedule Added!');
+
     }
+       
 }

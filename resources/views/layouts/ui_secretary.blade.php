@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('htitle')</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('ui/assets/css/dataTables.bootstrap.min.css')}}">
     <style>
         #content {
             background-color: #ffffff;
@@ -159,6 +160,15 @@
                     </div>
                 </div>
                 @endif
+                @if(session('fail'))
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger">
+                            {{session('fail')}}
+                        </div>
+                    </div>
+                </div>
+                @endif
                 @yield('content')
 
             </div>
@@ -171,63 +181,39 @@
   
 </body>
 <script src="{{asset('js/app.js')}}"></script>
-</html>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
 <script>
-  var myInput = document.getElementById("pw");
-  var letter = document.getElementById("letter");
-  var capital = document.getElementById("capital");
-  var number_only = document.getElementById("number");
-  var length = document.getElementById("length");
+  $(document).ready(function() {
+          $('#table').DataTable({
+          });
 
-  // When the user clicks on the password field, show the message box
-  myInput.onfocus = function() {
-    document.getElementById("message").style.display = "block";
-  }
+          $('#addProduct').on('shown.bs.modal', function (event) {
+            // var button = $(event.relatedTarget) // Button that triggered the modal
+            // var recipient = button.data('whatever') // Extract info from data-* attributes
+            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data_id =$(event.relatedTarget).data('id');
+            var max =$(event.relatedTarget).data('max');
+            var modal = $(this);
+            modal.find('.modal-title').text('Add Product');
+            modal.find('.modal-body').html('<form action="" id="addproduct" method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label>Product Quantity:</label><input class="form-control" type="number" max="'+max+'"name="in" required><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+            // modal.find('.modal-body input').val(recipient)
+        });
 
-  // When the user clicks outside of the password field, hide the message box
-  myInput.onblur = function() {
-    document.getElementById("message").style.display = "none";
-  }
-
-  // When the user starts to type something inside the password field
-  myInput.onkeyup = function() {
-    // Validate lowercase letters
-    var lowerCaseLetters = /[a-z]/g;
-    if(myInput.value.match(lowerCaseLetters)) {
-      letter.classList.remove("invalid");
-      letter.classList.add("valid");
-    } else {
-      letter.classList.remove("valid");
-      letter.classList.add("invalid");
-    }
-    // Validate capital letters
-    var upperCaseLetters = /[A-Z]/g;
-    if(myInput.value.match(upperCaseLetters)) {
-      capital.classList.remove("invalid");
-      capital.classList.add("valid");
-    } else {
-      capital.classList.remove("valid");
-      capital.classList.add("invalid");
-    }
-
-    // Validate numbers
-    var numbers = /[0-9]/g;
-    if(myInput.value.match(numbers)) {
-      number.classList.remove("invalid");
-      number.classList.add("valid");
-    } else {
-      number.classList.remove("valid");
-      number.classList.add("invalid");
-    }
-
-    // Validate length
-    if(myInput.value.length >= 8) {
-      length.classList.remove("invalid");
-      length.classList.add("valid");
-    } else {
-      length.classList.remove("valid");
-      length.classList.add("invalid");
-    }
-  }
-
+        $('#addStock').on('shown.bs.modal', function (event) {
+            // var button = $(event.relatedTarget) // Button that triggered the modal
+            // var recipient = button.data('whatever') // Extract info from data-* attributes
+            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data_id =$(event.relatedTarget).data('id');
+            var max =$(event.relatedTarget).data('max');
+            var modal = $(this);
+            modal.find('.modal-title').text('Add Product');
+            modal.find('.modal-body').html('<form action="/addstock/branch_inventory"  method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label>Product Quantity:</label><input class="form-control" type="number" max="'+max+'"name="in" required><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+            // modal.find('.modal-body input').val(recipient)
+        });
+  });
 </script>
+</html>

@@ -32,7 +32,13 @@ Route::get('/new/sched/{id}', 'SchedulesController@add_sched')->middleware('auth
 Route::post('/new/sched/{id}', 'SchedulesController@save_sched')->middleware('auth');
 
 
-
+//Inventory
+Route::get('/edit/branch_inventory/{id}', 'InventoryController@branchInventory_edit')->middleware('auth');
+Route::post('/edit/branch_inventory/{id}', 'InventoryController@branchInventory_update')->middleware('auth');
+Route::get('/outOfStock/branch_inventory/list', 'InventoryController@branchOutOfStock_list');
+Route::post('/addstock/branch_inventory', 'InventoryController@add_stock');
+Route::get('/add/new/branch_inventory', 'InventoryController@add_branchInventory');
+Route::post('/add/new/branch_inventory', 'InventoryController@save_branchInventory');
 
 // Accounts
 Route::get('/accounts/{role}', 'AccountController@accounts');

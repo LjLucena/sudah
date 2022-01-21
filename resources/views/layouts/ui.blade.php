@@ -7,8 +7,8 @@
     <title>Sudah | @yield('htitle')</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('ui/assets/css/dataTables.bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>  -->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />  -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
     <style>
         #content {
             background-color: #ffffff;
@@ -151,13 +151,12 @@
 
 <script src="{{asset('js/app.js')}}"></script>
 
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script><!--
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>-->
 <script>
     $(document).ready(function() {
           $('#table').DataTable({
@@ -193,52 +192,72 @@
             modal.find('.modal-footer').html('<a href="/activate/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
            // modal.find('.modal-body input').val(recipient)
         });
-
-         /* $('#datepicker').datepicker({
+           // var disablethese = //json_encode($disableDate);
+            
+            var disableDates = ["01-21-2022", "01-22-2022"];
+          $('#datepicker').datepicker({
             multidate: true,
-            dateFormat: 'yy-mm-dd',            
-            startDate: new Date()
-            });*/
+            format: 'mm/dd/yyyy',         
+            startDate: new Date(),
+           
+
+            });
 
             //$('input[name="dates"]').daterangepicker();
 
-            var start = moment().subtract(29, 'days');
-            var end = moment();
+            var start = moment().add(1, 'month');
+            var end = moment().add(2, 'month');
 
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 2; //January is 0!
-            var yyyy = today.getFullYear();
-
-            if (dd < 10) {
-            dd = '0' + dd;
-            }
-
-            if (mm < 10) {
-            mm = '0' + mm;
-            } 
-        
-            today = yyyy + '-' + mm + '-' + dd;
 
             function cb(start, end) {
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                $('#reportrange span').html(start.format('YYYY-MMMM-D') + ' - ' + end.format('YYYY-MMMM-D'));
             }
 
-            $('#reportrange').daterangepicker({
+            var jan = moment().set('month',0).startOf('month');
+            var jan_end = moment().set('month',0).endOf('month');
+            var feb = moment().set('month',1).startOf('month');
+            var feb_end = moment().set('month',1).endOf('month');
+            var mar = moment().set('month',2).startOf('month');
+            var mar_end = moment().set('month',2).endOf('month');
+            var apr = moment().set('month',3).startOf('month');
+            var apr_end = moment().set('month',3).endOf('month');
+            var may = moment().set('month',4).startOf('month');
+            var may_end = moment().set('month',4).endOf('month');
+            var jun = moment().set('month',5).startOf('month');
+            var jun_end = moment().set('month',5).endOf('month');
+            var jul = moment().set('month',6).startOf('month');
+            var jul_end = moment().set('month',6).endOf('month');
+            var aug = moment().set('month',7).startOf('month');
+            var aug_end = moment().set('month',7).endOf('month');
+            var sep = moment().set('month',8).startOf('month');
+            var sep_end = moment().set('month',8).endOf('month');
+            var oct = moment().set('month',9).startOf('month');
+            var oct_end = moment().set('month',9).endOf('month');
+            var nov = moment().set('month',10).startOf('month');
+            var nov_end = moment().set('month',10).endOf('month');
+            var dec = moment().set('month',11).startOf('month');
+            var dec_end = moment().set('month',11).endOf('month');
+
+            /*$('#reportrange').daterangepicker({
                 startDate: start,
                 endDate: end,
                 ranges: {
-                    'January' : [],
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                'January' : [jan,jan_end],
+                'February' : [feb,feb_end],
+                'March' : [mar,mar_end],
+                'April' : [apr,apr_end],
+                'May' : [may,may_end],
+                'June' : [jun,jun_end],
+                'July' : [jul,jul_end],
+                'August' : [aug,aug_end],
+                'September' : [sep,sep_end],
+                'October' : [oct,oct_end],
+                'November' : [nov,nov_end],
+                'December' : [dec,dec_end],
                 }
             }, cb);
 
-            cb(start, end);
+            cb(start, end);*/
             });
 </script>
 

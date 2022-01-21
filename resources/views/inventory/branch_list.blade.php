@@ -1,45 +1,49 @@
-@extends('layouts.ui')
+@extends('layouts.ui_secretary')
 @section('htitle') Accounts @endsection
 @section('panel-title')
     Inventories
 @endsection
 @section('panel-option')
-<input type="search" placeholder="Enter Key Search" id="">
-<button class="btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
-Search
-</button>
-<a href="/add/new/inventory" class="btn btn-sm btn-primary">
+<a href="/add/new/branch_inventory" class="btn btn-sm btn-primary">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-node-plus-fill" viewBox="0 0 16 16">
         <path d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2a.5.5 0 0 1 1 0z"/>
     </svg>
     Add new 
 </a>
+
+<a href="/outOfStock/branch_inventory/list" class="btn btn-sm btn-warning">Out Of Stock</a>
 @endsection
 @section('content')
-<div class="row">
+<div class="row" style="margin-top:20px;">
     <div class="col-12">
-        <table class="table table-hover">
+        <table class="table table-hover" id="table">
             <thead>
                 <tr style="text-transform: uppercase;">                    
+                    <th>Date Added</th>              
+                    <th>Date Updated</th>              
                     <th>Category</th>              
                     <th>Product Name</th>
                     <th>Price</th>                  
-                    <th>Current Quantity</th>                
-                    <th width="20%">Option</th>
+                    <th>In</th>                
+                    <th>Out</th>                
+                    <th>Total Stock</th>                
+                    <th class="text-center" width="20%">Option</th>
                 </tr>
             </thead>
             <tbody>
               @foreach ($inventories as $inventory)
                   <tr>
-                    <td>{{$inventory->category->category_name}}</td>
-                    <td>{{$inventory->product_name}}</td>
-                    <td>{{$inventory->price}}</td>
-                    <td>{{$inventory->quantity}}</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-sm" >Update</button>
-                    </td>
+                    <td>{{$inventory->created_at}}</td>
+                    <td>{{$inventory->updated_at}}</td>
+                    <td>{{$inventory->Product->Category->category_name}}</td>
+                    <td>{{$inventory->Product->product_name}}</td>
+                    <td>{{$inventory->Product->price}}</td>
+                    <td>{{$inventory->in}}</td>
+                    <td>{{$inventory->out}}</td>
+                    <td>{{$inventory->stock}}</td>
+                    <td class="text-center">
+                        <a href="/edit/branch_inventory/{{$inventory->id}}" class="btn btn-primary btn-sm" >Edit</a>
+                      </td>
                   </tr>
               @endforeach
             </tbody>
@@ -56,20 +60,16 @@ Search
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Assigning Task To Position</h5>
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <center><div class="spinner-border text-danger" style="width: 150px;height:150px" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </center>
+            
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="submit_form()">Save changes</button>
         </div>
       </div>
     </div>

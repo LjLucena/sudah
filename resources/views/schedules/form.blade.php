@@ -18,6 +18,7 @@ Add Schedule for {{$branch->name}} Branch
                     <div class="row">
                         <div class="col-md-6">
                             <input type="hidden" name="branch" value="{{$branch->id}}">
+                            <input type="hidden" id="disable" data-date="<?=json_encode($disableDate)?>">
                             <label for="vet">Vet:</label>
                             <select required name="vet" class="form-control">
                                 @if(count($accounts) == 1)                                    
@@ -29,14 +30,14 @@ Add Schedule for {{$branch->name}} Branch
                                 @endif
                             </select>
                             
-                            <label for="date">Select Date:</label>  
-                            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                                <i class="fa fa-calendar"></i>&nbsp;
-                                <span></span> <i class="fa fa-caret-down"></i>
-                            </div>
-
+                            
                             <label for="date">Select Date:</label>
-                              <input type="" name="dates" id="datepicker" class="form-control" placeholder="Select date" required/>
+                              <input type="" autocomplete="off" name="date" id="datepicker" class="form-control" placeholder="Select date" required/>
+
+                            <!--<label for="date">Select Date:</label>  
+                            <input name="dates" id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%" required>
+                                <i class="fa fa-calendar"></i>&nbsp;
+                                <span></span> <i class="fa fa-caret-down"></i>-->
                         </div>
                         <div class="col-md-6">                 
                                 <label for="am">Max # of Appointment for AM:</label>
