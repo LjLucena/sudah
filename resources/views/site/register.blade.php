@@ -166,8 +166,8 @@
               </div>
               <div class="row">
                   <div class="col-md-3">
-                      <label for="province">Province</label>
-                      <input type="text" name="province" id="province" class="form-control"  placeholder="Enter Province" required>
+                      <label for="provinces">Provinces</label>
+                      <input type="text" name="provinces" id="provinces" class="form-control"  placeholder="Enter provinces" required>
                   </div>
                   <div class="col-md-3">
                       <label for="cm">City/Municipality</label>
@@ -379,9 +379,6 @@
       return false;
     }
     return /^\d*$/.test(value); 
-  });
-  setInputFilter(document.getElementById("province"), function(value) {
-    return /^[a-z]*$/i.test(value);
   });
   setInputFilter(document.getElementById("cm"), function(value) {
     return /^[a-z]*$/i.test(value);

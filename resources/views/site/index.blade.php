@@ -181,8 +181,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Check our Services</p>
+          <p>Services</p>
         </div>
 
         <div class="row">
@@ -232,8 +231,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Gallery</h2>
-          <p>Check our Gallery</p>
+          <p>Gallery</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -425,8 +423,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Team</h2>
-          <p>Check our Team</p>
+          <p>Our Team</p>
         </div>
 
         <div class="row">
@@ -440,8 +437,8 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Dr. Edquiban</h4>
-                <span>Veterinarian -Sunset branch</span>
+                <h4>Robin Alexis Edquiban, DVM</h4>
+                <span>Doctor of Veterinary Medicine<br/>University of the Philippines<br/>Veterinarian-Sunset branch</span>
               </div>
             </div>
           </div>
@@ -455,8 +452,8 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Dr. Dollente</h4>
-                <span>Veterinarian -Bamban branch</span>
+                <h4>Jirah Lyn Dollente, DVM</h4>
+                <span>Doctor of Veterinary Medicine<br/>Cagayan State University<br/>Veterinarian-Bamban branch</span>
               </div>
             </div>
           </div>
@@ -470,8 +467,8 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Dr. Castro</h4>
-                <span>Veterinarian -Magalang branch</span>
+                <h4>Ryan Castro, DVM</h4>
+                <span>College of Veterinary Medicine<br/>Pamapanga State Agricultural University<br/>Veterinarian-Magalang branch</span>
               </div>
             </div>
           </div>
@@ -479,20 +476,18 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="400">
               <div class="member-img">
-                <img src="ui/assets/img/team/def.jpeg" class="img-fluid" alt="">
+                <img src="ui/assets/img/team/vetsf.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.facebook.com/profile.php?id=100052634010683"><i class="bi bi-facebook"></i></a>
                 </div>
               </div>
               <div class="member-info">
-                <h4>Dr. Cuevas</h4>
-                <span>Veterinarian -San Fernando branch</span>
+                <h4>Arvin Cuevas, DVM</h4>
+                <span>Doctor of Veterinary Medicine<br/>Cagayan State University<br/>Veterinarian-San Fernando branch</span>
               </div>
             </div>
           </div>
-
         </div>
-
         <div class="row mt-5 ">
           <div class="col d-flex justify-content-center">
             <a class="serv-btn btn-lg" href="team">View Team</a>
@@ -507,7 +502,6 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Contact</h2>
           <p>Contact Us</p>
         </div>
 
