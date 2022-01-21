@@ -8,13 +8,19 @@ use App\Breed;
 use App\Color;
 use App\Species;
 use App\Medical;
+use Auth;
 
 class PetController extends Controller
 {
     public function pets(){
         
         $pets = Pet::all();
-        return view('patient.list')->with('pets', $pets);
+        if(Auth::user()->role_id == 4){
+            return view('patient.list')->with('pets', $pets);
+        }
+        else{
+            return view('vet_portal.patients')->with('pets', $pets);
+        }
     }
     public function breed(){
         $breeds = Breed::all();

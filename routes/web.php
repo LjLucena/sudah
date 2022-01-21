@@ -20,9 +20,9 @@ Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/login', 'Auth\LoginController@attemptLogin')->name('AttempLogin');
 
-Route::get('/branches', 'BranchController@branches');
-Route::get('/patient', 'PetController@pets');
-Route::get('/schedules', 'SchedulesController@schedules');
+Route::get('/branches', 'BranchController@branches')->middleware('auth');
+Route::get('/patient', 'PetController@pets')->middleware('auth');
+Route::get('/schedules', 'SchedulesController@schedules')->middleware('auth');
 
 //Schedules
 Route::get('/view/branch_schedules/{id}', 'SchedulesController@branch_schedules')->middleware('auth');
@@ -33,22 +33,33 @@ Route::post('/new/sched/{id}', 'SchedulesController@save_sched')->middleware('au
 
 
 //Inventory
-Route::get('/edit/branch_inventory/{id}', 'InventoryController@branchInventory_edit')->middleware('auth');
-Route::post('/edit/branch_inventory/{id}', 'InventoryController@branchInventory_update')->middleware('auth');
+Route::post('/edit/branch_inventory', 'InventoryController@branchInventory_update')->middleware('auth');
 Route::get('/outOfStock/branch_inventory/list', 'InventoryController@branchOutOfStock_list');
-Route::post('/addstock/branch_inventory', 'InventoryController@add_stock');
-Route::get('/add/new/branch_inventory', 'InventoryController@add_branchInventory');
-Route::post('/add/new/branch_inventory', 'InventoryController@save_branchInventory');
+Route::post('/addstock/branch_inventory', 'InventoryController@add_stock')->middleware('auth');
+Route::get('/add/new/branch_inventory', 'InventoryController@add_branchInventory')->middleware('auth');
+Route::post('/add/new/branch_inventory', 'InventoryController@save_branchInventory')->middleware('auth');
+
+//Main Inventory
+Route::get('/inventory', 'InventoryController@main_list')->middleware('auth');
+Route::get('/edit/inventory/{id}', 'InventoryController@inventory_edit')->middleware('auth');
+Route::post('/edit/inventory/{id}', 'InventoryController@inventory_update')->middleware('auth');
+Route::get('/outOfStock/inventory', 'InventoryController@outOfStock')->middleware('auth');
+Route::get('/activate/inventory/{id}', 'InventoryController@activate')->middleware('auth');
+Route::get('/archive/inventory/{id}', 'InventoryController@archive')->middleware('auth');
+Route::get('/archives/inventory', 'InventoryController@archive_list')->middleware('auth');
+Route::post('/addstock/inventory', 'InventoryController@stock')->middleware('auth');
+Route::get('/add/new/inventory', 'InventoryController@addInventory')->middleware('auth');
+Route::post('/add/new/inventory', 'InventoryController@saveInventory')->middleware('auth');
 
 // Accounts
-Route::get('/accounts/{role}', 'AccountController@accounts');
-Route::get('/add/new/account/{role}', 'AccountController@account_form');
-Route::post('/add/new/account/{role}', 'AccountController@account_save');
-Route::get('/add/new/account/client/new', 'AccountController@account_form');
-Route::get('/assign/account/{id}/branch', 'AccountController@assign_branch_form');
-Route::post('/assign/account/', 'AccountController@assign_branch');
-Route::get('/update/account/', 'AccountController@account_update');
-Route::post('/update/account/', 'AccountController@account_update_save');
+Route::get('/accounts/{role}', 'AccountController@accounts')->middleware('auth');
+Route::get('/add/new/account/{role}', 'AccountController@account_form')->middleware('auth');
+Route::post('/add/new/account/{role}', 'AccountController@account_save')->middleware('auth');
+Route::get('/add/new/account/client/new', 'AccountController@account_form')->middleware('auth');
+Route::get('/assign/account/{id}/branch', 'AccountController@assign_branch_form')->middleware('auth');
+Route::post('/assign/account/', 'AccountController@assign_branch')->middleware('auth');
+Route::get('/update/account/', 'AccountController@account_update')->middleware('auth');
+Route::post('/update/account/', 'AccountController@account_update_save')->middleware('auth');
 Route::get('/update/pass/{id}', 'AccountController@pass_edit')->middleware('auth');
 Route::post('/update/pass/{id}', 'AccountController@update_pass')->middleware('auth');
 
@@ -63,9 +74,9 @@ Route::get('/services', 'PagesController@services')->middleware('auth');
 Route::get('/list/pets', 'PagesController@list_pets')->middleware('auth');
 Route::get('/new/pet', 'PagesController@new_pet')->middleware('auth');
 Route::post('/new/pet', 'PagesController@save_new_pet')->middleware('auth');
-Route::get('/diagnostic_services', 'PagesController@d_services')->middleware('auth');
-Route::get('/general_wellness_services', 'PagesController@gw_services')->middleware('auth');
-Route::get('/other_services', 'PagesController@other_services')->middleware('auth');
+Route::get('/diagnostic_services', 'PagesController@d_services');
+Route::get('/general_wellness_services', 'PagesController@gw_services');
+Route::get('/other_services', 'PagesController@other_services');
 Route::get('/findBreed','TestController@findBreed')->middleware('auth');
 Route::get('/my-account', 'AccountController@myAccount_profile');
 Route::get('/edit/pet/{id}', 'PagesController@pet_edit')->middleware('auth');
@@ -90,6 +101,7 @@ Route::get('/branch/inventory', 'InventoryController@branch_list')->middleware('
 //vet
 Route::get('/view/appointment/{id}', 'AppointmentController@view_appintment')->middleware('auth');
 Route::post('/view/appointment/{id}', 'MedicalController@save_assessment')->middleware('auth');
+Route::get('/medical_history/{id}', 'MedicalController@medical_history')->middleware('auth');
 
 Route::get('/slot/available/{v}/{d}/{t}', 'AppointmentController@slot')->middleware('auth');
  
@@ -121,4 +133,4 @@ Route::get('/edit/account/{id}', 'AccountController@acc_details_edit')->middlewa
 Route::post('/edit/account/{id}', 'AccountController@acc_details_update')->middleware('auth');
 Route::get('/archive/{id}', 'AccountController@archive')->middleware('auth');
 Route::get('/activate/{id}', 'AccountController@activate')->middleware('auth');
-Route::get('/archive/list/{role}', 'AccountController@archive_list');
+Route::get('/archive/list/{role}', 'AccountController@archive_list')->middleware('auth');

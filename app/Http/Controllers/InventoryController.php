@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Inventory;
 use App\InvInOut;
+use App\Category;
+use App\User;
 use Auth;
 
 class InventoryController extends Controller
 {
     public function main_list(){
-        $inventories = Inventory::paginate(10);
+        $inventories = Inventory::where('stat', 1)->where('quantity','!=',0)->paginate(10);
         return view('inventory.list')->with('inventories',$inventories);
     }
     public function branch_list(){
@@ -20,7 +22,7 @@ class InventoryController extends Controller
     }
 
     public function branchOutOfStock_list(){
-        $inventories = InvInOut::where('branch_id',Auth::user()->branch_id)->where('stock', 0)->paginate(10);
+        $inventories = InvInOut::where('branch_id',Auth::user()->branch_id)->where('stock', 0)->where('stat',1)->paginate(10);
         return view('inventory.outofstock')->with('inventories',$inventories)->with('branch',Auth::user()->branch_id);
     }
 
@@ -34,6 +36,7 @@ class InventoryController extends Controller
         
         return view('inventory.form')->with('inventories',$inventories)->with('branch',Auth::user()->branch_id);
     }
+
     public function save_branchInventory(Request $request){
         $check = InvInOut::where('branch_id',Auth::user()->branch_id)->where('inventory_id',$request->product)->first();
         
@@ -59,9 +62,141 @@ class InventoryController extends Controller
         
             $inv->in = $request->in;
             $inv->stock = $request->in;
-            $inv->updated_at = now();
             $inv->save();        
             return redirect()->back()->with('success','Product Stock Added!');
         
     }
+
+    public function branchInventory_update(Request $request){
+        $inv = InvInOut::find($request->product);
+        $in = $inv->in;
+        $out = $inv->out;
+        if($in == $request->in && $out != $request->out){
+            $inv->stock = $inv->stock - $request->out;
+            $inv->out = $request->out;
+            $inv->save();
+
+            $main_inv = Inventory::find($inv->inventory_id);
+            $main_inv->quantity = $main_inv->quantity - $request->out;
+            $main_inv->total_sales = $main_inv->total_sales + $request->out;
+            $main_inv->save();
+            return redirect()->back()->with('success','Product "Out" Updated!');
+        }
+        elseif($in != $request->in && $out == $request->out){
+            $stock = $inv->stock + $in;
+            $inv->in = $request->in;
+            $inv->stock = $stock;
+            $inv->save();
+            return redirect()->back()->with('success','Product "In" Updated!');
+        }
+        else{
+            $stock = ($inv->stock + $request->in) - $request->out;
+            $inv->in = $request->in;
+            $inv->out = $request->out;
+            $inv->stock = $stock;
+            $inv->save();
+
+            $main_inv = Inventory::find($inv->inventory_id);
+            $main_inv->quantity = $main_inv->quantity - $request->out;
+            $main_inv->total_sales = $main_inv->total_sales + $request->out;
+            $main_inv->save();
+
+            return redirect()->back()->with('success','Inventory Updated!');
+        }
+        
+    }
+    
+    public function inventory_edit($id){
+            
+        $inv = Inventory::find($id);
+        $categories = Category::all();
+        return view('inventory.edit_inv')->with('inv',$inv)->with('categories', $categories);
+    }
+
+    public function inventory_update(Request $request){
+            
+        $inv = Inventory::find($request->id);
+        $inv->category_id = $request->cat;
+        $inv->product_name = $request->name;
+        $inv->code = $request->code;
+        $inv->price = $request->price;
+        $inv->quantity = $request->qty;
+        $inv->remarks = $request->remarks;
+        $inv->save();
+        return redirect()->back()->with('success','Inventory Updated!');
+    }
+
+    public function outOfStock(){
+        $inv = Inventory::where('quantity', 0)->paginate(10);
+        return view('inventory.outofstock_list')->with('inventories',$inv);
+    }
+
+    public function stock(Request $request){
+        $inv = Inventory::find($request->id);
+        
+        $inv->quantity = $request->qty;
+        $inv->save();        
+        return redirect()->back()->with('success','Product Stock Added!');
+        
+    }
+
+    public function archive_list(){
+        if(Auth::user()->role_id == 4){
+            $inv = Inventory::where('stat', 0)->paginate(10);
+            return view('inventory.archives')->with('inventories',$inv);
+        }
+        else{            
+            $inv = InvInOut::where('stat', 0)->paginate(10);
+            return view('inventory.branch_archives')->with('inventories',$inv);
+        }
+    }
+
+    public function archive($id){
+        $branchInv = InvInOut::where('inventory_id',$id)->get(['stat','id']);
+        foreach($branchInv as $branchInv){
+            $setStat = InvInOut::find($branchInv->id);
+            $setStat->stat = 0;
+            $setStat->save();
+        }
+        
+        $inv = Inventory::find($id);
+        $inv->stat = 0;
+        $inv->save();
+        return redirect()->back()->with('success','Product Archived!');
+    }
+
+    public function activate($id){
+        $branchInv = InvInOut::where('inventory_id',$id)->get(['stat','id']);
+        foreach($branchInv as $branchInv){
+            $setStat = InvInOut::find($branchInv->id);
+            $setStat->stat = 1;
+            $setStat->save();
+        }
+
+        $inv = Inventory::find($id);
+        $inv->stat = 1;
+        $inv->save();
+        return redirect()->back()->with('success','Product Activated!');
+    }
+
+    public function addInventory(){
+        $cat = Category::all();
+        return view('inventory.add_inventory')->with('categories',$cat);
+    }
+
+    public function saveInventory(Request $request){
+            $inv = new Inventory;
+            $inv->category_id = $request->cat;
+            $inv->product_name = $request->name;
+            $inv->code = $request->code;
+            $inv->price = $request->price;
+            $inv->quantity = $request->qty;
+            $inv->remarks = $request->remarks;
+            $inv->stat = 1;
+            $inv->save();
+           return redirect()->back()->with('success','Inventory Added!');
+        
+    }
+
+    
 }

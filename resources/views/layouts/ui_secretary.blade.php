@@ -214,6 +214,26 @@
             modal.find('.modal-body').html('<form action="/addstock/branch_inventory"  method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label>Product Quantity:</label><input class="form-control" type="number" max="'+max+'"name="in" required><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
             // modal.find('.modal-body input').val(recipient)
         });
+
+        $('#editStock').on('shown.bs.modal', function (event) {
+            // var button = $(event.relatedTarget) // Button that triggered the modal
+            // var recipient = button.data('whatever') // Extract info from data-* attributes
+            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data_id =$(event.relatedTarget).data('id');
+            var max =$(event.relatedTarget).data('max');
+            var out_max =$(event.relatedTarget).data('out_max');
+            var pro_in =$(event.relatedTarget).data('in');
+            var out =$(event.relatedTarget).data('out');
+            var modal = $(this);
+            modal.find('.modal-title').text('Edit Inventory');
+            modal.find('.modal-body').html('<form action="/edit/branch_inventory" id="editInv"  method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label> <h2>Total Stock: '+out_max+'</h2> Product In:</label><input class="form-control" type="number" max="'+max+'"name="in" value="'+pro_in+'" ><label>Product Out:</label><input class="form-control" type="number" max="'+out_max+'"name="out" value="'+out+'" ></form>');
+            // modal.find('.modal-body input').val(recipient)
+        });
+
+        $("#submitBtn").click(function(){        
+          $("#editInv").submit(); // Submit the form
+        });
   });
 </script>
 </html>
