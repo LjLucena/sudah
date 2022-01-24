@@ -116,13 +116,14 @@
                     
                     <a class="nav-link nav-header" ><strong>Appointments</strong></a>
                     
-                    <a class="nav-link {{Request::path() == 'portal/branch' ?  'active' : ''}}" href="/portal/branch">Calendar</a>
+                    <!--<a class="nav-link {{Request::path() == 'portal/branch' ?  'active' : ''}}" href="/portal/branch">Calendar</a>-->
                     <a class="nav-link {{Request::path() == 'portal/branch' ?  'active' : ''}}" href="/portal/branch">List</a>
                     
                     <a class="nav-link nav-header" ><strong>Branch Management</strong></a>
                     
                     
-                    <a class="nav-link {{Request::path() == 'patient' ?  'active' : ''}}" href="/manage/patient">Patients</a>
+                    <a class="nav-link {{Request::path() == 'patient' ?  'active' : ''}}" href="/patient">Patients</a>
+                    <a class="nav-link {{Request::path() == 'accounts/client' ?  'active' : ''}}" href="/accounts/client">Clients</a>
                     <a class="nav-link {{Request::path() == 'branch/inventory' ?  'active' : ''}}" href="/branch/inventory">Inventory</a>
 
                     <a class="nav-link nav-header" ><strong>Report Management</strong></a>
@@ -144,7 +145,7 @@
                             @yield('panel-option')
                         </div>
                         
-                        <h3 class="panel-title"  style="margin-top:-41px;width: 30% !important;">
+                        <h3 class="panel-title"  style="margin-top:-41px;width: 50% !important;">
                             <strong>
                                 @yield('panel-title')
                             </strong>
@@ -180,10 +181,11 @@
 
   
 </body>
+
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
+@yield('script')
 <script>
   $(document).ready(function() {
           $('#table').DataTable({
@@ -230,6 +232,60 @@
             modal.find('.modal-body').html('<form action="/edit/branch_inventory" id="editInv"  method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label> <h2>Total Stock: '+out_max+'</h2> Product In:</label><input class="form-control" type="number" max="'+max+'"name="in" value="'+pro_in+'" ><label>Product Out:</label><input class="form-control" type="number" max="'+out_max+'"name="out" value="'+out+'" ></form>');
             // modal.find('.modal-body input').val(recipient)
         });
+
+      $('#viewAppt').on('shown.bs.modal', function (event) {
+            // var button = $(event.relatedTarget) // Button that triggered the modal
+            // var recipient = button.data('whatever') // Extract info from data-* attributes
+            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data_id =$(event.relatedTarget).data('id');
+            var modal = $(this);
+            modal.find('.modal-title').text('Appointment Details');
+            modal.find('.modal-body').load('/view/appt/'+data_id+'');
+            //modal.find('.modal-footer').html('<a href="/appointment/'+data_id+'" class="btn btn-md btn-danger">Cancel</a>');
+            //modal.find('.modal-footer').html('<a href="/appointment/'+data_id+'" class="btn btn-md btn-danger">Cancel</a>');
+           // modal.find('.modal-body input').val(recipient)            }
+        });
+
+        $(document).on('change','.species_id',function(){
+			// console.log("hmm its change");
+
+			var cat_id=$(this).val();
+			// console.log(cat_id);
+      
+      var div=$('.breed_id');
+
+			$.ajax({
+				type:'get',
+				url:'{!!URL::to('findBreed')!!}',
+				data:{'id':cat_id},
+				success:function(data){
+          var op=" ";
+					//console.log('success');
+
+					//console.log(data);
+
+					//console.log(data.length);
+          op+='<option value="0" selected disabled>Choose Breed</option>';
+          for(var i=0;i<data.length;i++){
+          op+='<option value="'+data[i].id+'">'+data[i].breed_name+'</option>';
+          }
+           
+           div.html(" ");
+				   div.append(op);
+          },
+				
+				error:function(){
+
+				}
+			});
+		});
+
+        $("#cancelBtn").click(function(){        
+          //$("#cancelForm").removeAttr('style');
+            console.log('gaganaku');
+        });
+
 
         $("#submitBtn").click(function(){        
           $("#editInv").submit(); // Submit the form

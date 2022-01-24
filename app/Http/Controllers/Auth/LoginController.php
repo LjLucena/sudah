@@ -65,7 +65,7 @@ class LoginController extends Controller
             elseif($user->UserRoleI->role=='Admin') return redirect('/accounts/vet/');
             elseif($user->UserRoleI->role=='Secretary') return redirect('/portal/branch/');             
             elseif($user->UserRoleI->role=='Vet') return redirect('/portal/vet/');                   
-            elseif($user->UserRoleI->role=='Client') return redirect('/set/appointment');             
+            elseif($user->UserRoleI->role=='Client') return redirect('/list/appointments');             
 
         }
         return redirect('/login')->withErrors(['msg' => 'Incorrect Username or Password']);
@@ -78,7 +78,7 @@ class LoginController extends Controller
             elseif($user->UserRoleI->role=='Admin') return redirect('/accounts/vet/');
             elseif($user->UserRoleI->role=='Secretary') return redirect('/portal/branch/');
             elseif($user->UserRoleI->role=='Vet') return redirect('/portal/vet/');
-            elseif($user->UserRoleI->role=='Client') return redirect('/set/appointment');
+            elseif($user->UserRoleI->role=='Client') return redirect('/list/appointments');
         } else {
             return view('user.login');
         }

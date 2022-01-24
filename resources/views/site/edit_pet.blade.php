@@ -8,7 +8,7 @@
    <title>SUDAH - Pet Portal</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+ 
   <!-- Favicons -->
   <link href="{{asset('ui/assets/img/logo.jpg')}}" rel="icon">
 
@@ -132,7 +132,7 @@
                       </div>
                       <div class="col-md-4">
                           <label for="">Breed</label>
-                          <select class="form-control breed_id" name="breed_id" id="" required>
+                          <select class="form-control breed_id" name="breed_id" data-id="{{$pet->breed_id}}" data-breed="{{$pet->pet_breed->breed_name}}" required>
                               <!--@foreach ($breeds as $breed)
                                   <option value="{{$breed->id}}">{{$breed->breed_name}}</option>
                               @endforeach-->
@@ -222,9 +222,45 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <script type="text/javascript">
-	window.addEventListener('load', function(){
+  $(document).ready(function(){
 
 			var cat_id=$('.species_id').val();
+			// console.log(cat_id);
+      
+      var div=$('.breed_id');
+
+      var breed_id = $(div).data('id');
+      var breed = $(div).data('breed');
+
+			$.ajax({
+				type:'get',
+				url:'{!!URL::to('findBreed')!!}',
+				data:{'id':cat_id},
+				success:function(data){
+          var op=" ";
+					//console.log('success');
+
+					//console.log(data);
+
+					//console.log(data.length);
+          op+='<option value="'+breed_id+'" selected="true">'+breed+'</option>';
+          for(var i=0;i<data.length;i++){
+          op+='<option value="'+data[i].id+'">'+data[i].breed_name+'</option>';
+          }
+           
+           div.html(" ");
+				   div.append(op);
+          },
+				
+				error:function(){
+
+				}
+			});
+
+      $(document).on('change','.species_id',function(){
+			// console.log("hmm its change");
+
+			var cat_id=$(this).val();
 			// console.log(cat_id);
       
       var div=$('.breed_id');
@@ -240,7 +276,7 @@
 					//console.log(data);
 
 					//console.log(data.length);
-          op+='<option value="{{$pet->breed_id}}" selected="true">{{$pet->pet_breed->breed_name}}</option>';
+          //op+='<option value="0" selected disabled>Choose Breed</option>';
           for(var i=0;i<data.length;i++){
           op+='<option value="'+data[i].id+'">'+data[i].breed_name+'</option>';
           }
@@ -253,6 +289,7 @@
 
 				}
 			});
+		});
 		});
 </script>
 

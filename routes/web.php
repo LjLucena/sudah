@@ -78,7 +78,10 @@ Route::get('/diagnostic_services', 'PagesController@d_services');
 Route::get('/general_wellness_services', 'PagesController@gw_services');
 Route::get('/other_services', 'PagesController@other_services');
 Route::get('/findBreed','TestController@findBreed')->middleware('auth');
-Route::get('/my-account', 'AccountController@myAccount_profile');
+Route::get('/my-account', 'AccountController@myAccount_profile')->middleware('auth');
+Route::get('/show/appointment/form/{id}', 'PagesController@show_form')->middleware('auth');
+Route::get('/cancel/appt/{id}', 'AppointmentController@cancel_appt')->middleware('auth');
+Route::get('/cancel/appt/{id}', 'AppointmentController@cancel_appt')->middleware('auth');
 Route::get('/edit/pet/{id}', 'PagesController@pet_edit')->middleware('auth');
 Route::post('/edit/pet/{id}', 'PagesController@pet_update')->middleware('auth');
 
@@ -89,14 +92,24 @@ Route::post('/set/appointment', 'PagesController@save_appointment')->middleware(
 Route::get('/list/appointments', 'PagesController@list_appointment')->middleware('auth');
 Route::get('/appointment/{id}', 'AppointmentController@view_appointment')->middleware('auth');
 
-
 Route::get('/portal/branch', 'BranchController@appointments')->middleware('auth');
 Route::get('/portal/vet', 'AppointmentController@vet_calendar')->middleware('auth');
 
 
 // secretary
-Route::get('/approve/appoitnment/{id}', 'AppointmentController@approve')->middleware('auth');
+Route::get('/approve/appoitment/{id}', 'AppointmentController@approve')->middleware('auth');
+Route::get('/view/appt/{id}', 'AppointmentController@view')->middleware('auth');
 Route::get('/branch/inventory', 'InventoryController@branch_list')->middleware('auth');
+Route::get('/branch/appt', 'AppointmentController@all_appt')->middleware('auth');
+Route::get('/branch/appt/{status}', 'AppointmentController@appt_list')->middleware('auth');
+Route::get('/view/pet/{id}', 'BranchController@view_pet')->middleware('auth');
+Route::get('/branch/cancel/appt', 'AppointmentController@cancel')->middleware('auth');
+Route::get('/set/appt/{id}', 'AppointmentController@add_appt')->middleware('auth');
+Route::post('/set/appt/{id}', 'AppointmentController@save_appt')->middleware('auth');
+Route::get('/add/new/clients', 'BranchController@account_form')->middleware('auth');
+Route::post('/add/new/clients', 'BranchController@client_save')->middleware('auth');
+
+
 
 //vet
 Route::get('/view/appointment/{id}', 'AppointmentController@view_appintment')->middleware('auth');

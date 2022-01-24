@@ -98,7 +98,7 @@
                             </div>
                           </div>
                           <br />
-                    </div>
+                    </div> 
                     <div class="col-md-9">
                         <h2>Pet Information</h2>
                         <div class="row">
@@ -107,7 +107,7 @@
                                     <tbody>
                                         <tr>
                                             <td><strong>Species:</strong></td>
-                                            <td>{{$pet->pet_breed->pet_species->species_name}}</td>
+                                            <td>{{$pet->pet_species->species_name}}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Breed:</strong></td>

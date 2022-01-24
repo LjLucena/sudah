@@ -17,6 +17,7 @@
 
   <!-- Vendor CSS Files -->
   <link href="{{asset('ui/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('css/style.css')}}" rel="stylesheet">
   <link href="{{asset('ui/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('ui/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
   <link href="{{asset('ui/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
@@ -111,9 +112,7 @@
                   <td>{{$appointment->AppointmentPet->name}}</td>
                   <td>{{$appointment->status}}</td>
                   <td width="10%">
-                      <a class="btn btn-sm btn-primary" href="/appointment/{{$appointment->id}}">
-                        View Details
-                      </a>
+                      <a href="" class="btn btn-primary btn-sm" data-id="{{$appointment->id}}" data-status="{{$appointment->status}}" data-pet="{{$appointment->AppointmentPet->name}}" data-toggle="modal"  data-target="#appDetails">View</a>
                   </td>
                 </tr>
               @endforeach
@@ -124,30 +123,33 @@
       </div>
     </section>
 
+    
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer"class="fixed-bottom">
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>MCC</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="{{asset('ui/assets/vendor/aos/aos.js')}}"></script>
+  
+  <div class="modal fade" id="appDetails" tabindex="-1" role="dialog" aria-labelledby="deactivateModal" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id=""></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+<!-- Vendor JS Files -->
+<script src="{{asset('ui/assets/vendor/aos/aos.js')}}"></script>
   <script src="{{asset('ui/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('ui/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
   <script src="{{asset('ui/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
@@ -157,7 +159,34 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('ui/assets/js/main.js')}}"></script>
-
-</body>
-
+  <script src="{{asset('js/app.js')}}"></script>
+  <script>
+    $(document).ready(function(){
+      $('#appDetails').on('shown.bs.modal', function (event) {
+            // var button = $(event.relatedTarget) // Button that triggered the modal
+            // var recipient = button.data('whatever') // Extract info from data-* attributes
+            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var data_id =$(event.relatedTarget).data('id');
+            var status =$(event.relatedTarget).data('status');
+            var pet =$(event.relatedTarget).data('pet');
+            var modal = $(this);
+            modal.find('.modal-title').text('Appointment Details for: '+pet);
+            modal.find('.modal-body').html('<b>Appointment Status:</b> '+status+'<br><b>Requested Services:</b> ');
+            if (status == 'Approved') {
+              modal.find('.modal-footer').html('<a href="/cancel/appt/'+data_id+'" class="btn btn-md btn-danger">Cancel Appointment?</a>'+
+                                                '<button class="btn btn-md btn-secondary" data-dismiss="modal">Close</button>'
+              );
+            } else {
+              modal.find('.modal-footer').html('<a href="/edit/appt/'+data_id+'" class="btn btn-md btn-primary">Edit</a>'+
+                                                '<a href="/cancel/appt/'+data_id+'" class="btn btn-md btn-danger">Cancel Appointment?</a>'+
+                                                '<button class="btn btn-md btn-secondary" data-dismiss="modal">Close</button>'
+              );
+            }
+            //modal.find('.modal-footer').html('<a href="/appointment/'+data_id+'" class="btn btn-md btn-danger">Cancel</a>');
+            //modal.find('.modal-footer').html('<a href="/appointment/'+data_id+'" class="btn btn-md btn-danger">Cancel</a>');
+           // modal.find('.modal-body input').val(recipient)
+        });
+    });
+  </script>
 </html>
