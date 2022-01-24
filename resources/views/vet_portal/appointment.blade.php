@@ -9,22 +9,16 @@
 @section('content')
 <div class="row">
   <div class="col-md-12"><br></div>
-    <div class="col-md-3">
-
-        <div class="card" style="width: 18rem;">
-        <img src="{{asset('img/'.$pet->image)}}" class="card-img-top"  />
-            <div class="card-body">
-              <h5 class="card-title"><strong>Name:</strong>{{$pet->name}}</h5>
-            </div>
-          </div>
-          <br />
-    </div>
-    <div class="col-md-9">
+    <div class="col-md">
         <h4>Pet Information</h4>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
                     <tbody>
+                        <tr>
+                            <td><strong>Name:</strong></td>
+                            <td>{{$pet->name}}</td>
+                        </tr>
                         <tr>
                             <td><strong>Species:</strong></td>
                             <td>{{$pet->pet_breed->pet_species->species_name}}</td>
@@ -54,7 +48,7 @@
                 @foreach ($services as $service)
                   <tr>
                       <td><strong>Services:</strong></td>
-                      <td>{{$service->service}} {{$service->price !="" ? '(P'.$service->price.'.00)' : ''}}</td>
+                      <td>{{$service->service}}</td>
                   </tr>
                 @endforeach
               </tbody>
@@ -86,7 +80,7 @@
       </tbody>
     </table>
   </div>
-  @if ($appointment->status == "Appointment Completed")
+  @if ($appointment->status == "Done")
     
   @else
   <div class="col-md-12">

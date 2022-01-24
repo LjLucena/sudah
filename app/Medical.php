@@ -13,4 +13,8 @@ class Medical extends Model
     public function appointment_details(){
         return $this->hasOne('App\Appointment','id','appointment_id');
     }
+
+    public function BranchN(){
+        return $this->hasOne('App\Branch','id','branch_id');
+    }
 }

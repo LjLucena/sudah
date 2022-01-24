@@ -20,7 +20,7 @@ class PagesController extends Controller
         return view ('site.index');
     }
     public function d_services(){
-        return view ('site.d_services');
+        return view ('site.d_services'); 
     }
     public function gw_services(){
         return view ('site.gw_services');
@@ -31,6 +31,13 @@ class PagesController extends Controller
     public function register(){
         return view ('site.register');
     }
+
+    public function show_form($id){
+        $patients = Pet::where('user_id',Auth::user()->id)->get();        
+        $vets = Account::where('role_id','2')->where('branch_id',$id)->where('stat',1)->get();
+        return view ('site.set_appointment_form')->with('vets', $vets)->with('patients', $patients)->with('branch',$branch);
+    }
+
     public function appointment(){
         // return Auth::user();
         $patients = Pet::where('user_id',Auth::user()->id)->get();
@@ -39,7 +46,9 @@ class PagesController extends Controller
         if(count($patients) == 0) 
         return redirect('/new/pet')->with('info',"Please save your pet's information first");
         else
-        return view ('site.appointment')->with('patients',$patients)->with('branches',$branches)->with('vets',$vets );
+        return view ('site.appointment')->with('branches',$branches);
+        //return view ('site.appointment')->with('patients',$patients)->with('branches',$branches)->with('vets',$vets );
+        
     }
     public function save_appointment(Request $request){
         // return dd($request);
@@ -73,7 +82,7 @@ class PagesController extends Controller
     }
     public function list_appointment(){
         // return Auth::user();
-        $appointments = Appointment::where('user_id',Auth::user()->id)->get();
+        $appointments = Appointment::where('user_id',Auth::user()->id)->where('status','Approved')->orWhere('status','Pending')->get();
         // return $appointments[0]->AppointmentBranch;
         return view ('site.list_appointment')->with('appointments',$appointments);
     }
@@ -111,7 +120,7 @@ class PagesController extends Controller
         $id = base64_decode($id);
         $pet = Pet::find($id);
         
-        $species = Species::all();
+        $species = Species::where('id','!=',$pet->species_id)->get();
         $breeds = Breed::all();
         $colors = Color::all();
         return view ('site.edit_pet')

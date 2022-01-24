@@ -87,125 +87,26 @@
                     </div>
                 </div>
                 @endif
-          <form action="" method="post">
-            @csrf
-              <div class="row">
-                  <div class="col-md-12">
-                    <h3>Appointment Details</h3>
-                      <div class="row">
-                          <div class="col-md-12">
-                              
-                            Select Pet:
-                            <select name="patient_id" id="" class="form-control" required>
-                                <option value="">-- Select Pet --</option>
-                                @foreach ($patients as $patient)
-                                    <option value="{{$patient->id}}">{{$patient->name}}</option>
-                                @endforeach
-                            </select>
-                          </div>
-                      </div>
-                      <div class="row">
+                <div class="row">
                         <div class="col-md-6">
-                            Select Branch:
-                            <select name="branch_id" id="" class="form-control" required>
-                                <option value="">-- Select Branch --</option>
-                                @foreach ($branches as $branch)
-                                    <option value="{{$branch->id}}">{{$branch->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            Select Veterinarian:
-                            <select name="vet_id" id="vet_data" class="form-control" onChange="CheckSlot()" required>
-                                <option value="">-- Select Veterinarian --</option>
-                                @foreach ($vets as $vet)
-                                    <option value="{{$vet->id}}">{{$vet->UserProfile->first_name}} {{$vet->UserProfile->middle_name}} {{$vet->UserProfile->last_name}}</option>
-                                @endforeach
+                          <h4>Select Branch First:</h4>  
+                            <select id="branch"  onchange="seeForm()" class="form-control" required>
+                              <option value="">-- Select Branch --</option>
+                              @foreach ($branches as $branch)
+                                <option value="{{$branch->id}}">{{$branch->name}}</option>
+                              @endforeach
                             </select>
                         </div>
                       </div>
-                      
-                      <div class="row">
-                        <div class="col-md-4">
-                            Date of Appointment
-                            <input type="date"  onChange="CheckSlot()" name="date_appointment" min='{{date('Y')}}-{{date('m')}}-{{(date('d')+1)<=9 ? '0'.date('d')+1 : date('d')+1}}' class="form-control" id="app_date" required>
-                        </div>
-                        <div class="col-md-4">
-                            Time of Appointment
-                            <select name="time_appointment" id="app_time" class="form-control" onChange="CheckSlot()">
-                                <option value="">-- Selct Time --</option>
-                                <option value="08:00AM - 11:00AM">Morning (08:00AM - 11:00AM)</option>
-                                <option value="01:00PM - 04:00PM">Afternoon (01:00PM - 04:00PM)</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            Slot
-                            <div id='slot'></div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          Reason
-                          <textarea name="reason" placeholder="Enter Reason" class="form-control" required></textarea>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <h3>Services</h3>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <input type="checkbox" name="services[]" id="s1" value="1"> <label for="s1">Consultation (Php 100)</label><br />                       
-                              <input type="checkbox" name="services[]" id="s2" value="2"> <label for="s2">Vaccination (Php 350)</label><br />                 
-                              <input type="checkbox" name="services[]" id="s3" value="3"> <label for="s3">Deworming (Php 100)</label><br />         
-                              <input type="checkbox" name="services[]" id="s4" value="4"> <label for="s4">Pet Grooming (Php 300)</label><br />   
-                              <input type="checkbox" name="services[]" id="s5" value="5"> <label for="s5">Vet Dental Care</label><br />
-                              <input type="checkbox" name="services[]" id="s6" value="6"> <label for="s6"> Test</label><br />
-                            </div>
-                            <div class="col-md-6">
-                              <input type="checkbox" name="services[]" id="s7" value="7"> <label for="s7">Surgery</label><br />                     
-                              <input type="checkbox" name="services[]" id="s8" value="8"> <label for="s8"> Confinement (Php 1200)</label><br />            
-                              <input type="checkbox" name="services[]" id="s9" value="9"> <label for="s9"> X-Ray (Php 900)</label><br />              
-                              <input type="checkbox" name="services[]" id="s10"value="10"> <label for="s10"> Pet Lodging</label><br />     
-                              <input type="checkbox" name="services[]" id="s11"value="11"> <label for="s11"> Pet Wellness</label><br />
-                            </div>
-                          </div>                                    
+                  <div class="row mt-4" id="setApp">
 
-                        </div>
-                      </div>
                   </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                    <br>
-                    <button class="btn btn-primary" id="appoint" disabled="disable" type="submit">Set Appointment</button> <span id="error" style="color:#F00"></span>
-                </div>
-            </div>
-              </div>
-            </div>
-            
-          </form>
+          
         </p>
       </div>
     </section>
 
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" >
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>MCC</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -250,6 +151,19 @@
         $("#slot").text("");
       } 
     }
+
+    function seeForm(){
+      var branch = document.getElementById('branch').value;
+      $('#setApp').load('/show/appointment/form/'+branch);
+    }
+
+    function showTime(){
+      $('#app_time').removeAttr('disabled');
+      $('#pet').removeAttr('disabled');
+      $('#reason').removeAttr('disabled');
+    }
+        
+
   </script>
 </body>
 

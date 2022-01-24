@@ -22,4 +22,5 @@ class Account extends Model
     public function VetProfile(){
         return $this->hasOne('App\Profile','id','vet_id');
     }
+
 }

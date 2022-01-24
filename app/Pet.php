@@ -22,4 +22,5 @@ class Pet extends Model
     public function UserProfile(){
         return $this->hasOne('App\Profile','id','profile_id');
     }
+
 }

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sudah | @yield('htitle')</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('ui/assets/css/dataTables.bootstrap.min.css')}}">
     <style>
         #content {
             background-color: #ffffff;
@@ -107,10 +108,10 @@
                     
                     <a class="nav-link nav-header" href="/portal/vet"><strong>Appointments</strong></a>
                     
-                    <a class="nav-link {{Request::path() == 'portal/branch' ?  'active' : ''}}" href="/portal/branch">Calendar</a>
+                    <a class="nav-link {{Request::path() == 'portal/vet' ?  'active' : ''}}" href="/portal/vet">Calendar</a>
                     
-                    <a class="nav-link nav-header" href="/portal/vet"><strong>Patient</strong></a>
-                    <a class="nav-link {{Request::path() == 'patient' ?  'active' : ''}}" href="/manage/patient">Patients</a>
+                    <a class="nav-link nav-header" href=""><strong>Patient</strong></a>
+                    <a class="nav-link {{Request::path() == 'patient' ?  'active' : ''}}" href="/patient">Patients</a>
 
                     <a class="nav-link nav-header" ><strong>My Account</strong></a>
                     <a class="nav-link {{Request::path() == 'my-account' ?  'active' : ''}}" href="/my-account">View account</a>
@@ -153,63 +154,12 @@
   
 </body>
 <script src="{{asset('js/app.js')}}"></script>
-</html>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <script>
-  var myInput = document.getElementById("pw");
-  var letter = document.getElementById("letter");
-  var capital = document.getElementById("capital");
-  var number_only = document.getElementById("number");
-  var length = document.getElementById("length");
-
-  // When the user clicks on the password field, show the message box
-  myInput.onfocus = function() {
-    document.getElementById("message").style.display = "block";
-  }
-
-  // When the user clicks outside of the password field, hide the message box
-  myInput.onblur = function() {
-    document.getElementById("message").style.display = "none";
-  }
-
-  // When the user starts to type something inside the password field
-  myInput.onkeyup = function() {
-    // Validate lowercase letters
-    var lowerCaseLetters = /[a-z]/g;
-    if(myInput.value.match(lowerCaseLetters)) {
-      letter.classList.remove("invalid");
-      letter.classList.add("valid");
-    } else {
-      letter.classList.remove("valid");
-      letter.classList.add("invalid");
-    }
-    // Validate capital letters
-    var upperCaseLetters = /[A-Z]/g;
-    if(myInput.value.match(upperCaseLetters)) {
-      capital.classList.remove("invalid");
-      capital.classList.add("valid");
-    } else {
-      capital.classList.remove("valid");
-      capital.classList.add("invalid");
-    }
-
-    // Validate numbers
-    var numbers = /[0-9]/g;
-    if(myInput.value.match(numbers)) {
-      number.classList.remove("invalid");
-      number.classList.add("valid");
-    } else {
-      number.classList.remove("valid");
-      number.classList.add("invalid");
-    }
-
-    // Validate length
-    if(myInput.value.length >= 8) {
-      length.classList.remove("invalid");
-      length.classList.add("valid");
-    } else {
-      length.classList.remove("valid");
-      length.classList.add("invalid");
-    }
-  }
-
+  $(document).ready(function() {
+          $('#table').DataTable({
+          });
+        });
 </script>
+</html>

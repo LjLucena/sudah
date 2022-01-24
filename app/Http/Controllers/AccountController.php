@@ -5,6 +5,9 @@ use App\Account;
 use App\Role;
 use App\Profile;
 use App\User;
+use App\Species;
+use App\Breed;
+use App\Color;
 use Auth;
 use App\Branch;
 
@@ -17,6 +20,9 @@ class AccountController extends Controller
         $roles = Role::where('role',ucfirst($role))->first();
         $accounts = Account::where('role_id',$roles->id)->where('stat', 1)->get();
         //return $accounts[0]->UserProfileI;
+        if(Auth::user()->role_id == 3)
+        return view('secretary_portal.client_list')->with('accounts',$accounts);
+        else
         return view('user.list')->with('role',$role)->with('accounts',$accounts);
 
     }
@@ -24,6 +30,12 @@ class AccountController extends Controller
         $roles = Role::where('role',ucfirst($role))->first();
         $accounts = Account::where('role_id',$roles->id)->get();
         $branch = Branch::all();
+        $species = Species::all();
+        $breeds = Breed::all();
+        $colors = Color::all();
+        if(Auth::user()->role_id == 3)
+        return view('secretary_portal.add_client')->with('accounts',$accounts)->with(['species'=>$species,'breeds'=>$breeds,'colors'=>$colors]);
+        else
         return view('user.form')->with('branchs', $branch)->with('role',$role)->with('roles',$roles)->with('accounts',$accounts);
     }
     public function account_save(Request $request){
@@ -42,7 +54,7 @@ class AccountController extends Controller
         $profile->zipcode= " ";
         $profile->dob= $request->dob;
         $profile->status= "Active";
-        $profile->stat= "0";
+        $profile->stat= "1";
         $profile->save();
 
         $user = new User;
@@ -184,12 +196,16 @@ class AccountController extends Controller
         return redirect("/accounts"."/".strtolower($user->UserRoleI->role))->with('success','Assign Branch Save');
     }
 
-    //admin-side
     public function acc_details($id){
         // return Auth::user();
         $acc = User::find(base64_decode($id));
         $role = Role::find($acc->role_id);
-        return view ('user.acc_details')->with('role',$role->role)->with('user',$acc);
+        if (Auth::user()->role_id == 3) {
+            return view ('secretary_portal.client_acc_details')->with('user',$acc);
+        } else {
+            return view ('user.acc_details')->with('role',$role->role)->with('user',$acc);
+        }
+        
     }
 
     public function acc_details_edit($id){

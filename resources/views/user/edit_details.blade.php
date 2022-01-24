@@ -54,7 +54,7 @@
                                 <div class="col-md-5">
                                     <label for="branch">Assigned to Branch:</label>
                                     <select class="form-control" name="branch" id="" required>
-                                        <option value="{{$data->branch_id}}" disabled="true">{{$data->BranchName->name}}</option>
+                                        <option value="{{$data->branch_id}}" selected="true">{{$data->BranchName->name}}</option>
                                         @foreach ($branchs as $branch)
                                             <option value="{{$branch->id}}">{{$branch->name}}</option>
                                         @endforeach

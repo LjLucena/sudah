@@ -155,9 +155,7 @@
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script><!--
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>-->
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
           $('#table').DataTable({
@@ -172,27 +170,50 @@
             var data_fn =$(event.relatedTarget).data('fn');
             var data_ln =$(event.relatedTarget).data('ln');
             var modal = $(this);
-            modal.find('.modal-title').text('Deactivate');
-            modal.find('.modal-body').text('Are you sure to deactivate '+data_fn+' '+data_ln+'?');
+            modal.find('.modal-title').text('Deactivate?');
+            modal.find('.modal-body').text('Account name: '+data_fn+' '+data_ln);
             modal.find('.modal-footer').html('<a href="/archive/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
            // modal.find('.modal-body input').val(recipient)
         });
 
         $('#activate').on('shown.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
             var data_id =$(event.relatedTarget).data('id');
             var data_fn =$(event.relatedTarget).data('fn');
             var data_ln =$(event.relatedTarget).data('ln');
-            console.log(data_id);
             var modal = $(this);
             modal.find('.modal-title').text('Activate');
-            modal.find('.modal-body').text('Are you sure to activate '+data_fn+' '+data_ln+' account?');
+            modal.find('.modal-body').text('Account name: '+data_fn+' '+data_ln);
             modal.find('.modal-footer').html('<a href="/activate/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
-           // modal.find('.modal-body input').val(recipient)
         });
+        
+        $('#addStock').on('shown.bs.modal', function (event) {
+            var data_id =$(event.relatedTarget).data('id');
+            var modal = $(this);
+            modal.find('.modal-title').text('Add Product Quantity');
+            modal.find('.modal-body').html('<form action="/addstock/inventory"  method="post"> @csrf <input type="hidden" name="id" value="'+data_id+'">'+
+                                            '<label>Product Quantity:</label>'+
+                                            '<input class="form-control" type="number" name="qty" required>'+
+                                            '<button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+        });
+
+        $('#actProduct').on('shown.bs.modal', function (event) {
+            var data_id =$(event.relatedTarget).data('id');
+            var name =$(event.relatedTarget).data('name');
+            var modal = $(this);
+            modal.find('.modal-title').text('Activate Product?');
+            modal.find('.modal-body').text('Product name: '+name);
+            modal.find('.modal-footer').html('<a href="/activate/inventory/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
+        });
+
+        $('#archiveProduct').on('shown.bs.modal', function (event) {
+            var data_id =$(event.relatedTarget).data('id');
+            var name =$(event.relatedTarget).data('name');
+            var modal = $(this);
+            modal.find('.modal-title').text('Archive Product?');
+            modal.find('.modal-body').text('Product name: '+name);
+            modal.find('.modal-footer').html('<a href="/archive/inventory/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
+        });
+
            // var disablethese = //json_encode($disableDate);
             
             var disableDates = ["01-21-2022", "01-22-2022"];
@@ -204,62 +225,7 @@
 
             });
 
-            //$('input[name="dates"]').daterangepicker();
-
-            var start = moment().add(1, 'month');
-            var end = moment().add(2, 'month');
-
-
-            function cb(start, end) {
-                $('#reportrange span').html(start.format('YYYY-MMMM-D') + ' - ' + end.format('YYYY-MMMM-D'));
-            }
-
-            var jan = moment().set('month',0).startOf('month');
-            var jan_end = moment().set('month',0).endOf('month');
-            var feb = moment().set('month',1).startOf('month');
-            var feb_end = moment().set('month',1).endOf('month');
-            var mar = moment().set('month',2).startOf('month');
-            var mar_end = moment().set('month',2).endOf('month');
-            var apr = moment().set('month',3).startOf('month');
-            var apr_end = moment().set('month',3).endOf('month');
-            var may = moment().set('month',4).startOf('month');
-            var may_end = moment().set('month',4).endOf('month');
-            var jun = moment().set('month',5).startOf('month');
-            var jun_end = moment().set('month',5).endOf('month');
-            var jul = moment().set('month',6).startOf('month');
-            var jul_end = moment().set('month',6).endOf('month');
-            var aug = moment().set('month',7).startOf('month');
-            var aug_end = moment().set('month',7).endOf('month');
-            var sep = moment().set('month',8).startOf('month');
-            var sep_end = moment().set('month',8).endOf('month');
-            var oct = moment().set('month',9).startOf('month');
-            var oct_end = moment().set('month',9).endOf('month');
-            var nov = moment().set('month',10).startOf('month');
-            var nov_end = moment().set('month',10).endOf('month');
-            var dec = moment().set('month',11).startOf('month');
-            var dec_end = moment().set('month',11).endOf('month');
-
-            /*$('#reportrange').daterangepicker({
-                startDate: start,
-                endDate: end,
-                ranges: {
-                'January' : [jan,jan_end],
-                'February' : [feb,feb_end],
-                'March' : [mar,mar_end],
-                'April' : [apr,apr_end],
-                'May' : [may,may_end],
-                'June' : [jun,jun_end],
-                'July' : [jul,jul_end],
-                'August' : [aug,aug_end],
-                'September' : [sep,sep_end],
-                'October' : [oct,oct_end],
-                'November' : [nov,nov_end],
-                'December' : [dec,dec_end],
-                }
-            }, cb);
-
-            cb(start, end);*/
-            });
+        });
 </script>
 
 </html>

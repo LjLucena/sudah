@@ -21,4 +21,7 @@ class Appointment extends Model
     public function AppointmentPet(){
         return $this->hasOne('App\Pet','id','pet_id');
     }
+    public function AppointmentDate(){
+        return $this->hasOne('App\Schedules','id','schedule_id');
+    }
 }
