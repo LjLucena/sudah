@@ -54,7 +54,7 @@
                 Friendship Highway, Cutcut, 2009 <br>
                 Sunset, Angeles City<br><br>
                 <strong>Phone:</strong> 09676894144<br>
-                <strong>Email:</strong> sudahveterinary@gmail.com<br>
+                <strong>Email:</strong><a href="mailto:sudahveterinary@gmail.com"> sudahveterinary@gmail.com</a><br>
               </p>
               <div class="social-links mt-3">
                 <!--<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -71,7 +71,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('index')}}">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('index',['#about'])}}">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{route('index',['#team'])}}">Team</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="teams">Team</a></li>
             </ul>
           </div>
 

@@ -13,6 +13,7 @@ use App\Breed;
 use App\Color;
 use App\Profile;
 use App\Appointment;
+
 class PagesController extends Controller
 {
     public function homepage(){
@@ -140,7 +141,18 @@ class PagesController extends Controller
         // return Auth::user();
         return view ('site.services');
     }
+
+    public function products(){
+        return view ('site.products');
+    }
     
+    public function prod2(){
+        return view ('site.prod2');
+    }
+
+    public function teams(){
+        return view ('site.teams');
+    }
 }
 
 

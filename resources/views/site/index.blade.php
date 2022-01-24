@@ -14,6 +14,7 @@
           <li><a class="nav-link scrollto active" href="">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="diagnostic_services">Services</a></li>
+          <li><a class="nav-link scrollto" href="products">Products</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -146,7 +147,7 @@
         </div>
 
       </div>
-    </section><!-- End Clients Section -->
+    </section>< End Clients Section -->
 
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
@@ -332,12 +333,6 @@
           </div>
         </div>
 
-        <div class="row mt-5 ">
-          <div class="col d-flex justify-content-center">
-            <a class="serv-btn btn-lg" href="gallery">View Gallery</a>
-          </div>
-        </div>
-
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Testimonials Section ======= -->
@@ -438,7 +433,7 @@
               </div>
               <div class="member-info">
                 <h4>Robin Alexis Edquiban, DVM</h4>
-                <span>Doctor of Veterinary Medicine<br/>University of the Philippines<br/>Veterinarian-Sunset branch</span>
+                <span>Veterinarian-Sunset branch<br/><br/>Studied Doctor of Veterinary Medicine at University of the Philippines</span>
               </div>
             </div>
           </div>
@@ -453,7 +448,7 @@
               </div>
               <div class="member-info">
                 <h4>Jirah Lyn Dollente, DVM</h4>
-                <span>Doctor of Veterinary Medicine<br/>Cagayan State University<br/>Veterinarian-Bamban branch</span>
+                <span>Veterinarian-Bamban branch<br/><br/>Doctor of Veterinary Medicine at Cagayan State University</span>
               </div>
             </div>
           </div>
@@ -468,7 +463,7 @@
               </div>
               <div class="member-info">
                 <h4>Ryan Castro, DVM</h4>
-                <span>College of Veterinary Medicine<br/>Pamapanga State Agricultural University<br/>Veterinarian-Magalang branch</span>
+                <span>Veterinarian-Magalang branch<br/><br/>Studied College of Veterinary Medicine at Pampanga State Agricultural University</span>
               </div>
             </div>
           </div>
@@ -483,14 +478,14 @@
               </div>
               <div class="member-info">
                 <h4>Arvin Cuevas, DVM</h4>
-                <span>Doctor of Veterinary Medicine<br/>Cagayan State University<br/>Veterinarian-San Fernando branch</span>
+                <span>Veterinarian-San Fernando branch<br/><br/>Studied Doctor of Veterinary Medicine at Cagayan State University</span>
               </div>
             </div>
           </div>
         </div>
         <div class="row mt-5 ">
           <div class="col d-flex justify-content-center">
-            <a class="serv-btn btn-lg" href="team">View Team</a>
+            <a class="serv-btn btn-lg" href="teams">View Team</a>
           </div>
         </div>
 
@@ -570,7 +565,7 @@
                 <div class="phone">
                   <i class="bi bi-phone"></i>
                   <h4>Emergency Hotlines:</h4>
-                  <p>09123456789</p>
+                  <p>09676894144</p>
                 </div>
 
               </div>

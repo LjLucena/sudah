@@ -59,19 +59,20 @@ Route::get('/edit/branch/{id}', 'BranchController@branch_edit')->middleware('aut
 Route::post('/edit/branch/{id}', 'BranchController@branch_update')->middleware('auth');
 
 // site
-Route::get('/services', 'PagesController@services')->middleware('auth');
+Route::get('/services', 'PagesController@services');
 Route::get('/list/pets', 'PagesController@list_pets')->middleware('auth');
 Route::get('/new/pet', 'PagesController@new_pet')->middleware('auth');
 Route::post('/new/pet', 'PagesController@save_new_pet')->middleware('auth');
-Route::get('/diagnostic_services', 'PagesController@d_services')->middleware('auth');
-Route::get('/general_wellness_services', 'PagesController@gw_services')->middleware('auth');
-Route::get('/other_services', 'PagesController@other_services')->middleware('auth');
+Route::get('/diagnostic_services', 'PagesController@d_services');
+Route::get('/general_wellness_services', 'PagesController@gw_services');
+Route::get('/other_services', 'PagesController@other_services');
 Route::get('/findBreed','TestController@findBreed')->middleware('auth');
 Route::get('/my-account', 'AccountController@myAccount_profile');
 Route::get('/edit/pet/{id}', 'PagesController@pet_edit')->middleware('auth');
 Route::post('/edit/pet/{id}', 'PagesController@pet_update')->middleware('auth');
-
 Route::get('/pet/{id}', 'PetController@pet_profile')->middleware('auth');
+Route::get('/teams', 'PagesController@teams');
+
 //appointment
 Route::get('/set/appointment', 'PagesController@appointment')->middleware('auth');
 Route::post('/set/appointment', 'PagesController@save_appointment')->middleware('auth');
@@ -122,3 +123,7 @@ Route::post('/edit/account/{id}', 'AccountController@acc_details_update')->middl
 Route::get('/archive/{id}', 'AccountController@archive')->middleware('auth');
 Route::get('/activate/{id}', 'AccountController@activate')->middleware('auth');
 Route::get('/archive/list/{role}', 'AccountController@archive_list');
+
+//Products
+Route::get('/products', 'PagesController@products');
+Route::get('/product_dryfood', 'PagesController@prod2');
