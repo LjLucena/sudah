@@ -29,7 +29,7 @@
                 @foreach ($scheds as $sched)
                     <tr>
                       <td class="text-center">{{$sched->date}}</td>  
-                      <td class="text-center">Dr. {{$sched->Vet->UserProfile->first_name}} {{$sched->Vet->UserProfile->middle_name}} {{$sched->Vet->UserProfile->last_name}} {{$sched->Vet->UserProfile->suffix}}</td>
+                      <td class="text-center">Dr. {{$sched->VetName->UserProfile->first_name}} {{$sched->VetName->UserProfile->middle_name}} {{$sched->VetName->UserProfile->last_name}} {{$sched->VetName->UserProfile->suffix}}</td>
                       <td class="text-center">{{$sched->am_max}}</td>
                       <td class="text-center">{{$sched->pm_max}}</td>
                       <td class="text-center">                         

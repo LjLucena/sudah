@@ -36,6 +36,11 @@
                         </ul>
                     </div>
                 @endif
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{session('success')}}
+                    </div>
+                @endif
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
@@ -60,12 +65,17 @@
                     @enderror
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-md-12">
                         <button class="btn btn-block btn-primary">Login</button>
                     </div>
                 </div>
             </form>
+            <div class="row mt-2">
+                <div class="col-md">
+                    <a href="{{ route('forget.password.get') }}">Forgot Password?</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-8" style="background-image:url('{{asset('/img/logo.jpg')}}'); background-size:auto 100%;background-repeat:no-repeat;background-position:center">
         </div>

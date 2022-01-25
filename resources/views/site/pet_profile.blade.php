@@ -48,7 +48,7 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto " href="/list/appointments">Appointment</a></li>
-          <li><a class="nav-link scrollto" href="/list/pets">Pets Section</a></li>
+          <li><a class="nav-link scrollto active" href="/list/pets">Pets Section</a></li>
           <li><a class="nav-link scrollto" href="/my-account">My Account</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -93,6 +93,15 @@
 
                         <div class="card" style="width: 18rem;">
                         <img src="{{asset('img/'.$pet->image)}}" class="card-img-top"  />
+                        <button class="btn btn-outline-primary mt-1" id="uploadBtn">Change Picture</button>
+                        <div class="col" id="uploadPhoto">
+                          <form action="/change/pet/photo" method="post" enctype="multipart/form-data">@csrf
+                            <input type="hidden" name="pet" value="{{$pet->id}}">
+                            <label for="">Image(JPG/JPEG/PNG/GIF only)</label>
+                            <input type="file" name="image" id="" accept=".jpg,.jpeg,.png,.gif" placeholder="Enter Weight" class="form-control" required>
+                            <button type="submit">Save</button>
+                          </form>
+                        </div>
                             <div class="card-body">
                               <h5 class="card-title"><strong>Name:</strong>{{$pet->name}}</h5>
                             </div>
@@ -196,7 +205,15 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('ui/assets/js/main.js')}}"></script>
-
+  <script src="{{asset('js/app.js')}}"></script>
+  
 </body>
-
+<script>
+    $(document).ready(function() {
+      $('#uploadPhoto').hide();
+      $('#uploadBtn').click(function(){
+        $('#uploadPhoto').show();
+      });
+    });
+  </script>
 </html>

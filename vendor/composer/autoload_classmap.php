@@ -64,6 +64,7 @@ return array(
     'App\\Service' => $baseDir . '/app/Service.php',
     'App\\Species' => $baseDir . '/app/Species.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\UserActivation' => $baseDir . '/app/UserActivation.php',
     'App\\User_Log' => $baseDir . '/app/User_Log.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/CorsService.php',

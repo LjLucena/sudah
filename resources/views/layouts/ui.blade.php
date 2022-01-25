@@ -120,7 +120,7 @@
                             @yield('panel-option')
                         </div>
                         
-                        <h3 class="panel-title"  style="margin-top:-41px;width: 30% !important;">
+                        <h3 class="panel-title"  style="margin-top:-41px;width: 50% !important;">
                             <strong>
                                 @yield('panel-title')
                             </strong>
@@ -215,11 +215,13 @@
 
            // var disablethese = //json_encode($disableDate);
             
-            var disableDates = ["01-21-2022", "01-22-2022"];
+            var disableDates = ["2022-01-26", "2022-01-27"];
           $('#datepicker').datepicker({
             multidate: true,
-            format: 'mm/dd/yyyy',         
+            format: 'yyyy-mm-dd',         
             startDate: new Date(),
+            datesDisabled: disableDates,
+            
            
 
             });

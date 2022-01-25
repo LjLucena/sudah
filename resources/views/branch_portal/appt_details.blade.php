@@ -14,7 +14,7 @@
 </h4>
 <h4><b>Reason:</b> {{$appointment->reason}}</h4>
 <br>
-
+@if($appointment->AppointmentUser->role_id == 3)
 @if($appointment->status == 'Pending')
 
 <a href="/pet/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-primary">View Pet</a>
@@ -50,3 +50,4 @@
           $("#canncelBtn").hide();
         });
 </script>
+@endif

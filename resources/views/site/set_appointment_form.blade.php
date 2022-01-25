@@ -1,53 +1,39 @@
+
 <form action="" method="post">
-            @csrf
-              <div class="row mt-2">
+                        @csrf
+             <div class="row mt-2">
                 <div class="col-md-12">
                   <h4>Appointment Details</h4>
+                      
                       <div class="row">
-                          <input type="hidden" name="branch_id" value="{{$branch}}">
-                        <div class="col-md-6">
-                            Available Veterinarian:
-                            <select name="vet_id" id="vet_data" class="form-control" onload="test()" data-vet="1" required>
-                                    @foreach ($vets as $vet)
-                                    <option value="{{$vet->id}}">{{$vet->UserProfile->first_name}} {{$vet->UserProfile->middle_name}} {{$vet->UserProfile->last_name}}</option>
+                        <div class="col-md">
+                            <input type="hidden" name="branch_id" value="{{$branch}}">
+                            Date of Appointment
+                            <input type="date"  onchange="CheckAvailabilty()" name="date_appointment" min='<?php echo date("Y-m-d"); ?>' class="form-control" id="app_date" required>
+                        </div>
+                        <div class="col-md" id="showAvail">
+
+                        </div>
+                          
+                      </div>
+                      <div class="row" id="showSlot">
+
+                      </div>
+                      <div class="row" id="showPet">
+                        <div class="col-md-12"> 
+                            Select Pet:
+                            <select name="patient_id" id="pet" class="form-control" disabled required>
+                                <option value="">-- Select Pet --</option>
+                                    @foreach ($pets as $pet)
+                                        <option value="{{$pet->id}}">{{$pet->name}}</option>
                                     @endforeach
                             </select>
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-4">
-                            Date of Appointment
-                            <input type="date"  onchange="showTime()" name="date_appointment" min='{{date('Y')}}-{{date('m')}}-{{(date('d')+1)<=9 ? '0'.date('d')+1 : date('d')+1}}' class="form-control" id="app_date" required>
-                        </div>
-                        <div class="col-md-4">
-                            Time of Appointment
-                            <select name="time_appointment" id="app_time" class="form-control" disabled required>
-                                <option value="">-- Select Time --</option>
-                                <option value="08:00AM - 11:00AM">Morning (08:00AM - 11:00AM)</option>
-                                <option value="01:00PM - 04:00PM">Afternoon (01:00PM - 04:00PM)</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            Slot
-                            <div id='slot'></div>
-                        </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-12">
-                              
-                            Select Pet:
-                            <select name="patient_id" id="pet" class="form-control" disabled required>
-                                <option value="">-- Select Pet --</option>
-                                @foreach ($patients as $patient)
-                                    <option value="{{$patient->id}}">{{$patient->name}}</option>
-                                @endforeach
-                            </select>
-                          </div>
-                      </div>
-                      <div class="row">
                         <div class="col-md-12">
                           Reason
-                          <textarea name="reason" id="reason" placeholder="Enter Reason" class="form-control"  disabled required></textarea>
+                          <textarea name="reason" id="reason" placeholder="Enter Reason" class="form-control" required></textarea>
                         </div>
                       </div>
                       <div class="row">  
@@ -66,7 +52,7 @@
                 <div class="row">
                   <div class="col-md-12">
                       <br>
-                      <button class="btn btn-primary" id="appoint" type="submit">Set Appointment</button> <span id="error" style="color:#F00"></span>
+                      <button class="btn btn-primary" type="submit">Set Appointment</button> <span id="error" style="color:#F00"></span>
                   </div>
                 </div>
             </div>

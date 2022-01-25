@@ -84,6 +84,15 @@ class AppointmentController extends Controller
         $appointment->status = "Cancelled";
         $success = 'Appointment for '.$pet->name.' Cancelled!';
         $appointment->save();
+
+        $schedule = Schedules::find($appointment->schedule_id);
+            if ($appointment->time_appointment == "08:00AM - 12:00AM") {
+                $schedule->am_max = $schedule->am_max + 1;
+            } else {
+                $schedule->pm_max = $schedule->pm_max + 1;
+            }
+            $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+            $schedule->save();
         return redirect()->back()->with('success',$success);
     }
 
@@ -94,6 +103,15 @@ class AppointmentController extends Controller
         $appointment->cancel_reason = $request->cancel_reason;
         $appointment->save();
         $success = 'Appointment for Pet '.$pet->name.' Cancelled!';
+
+        $schedule = Schedules::find($appointment->schedule_id);
+            if ($appointment->time_appointment == "08:00AM - 12:00AM") {
+                $schedule->am_max = $schedule->am_max + 1;
+            } else {
+                $schedule->pm_max = $schedule->pm_max + 1;
+            }
+            $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+            $schedule->save();
         return redirect()->back()->with('success',$success);
     }
 

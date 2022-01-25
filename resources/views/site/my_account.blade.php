@@ -49,7 +49,7 @@
         <ul>
           <li><a class="nav-link scrollto " href="/list/appointments">Appointment</a></li>
           <li><a class="nav-link scrollto" href="/list/pets">Pets Section</a></li>
-          <li><a class="nav-link scrollto" href="/my-account">My Account</a></li>
+          <li><a class="nav-link scrollto active" href="/my-account">My Account</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -96,7 +96,7 @@
                                                         Edit Profile
                                                     </button>
                                                 </a>
-                                                <a href="/update/pass">
+                                                <a href="/update/pass/{{$user->id}}">
                                                     <button class="btn btn-sm btn-primary">
                                                         Change Password
                                                     </button>

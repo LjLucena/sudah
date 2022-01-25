@@ -16,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', 'PagesController@homepage')->name('index');
 Route::get('/register', 'PagesController@register');
+Route::get('user/activation/{token}', 'Auth\LoginController@userActivation');
 Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/login', 'Auth\LoginController@attemptLogin')->name('AttempLogin');
+Route::get('/forget-password', 'Auth\ForgotPasswordController@showForgetPasswordForm')->name('forget.password.get');
+Route::post('/forget-password', 'Auth\ForgotPasswordController@submitForgetPasswordForm')->name('forget.password.post'); 
+Route::get('/reset-password/{token}', 'Auth\ForgotPasswordController@showResetPasswordForm')->name('reset.password.get');
+Route::post('/reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
 
 Route::get('/branches', 'BranchController@branches')->middleware('auth');
 Route::get('/patient', 'PetController@pets')->middleware('auth');
@@ -53,8 +58,8 @@ Route::post('/add/new/inventory', 'InventoryController@saveInventory')->middlewa
 
 // Accounts
 Route::get('/accounts/{role}', 'AccountController@accounts')->middleware('auth');
-Route::get('/add/new/account/{role}', 'AccountController@account_form')->middleware('auth');
-Route::post('/add/new/account/{role}', 'AccountController@account_save')->middleware('auth');
+Route::get('/add/new/account/{role}', 'AccountController@account_form');
+Route::post('/add/new/account/{role}', 'AccountController@account_save');
 Route::get('/add/new/account/client/new', 'AccountController@account_form')->middleware('auth');
 Route::get('/assign/account/{id}/branch', 'AccountController@assign_branch_form')->middleware('auth');
 Route::post('/assign/account/', 'AccountController@assign_branch')->middleware('auth');
@@ -81,9 +86,14 @@ Route::get('/findBreed','TestController@findBreed')->middleware('auth');
 Route::get('/my-account', 'AccountController@myAccount_profile')->middleware('auth');
 Route::get('/show/appointment/form/{id}', 'PagesController@show_form')->middleware('auth');
 Route::get('/cancel/appt/{id}', 'AppointmentController@cancel_appt')->middleware('auth');
-Route::get('/cancel/appt/{id}', 'AppointmentController@cancel_appt')->middleware('auth');
+Route::get('/edit/appt/{id}', 'PagesController@edit_appt')->middleware('auth');
+Route::post('/edit/appt/{id}', 'PagesController@save_appt')->middleware('auth');
 Route::get('/edit/pet/{id}', 'PagesController@pet_edit')->middleware('auth');
 Route::post('/edit/pet/{id}', 'PagesController@pet_update')->middleware('auth');
+Route::post('/change/pet/photo', 'PagesController@pet_photo_update')->middleware('auth');
+Route::get('/show/time/{id}/{branch}/{date}', 'PagesController@show_time')->middleware('auth');
+Route::get('/show/pet/{date}', 'PagesController@show_pet')->middleware('auth');
+Route::get('/show/avail/{date}/{branch}', 'PagesController@available')->middleware('auth');
 
 Route::get('/pet/{id}', 'PetController@pet_profile')->middleware('auth');
 //appointment

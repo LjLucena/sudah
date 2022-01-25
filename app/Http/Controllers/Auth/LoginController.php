@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Role;
 use App\User;
+use App\UserActivation;
 use Auth;
 
 class LoginController extends Controller
@@ -59,14 +60,27 @@ class LoginController extends Controller
         if ($user) {
             // return $user->UserRoleI;
 
-            $this->guard()->login($user, $request->has('remember'));
-            Auth::login($user);
-            if($user->UserRoleI->role=='Super Admin') return redirect('/accounts/vet/');
-            elseif($user->UserRoleI->role=='Admin') return redirect('/accounts/vet/');
-            elseif($user->UserRoleI->role=='Secretary') return redirect('/portal/branch/');             
-            elseif($user->UserRoleI->role=='Vet') return redirect('/portal/vet/');                   
-            elseif($user->UserRoleI->role=='Client') return redirect('/list/appointments');             
+            if($user->UserRoleI->role=='Client'){
+                if($user->is_activated == '0'){
 
+                    return redirect('/login')->withErrors(['msg' => 'Please Activate your account first.']);
+                }
+                else{
+                    $this->guard()->login($user, $request->has('remember'));
+                    Auth::login($user);
+                    return redirect('/list/appointments');
+                }
+
+            }
+            
+                $this->guard()->login($user, $request->has('remember'));
+                Auth::login($user);
+                if($user->UserRoleI->role=='Super Admin') return redirect('/accounts/vet/');
+                elseif($user->UserRoleI->role=='Admin') return redirect('/accounts/vet/');
+                elseif($user->UserRoleI->role=='Secretary') return redirect('/portal/branch/');             
+                elseif($user->UserRoleI->role=='Vet') return redirect('/portal/vet/');           
+
+            
         }
         return redirect('/login')->withErrors(['msg' => 'Incorrect Username or Password']);
     }
@@ -82,6 +96,48 @@ class LoginController extends Controller
         } else {
             return view('user.login');
         }
+    }
+
+    public function userActivation($token)
+
+    {
+
+        $check = UserActivation::where('token',$token)->first();
+
+
+
+        if(!is_null($check)){
+
+            $user = User::find($check->user_id);
+
+
+
+            if($user->is_activated == 1){
+
+                return redirect()->to('/login')
+
+                    ->with('success',"Account are already activated.");                
+
+            }
+
+
+
+            $user->is_activated = 1;
+            $user->save();
+
+            UserActivation::where('token',$token)->delete();
+
+
+
+            return redirect()->to('/login')
+
+                ->with('success',"Account activated successfully.");
+
+        }
+
+
+        return redirect('/login')->withErrors(['msg' => 'Incorrect Token.']);
+
     }
 
     public function logout(Request $request)
