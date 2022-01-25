@@ -75,7 +75,7 @@ Route::get('/edit/branch/{id}', 'BranchController@branch_edit')->middleware('aut
 Route::post('/edit/branch/{id}', 'BranchController@branch_update')->middleware('auth');
 
 // site
-Route::get('/services', 'PagesController@services')->middleware('auth');
+Route::get('/services', 'PagesController@services');
 Route::get('/list/pets', 'PagesController@list_pets')->middleware('auth');
 Route::get('/new/pet', 'PagesController@new_pet')->middleware('auth');
 Route::post('/new/pet', 'PagesController@save_new_pet')->middleware('auth');
@@ -96,6 +96,8 @@ Route::get('/show/pet/{date}', 'PagesController@show_pet')->middleware('auth');
 Route::get('/show/avail/{date}/{branch}', 'PagesController@available')->middleware('auth');
 
 Route::get('/pet/{id}', 'PetController@pet_profile')->middleware('auth');
+Route::get('/teams', 'PagesController@teams');
+
 //appointment
 Route::get('/set/appointment', 'PagesController@appointment')->middleware('auth');
 Route::post('/set/appointment', 'PagesController@save_appointment')->middleware('auth');
@@ -157,3 +159,15 @@ Route::post('/edit/account/{id}', 'AccountController@acc_details_update')->middl
 Route::get('/archive/{id}', 'AccountController@archive')->middleware('auth');
 Route::get('/activate/{id}', 'AccountController@activate')->middleware('auth');
 Route::get('/archive/list/{role}', 'AccountController@archive_list')->middleware('auth');
+
+//Products
+Route::get('/products', 'PagesController@products');
+Route::get('/jerhigh', 'PagesController@jerhigh');
+Route::get('/kittycrunch', 'PagesController@kittycrunch');
+Route::get('/monello', 'PagesController@monello');
+Route::get('/pedigree_adult', 'PagesController@pedigree_adult');
+Route::get('/pedigree_puppy', 'PagesController@pedigree_puppy');
+Route::get('/royal_puppy', 'PagesController@royal_puppy');
+Route::get('/royal_mini', 'PagesController@royal_mini');
+Route::get('/royal_kitten', 'PagesController@royal_kitten');
+Route::get('/royal_adult', 'PagesController@royal_adult');

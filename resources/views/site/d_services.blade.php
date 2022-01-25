@@ -15,6 +15,7 @@
           <li><a class="nav-link scrollto" href="{{route('index')}}">Home</a></li>
           <li><a class="nav-link scrollto" href="{{route('index',['#about'])}}">About</a></li>
           <li><a class="nav-link scrollto active" href="diagnostic_services">Services</a></li>
+          <li><a class="nav-link scrollto" href="products">Products</a></li>
           <li><a class="nav-link scrollto" href="{{route('index',['#team'])}}">Team</a></li>
           <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

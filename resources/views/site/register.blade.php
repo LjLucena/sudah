@@ -140,6 +140,8 @@
                       <label for="email">Email</label>
                       <input type="email" name="email" id="email" class="form-control"  placeholder="Enter Email" required>
                   </div>
+
+                  
               </div>
 
                 <div id="message">
@@ -177,7 +179,8 @@
                   <div class="col-md-3">
                       <label for="provinces">Provinces</label>
                       <input type="text" name="provinces" id="provinces" class="form-control"  placeholder="Enter provinces" required>
-                  </div>
+      
+                    </div>
                   <div class="col-md-3">
                       <label for="cm">City/Municipality</label>
                       <input type="text" name="cm" id="cm" class="form-control"  placeholder="Enter City/Municipality" required>

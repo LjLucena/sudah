@@ -11,7 +11,7 @@
             background-color: #ffffff;
             opacity: 0.8;
             background-size: 6px 6px;
-            background-image: repeating-linear-gradient(45deg, #e5e5e5 0, #e5e5e5 0.6000000000000001px, #ffffff 0, #ffffff 50%);
+            background-image: url("ui/assets/img/paws.jpg");
         /* height: 100vh; */
         }
         .nav-header{
@@ -32,32 +32,32 @@
 </head>
 <body>
 
-            <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light" style="box-shadow: 0 0 5px #CCC;">
-                <a class="navbar-brand" href="#">SUDAH | {{strtoupper(Auth::user()->UserBranch->name)}} BRANCH</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                @php
-                    $role_data = DB::table('roles')->find(Auth::user()->role_id);
-                @endphp
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    {{-- <a class="nav-link active" href="#">Active</a>
-                    <a class="nav-link" href="#">Link</a>
-                    <a class="nav-link" href="#">Link</a>
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> --}}
-                </div>
-                </div>{{$role_data->role}} | <a href="" class="nav-link text-black" style="color:black !important;" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                
-                document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-            </nav>
+    <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light" style="box-shadow: 0 0 5px #CCC;">
+        <a class="navbar-brand" href="#">SUDAH | {{strtoupper(Auth::user()->UserBranch->name)}} BRANCH</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        @php
+            $role_data = DB::table('roles')->find(Auth::user()->role_id);
+        @endphp
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            {{-- <a class="nav-link active" href="#">Active</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> --}}
+        </div>
+        </div>{{$role_data->role}} | <a href="" class="nav-link text-black" style="color:black !important;" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+        
+        document.getElementById('logout-form').submit();">
+            Logout
+        </a>
+    </nav>
 
 
     <div class="row" style="width:100%;height: 100vh;">
