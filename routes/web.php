@@ -151,4 +151,12 @@ Route::get('/archive/list/{role}', 'AccountController@archive_list')->middleware
 
 //Products
 Route::get('/products', 'PagesController@products');
-Route::get('/product_dryfood', 'PagesController@prod2');
+Route::get('/jerhigh', 'PagesController@jerhigh');
+Route::get('/kittycrunch', 'PagesController@kittycrunch');
+Route::get('/monello', 'PagesController@monello');
+Route::get('/pedigree_adult', 'PagesController@pedigree_adult');
+Route::get('/pedigree_puppy', 'PagesController@pedigree_puppy');
+Route::get('/royal_puppy', 'PagesController@royal_puppy');
+Route::get('/royal_mini', 'PagesController@royal_mini');
+Route::get('/royal_kitten', 'PagesController@royal_kitten');
+Route::get('/royal_adult', 'PagesController@royal_adult');

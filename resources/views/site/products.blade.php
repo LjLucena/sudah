@@ -1,9 +1,25 @@
 @extends('layouts.site_ui')
-
-
 @section('content')
 
-<!-- ======= Header ======= -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--title>Zay Shop - Product Listing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="ui/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="ui/assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="ui/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ui/assets/css/templatemo.css"-->
+
+  
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
 <header id="header" class="fixed-top bg-dark">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
@@ -18,33 +34,14 @@
           <li><a class="nav-link scrollto" href="diagnostic_services">Services</a></li>
           <li><a class="nav-link scrollto active" href="products">Products</a></li>
           <li><a class="nav-link scrollto" href="{{route('index',['#team'])}}">Team</a></li>
-          <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>-->
           <li><a class="nav-link scrollto" href="{{route('index',['#contact'])}}">Contact</a></li>
           <li><a class="nav-link scrollto" href="register">Register</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
       <a href="/login" class="get-started-btn scrollto">Login</a>
-
     </div>
-  </header><!-- End Header -->
+</header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center justify-content-center">
@@ -61,2127 +58,276 @@
 </section><!-- End Hero -->
 
 <main id="main">
-<!-- ======= Products Page ======= -->
-<section id="categoryWomen">
-        <div class="container">
-          <div class="row h-100">
-            <div class="col-lg-7 mx-auto text-center mb-6">
-              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Shop By Category</h5>
-            </div>
-            <div class="col-12">
-              <nav>
-                <div class="nav nav-tabs majestic-tabs mb-4 justify-content-center" id="nav-tab" role="tablist">
-                  <button class="nav-link active" id="nav-women-tab" data-bs-toggle="tab" data-bs-target="#nav-women" type="button" role="tab" aria-controls="nav-women" aria-selected="true">For Women</button>
-                  <button class="nav-link" id="nav-men-tab" data-bs-toggle="tab" data-bs-target="#nav-men" type="button" role="tab" aria-controls="nav-men" aria-selected="false">For Men</button>
+<!-- Start Content -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="input-group">
+                <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                <div class="input-group-text">
+                    <i class="bi bi-bw bi-search"></i>
                 </div>
-                <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="nav-women" role="tabpanel" aria-labelledby="nav-women-tab">
-                    <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab-women" role="tablist">
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-wtshirt-tab" data-bs-toggle="pill" data-bs-target="#pills-wtshirt" type="button" role="tab" aria-controls="pills-wtshirt" aria-selected="true">T-Shirt</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-dresses-tab" data-bs-toggle="pill" data-bs-target="#pills-dresses" type="button" role="tab" aria-controls="pills-dresses" aria-selected="false">Shirt</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-wshoes-tab" data-bs-toggle="pill" data-bs-target="#pills-wshoes" type="button" role="tab" aria-controls="pills-wshoes" aria-selected="false">Shoes</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-wwatch-tab" data-bs-toggle="pill" data-bs-target="#pills-wwatch" type="button" role="tab" aria-controls="pills-wwatch" aria-selected="false">Watch </button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-wsunglasses-tab" data-bs-toggle="pill" data-bs-target="#pills-wsunglasses" type="button" role="tab" aria-controls="pills-wsunglasses" aria-selected="false">Sunglasses </button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-wbagpacks-tab" data-bs-toggle="pill" data-bs-target="#pills-wbagpacks" type="button" role="tab" aria-controls="pills-wbagpacks" aria-selected="false">Bagpacks </button>
-                      </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContentWomen">
-                      <div class="tab-pane fade" id="pills-dresses" role="tabpanel" aria-labelledby="pills-dresses-tab">
-                        <div class="carousel slide" id="carouselCategoryDresses" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/jerhighred1.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/jerhighviolet1.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/jerhighyellow1.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/kittycrunchblue1.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/kittycrunchpink1.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/kittycrunchred1.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/kittycrunchyellow1.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="ui/assets/img/products/monello.jpg" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryDresses" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryDresses" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="product_dryfood">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade show active" id="pills-wtshirt" role="tabpanel" aria-labelledby="pills-wtshirt-tab">
-                        <div class="carousel slide" id="carouselCategoryWTshirt" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/red-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Red T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/pink-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Pink T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/orange-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Orange T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/purple-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Purple T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/red-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Red T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/pink-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Pink T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/orange-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Orange T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/purple-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Purple T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/red-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Red T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/pink-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Pink T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/orange-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Orange T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/purple-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Purple T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/red-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Red T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/pink-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Pink T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/orange-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Orange T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/purple-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Purple T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryWTshirt" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryWTshirt" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-wshoes" role="tabpanel" aria-labelledby="pills-wshoes-tab">
-                        <div class="carousel slide" id="carouselCategoryWShoes" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryWShoes" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryWShoes" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-wwatch" role="tabpanel" aria-labelledby="pills-wwatch-tab">
-                        <div class="carousel slide" id="carouselCategoryWwatch" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryWwatch" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryWwatch" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-wsunglasses" role="tabpanel" aria-labelledby="pills-wsunglasses-tab">
-                        <div class="carousel slide" id="carouselCategoryWSunglasses" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryWSunglasses" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryWSunglasses" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-wbagpacks" role="tabpanel" aria-labelledby="pills-wbagpacks-tab">
-                        <div class="carousel slide" id="carouselCategoryWBagpacks" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-1.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-2.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-3.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-4.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryWBagpacks" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryWBagpacks" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="nav-men" role="tabpanel" aria-labelledby="nav-men-tab">
-                    <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab-men" role="tablist">
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-tshirt-tab" data-bs-toggle="pill" data-bs-target="#pills-tshirt" type="button" role="tab" aria-controls="pills-tshirt" aria-selected="true">T-Shirt</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-shirt-tab" data-bs-toggle="pill" data-bs-target="#pills-shirt" type="button" role="tab" aria-controls="pills-shirt" aria-selected="false">Shirt</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-shoes-tab" data-bs-toggle="pill" data-bs-target="#pills-shoes" type="button" role="tab" aria-controls="pills-shoes" aria-selected="false">Shoes</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-watch-tab" data-bs-toggle="pill" data-bs-target="#pills-watch" type="button" role="tab" aria-controls="pills-watch" aria-selected="false">Watch </button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-sunglasses-tab" data-bs-toggle="pill" data-bs-target="#pills-sunglasses" type="button" role="tab" aria-controls="pills-sunglasses" aria-selected="false">Sunglasses </button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-bagpacks-tab" data-bs-toggle="pill" data-bs-target="#pills-bagpacks" type="button" role="tab" aria-controls="pills-bagpacks" aria-selected="false">Bagpacks </button>
-                      </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContentMen">
-                      <div class="tab-pane fade show active" id="pills-tshirt" role="tabpanel" aria-labelledby="pills-tshirt-tab">
-                        <div class="carousel slide" id="carouselCategoryTshirt" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/white-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sky-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sky T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/yellow-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Yellow T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/black-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/white-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sky-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sky T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/yellow-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Yellow T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/black-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/white-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sky-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sky T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/yellow-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Yellow T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/black-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/white-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sky-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sky T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/yellow-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Yellow T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/black-tshirt.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black T-Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryTshirt" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryTshirt" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-shirt" role="tabpanel" aria-labelledby="pills-shirt-tab">
-                        <div class="carousel slide" id="carouselCategoryShirt" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Gray Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">White Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shirt-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Black Shirt</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryShirt" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryShirt" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-shoes" role="tabpanel" aria-labelledby="pills-shoes-tab">
-                        <div class="carousel slide" id="carouselCategoryShoes" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$200</span><span class="text-primary">$175</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/shoe-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Shoe</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryShoes" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryShoes" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-watch" role="tabpanel" aria-labelledby="pills-watch-tab">
-                        <div class="carousel slide" id="carouselCategoryWatch" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/watch-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Watch</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryWatch" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryWatch" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-sunglasses" role="tabpanel" aria-labelledby="pills-sunglasses-tab">
-                        <div class="carousel slide" id="carouselCategorySunglasses" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/sunglass-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Sunglass</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategorySunglasses" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategorySunglasses" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                      <div class="tab-pane fade" id="pills-bagpacks" role="tabpanel" aria-labelledby="pills-bagpacks-tab">
-                        <div class="carousel slide" id="carouselCategoryBagpacks" data-bs-touch="false" data-bs-interval="false">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-5.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-6.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-7.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100" src="assets/img/gallery/bagpacks-8.png" alt="..." />
-                                    <div class="card-img-overlay ps-0"> </div>
-                                    <div class="card-body ps-0 bg-200">
-                                      <h5 class="fw-bold text-1000 text-truncate">Bagpacks</h5>
-                                      <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through">$500</span><span class="text-primary">$275</span></div>
-                                    </div><a class="stretched-link" href="#"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCategoryBagpacks" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselCategoryBagpacks" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next </span></button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-dark" href="#!">View All </a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
             </div>
-          </div>
+            <h1 class="h2 pb-4">Categories</h1>
+            <ul class="list-unstyled templatemo-accordion">
+                <li class="pb-3">
+                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        Food
+                        <i class="bi bi-fw bi-chevron-circle-down mt-1"></i>
+                    </a>
+                    <ul class="collapse show list-unstyled pl-3">
+                        <li><a class="text-decoration-none" href="#">Dry Food</a></li>
+                        <li><a class="text-decoration-none" href="#">Wet Food</a></li>
+                        <li><a class="text-decoration-none" href="#">Milk/Liquid</a></li>
+                    </ul>
+                </li>
+                <li class="pb-3">
+                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        Treats
+                        <i class="pull-right bi bi-fw bi-chevron-circle-down mt-1"></i>
+                    </a>
+                </li>
+                <li class="pb-3">
+                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        Toys
+                        <i class="pull-right bi bi-fw bi-chevron-circle-down mt-1"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
-      </section>
 
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/jerhighred1.jpg">
+                        </div>
+                        <div class="card-body">
+                            <a href="jerhigh" class="h3 text-decoration-none">Jerhigh Strawberry</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li> 70g</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                            <p class="text-center mb-0">90php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/kittycrunchpink3.jpg">
+                        </div>
+                        <div class="card-body">
+                            <a href="kittycrunch" class="h3 text-decoration-none">KittyCrunch</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li> 60g</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">70php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/monello7kg-1.jpg">
+                        </div>
+                        <div class="card-body">
+                            <a href="monello" class="h3 text-decoration-none">Monello Cat</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li> 1kg</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">160php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/pedigreeadult3kg-1.jpg">
+ 
+                        </div>
+                        <div class="card-body">
+                            <a href="pedigree_adult" class="h3 text-decoration-none">Pedigree Adult</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li>3kg</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">510php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/pedigreepuppy3kg-1.jpg">
+ 
+                        </div>
+                        <div class="card-body">
+                            <a href="pedigree_puppy" class="h3 text-decoration-none">Pedigree Puppy</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li>3kg</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">510php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/royalpuppy1.jpg">
+ 
+                        </div>
+                        <div class="card-body">
+                            <a href="royal_puppy" class="h3 text-decoration-none">Royal Canin Puppy </a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li>10kg</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">821php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/royalcaningreenadult10kg-1.jpg">
+ 
+                        </div>
+                        <div class="card-body">
+                            <a href="royal_mini" class="h3 text-decoration-none">Royal Canin Mini</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li>85g</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">615php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/royalcaninpersiakitty10kg-1.jpg">
+ 
+                        </div>
+                        <div class="card-body">
+                            <a href="royal_kitten" class="h3 text-decoration-none">Royal Canin Kitten</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li>10kg</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">5,090php</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/royalcaninpersianAdult10kg-1.jpg">
+ 
+                        </div>
+                        <div class="card-body">
+                            <a href="royal_adult" class="h3 text-decoration-none">Royal Canin Adult</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li>10kg</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                             
+                            <p class="text-center mb-0">5,090php</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--div div="row">
+                <ul class="pagination pagination-lg justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
+                    </li>
+                </ul>
+            </div-->
+        </div>
 
-      <!-- ============================================-->
+    </div>
+</div>
+<!-- End Content -->
+
+</body>
+
+    <!-- Start Script-->
+    <script src="ui/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="ui/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="ui/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="ui/assets/js/templatemo.js"></script>
+    <script src="ui/assets/js/custom.js"></script>
+    <!-- End Script -->
 @endsection

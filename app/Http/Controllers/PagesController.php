@@ -151,17 +151,50 @@ class PagesController extends Controller
         return view ('site.services');
     }
 
+    public function teams(){
+        return view ('site.teams');
+    }
+
     public function products(){
         return view ('site.products');
     }
     
-    public function prod2(){
-        return view ('site.prod2');
+    public function jerhigh(){
+        return view ('site.jerhigh');
     }
 
-    public function teams(){
-        return view ('site.teams');
+    public function kittycrunch(){
+        return view ('site.kittycrunch');
     }
+
+    public function monello(){
+        return view ('site.monello');
+    }
+
+    public function pedigree_adult(){
+        return view ('site.pedigree_adult');
+    }
+
+    public function pedigree_puppy(){
+        return view ('site.pedigree_puppy');
+    }
+
+    public function royal_puppy(){
+        return view ('site.royal_puppy');
+    }
+
+    public function royal_mini(){
+        return view ('site.royal_mini');
+    }
+
+    public function royal_kitten(){
+        return view ('site.royal_kitten');
+    }
+
+    public function royal_adult(){
+        return view ('site.royal_adult');
+    }
+
 }
 
 

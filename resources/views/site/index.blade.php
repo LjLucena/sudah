@@ -426,7 +426,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="ui/assets/img/team/vetsunset.jpg" class="img-fluid" alt="">
+                <img src="ui/assets/img/team/vetsunset.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.facebook.com/hooraeee"><i class="bi bi-facebook"></i></a>
                 </div>
@@ -441,7 +441,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="200">
               <div class="member-img">
-                <img src="ui/assets/img/team/dollente.jpg" class="img-fluid" alt="">
+                <img src="ui/assets/img/team/vetbamban.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.facebook.com/jirahlyn.dollente"><i class="bi bi-facebook"></i></a>
                 </div>
@@ -456,7 +456,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="300">
               <div class="member-img">
-                <img src="ui/assets/img/team/dr.jpg" class="img-fluid" alt="">
+                <img src="ui/assets/img/team/vetmagalang.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.facebook.com/ryan.castro.33483"><i class="bi bi-facebook"></i></a>
                 </div>
