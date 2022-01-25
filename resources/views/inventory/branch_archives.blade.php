@@ -10,7 +10,7 @@
 @section('content')
 <div class="row" style="margin-top:20px;">
     <div class="col-12">
-        <table class="table table-hover" id="table">
+        <table class="table table-hover" id="printable">
             <thead>
                 <tr style="text-transform: uppercase;">                    
                     <th>Date Added</th>              

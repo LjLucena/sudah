@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('htitle')</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('ui/assets/css/dataTables.bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
     <style>
         #content {
             background-color: #ffffff;
@@ -23,7 +26,7 @@
         .nav-link{
             color: #FFF;
         }
-       .active{
+       .btnactive{
             color:#09F !important;
             /* text-decoration: underline; */
         }
@@ -65,6 +68,14 @@
         left: -35px;
         content: "X";
         }
+
+        .active{
+            color: white ! important; 
+        }
+
+        .dataTables_wrapper .dt-buttons {
+            float:right;
+            }
     </style>
     
 </head>
@@ -117,21 +128,17 @@
                     <a class="nav-link nav-header" ><strong>Appointments</strong></a>
                     
                     <!--<a class="nav-link {{Request::path() == 'portal/branch' ?  'active' : ''}}" href="/portal/branch">Calendar</a>-->
-                    <a class="nav-link {{Request::path() == 'portal/branch' ?  'active' : ''}}" href="/portal/branch">List</a>
+                    <a class="nav-link {{Request::path() == 'portal/branch' ?  'btnactive' : ''}}" href="/portal/branch">List</a>
                     
                     <a class="nav-link nav-header" ><strong>Branch Management</strong></a>
                     
                     
-                    <a class="nav-link {{Request::path() == 'patient' ?  'active' : ''}}" href="/patient">Patients</a>
-                    <a class="nav-link {{Request::path() == 'accounts/client' ?  'active' : ''}}" href="/accounts/client">Clients</a>
-                    <a class="nav-link {{Request::path() == 'branch/inventory' ?  'active' : ''}}" href="/branch/inventory">Inventory</a>
-
-                    <a class="nav-link nav-header" ><strong>Report Management</strong></a>
-                    
-                    <a class="nav-link {{Request::path() == 'patients' ?  'active' : ''}}" href="/patients">Reports</a>
+                    <a class="nav-link {{Request::path() == 'patient' ?  'btnactive' : ''}}" href="/patient">Patients</a>
+                    <a class="nav-link {{Request::path() == 'accounts/client' ?  'btnactive' : ''}}" href="/accounts/client">Clients</a>
+                    <a class="nav-link {{Request::path() == 'branch/inventory' ?  'btnactive' : ''}}" href="/branch/inventory">Inventory</a>
 
                     <a class="nav-link nav-header" ><strong>My Account</strong></a>
-                    <a class="nav-link {{Request::path() == 'my-account' ?  'active' : ''}}" href="/my-account">View account</a>
+                    <a class="nav-link {{Request::path() == 'my-account' ?  'btnactive' : ''}}" href="/my-account">View account</a>
 
                   
                   </nav>
@@ -181,71 +188,73 @@
 
   
 </body>
-
 <script src="{{asset('js/app.js')}}"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<!--<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
 @yield('script')
 <script>
+    function addProduct(id, max){
+            var modal = $('#addProduct');
+            modal.find('.modal-title').text('Add Product');
+            modal.find('.modal-body').html('<form action="" id="addproduct" method="post"> @csrf <input type="hidden" name="product" value="'+id+'"><label>Product Quantity:</label><input class="form-control" type="number" max="'+max+'"name="in" required><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+    }
+     
+    function viewAppt(id){
+            var modal = $('#viewAppt');
+            modal.find('.modal-title').text('Appointment Details');
+            modal.find('.modal-body').load('/view/appt/'+id+'');
+    }
+
+    function addStock(id,max){
+            var modal = $('#addStock');
+            modal.find('.modal-title').text('Add Product');
+            modal.find('.modal-body').html('<form action="/addstock/branch_inventory"  method="post"> @csrf <input type="hidden" name="product" value="'+id+'"><label>Product Quantity:</label><input class="form-control" type="number" max="'+max+'"name="in"><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+    }
+
+    function editStock(id, max, out_max){
+            var modal = $('#editStock');
+            modal.find('.modal-title').text('Edit Inventory');
+            modal.find('.modal-body').html('<form action="/edit/branch_inventory" id="editInv"  method="post"> @csrf <input type="hidden" name="product" value="'+id+'"><label> <h2>Warehouse Stock: '+max+'</h2></label><h3>Branch Total Stock: '+out_max+'</h3><label> Product In:</label><input class="form-control" type="number" max="'+max+'"name="in" value="0"><label>Product Out:</label><input class="form-control" type="number" max="'+out_max+'"name="out" value="0"><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+    }
+
   $(document).ready(function() {
           $('#table').DataTable({
           });
 
-          $('#addProduct').on('shown.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var data_id =$(event.relatedTarget).data('id');
-            var max =$(event.relatedTarget).data('max');
-            var modal = $(this);
-            modal.find('.modal-title').text('Add Product');
-            modal.find('.modal-body').html('<form action="" id="addproduct" method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label>Product Quantity:</label><input class="form-control" type="number" max="'+max+'"name="in" required><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
-            // modal.find('.modal-body input').val(recipient)
-        });
+          $('#printable').DataTable({
+                dom: 'lBfrtip',
+                buttons: [{
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'Excel',
+                    className: 'exportExcel',
+                    exportOptions: { modifier: { page: 'all'},columns:  ':not(.noExport)' }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'Pdf',
+                    className: 'exportPdf',
+                    exportOptions: { modifier: { page: 'all'},columns:  ':not(.noExport)' }
+                }],
+                initComplete: function () {
+                            var btns = $('.dt-button');
+                            btns.removeClass('dt-button');
 
-        $('#addStock').on('shown.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var data_id =$(event.relatedTarget).data('id');
-            var max =$(event.relatedTarget).data('max');
-            var modal = $(this);
-            modal.find('.modal-title').text('Add Product');
-            modal.find('.modal-body').html('<form action="/addstock/branch_inventory"  method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label>Product Quantity:</label><input class="form-control" type="number" max="'+max+'"name="in" required><button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
-            // modal.find('.modal-body input').val(recipient)
-        });
+                        }
+          });
 
-        $('#editStock').on('shown.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var data_id =$(event.relatedTarget).data('id');
-            var max =$(event.relatedTarget).data('max');
-            var out_max =$(event.relatedTarget).data('out_max');
-            var pro_in =$(event.relatedTarget).data('in');
-            var out =$(event.relatedTarget).data('out');
-            var modal = $(this);
-            modal.find('.modal-title').text('Edit Inventory');
-            modal.find('.modal-body').html('<form action="/edit/branch_inventory" id="editInv"  method="post"> @csrf <input type="hidden" name="product" value="'+data_id+'"><label> <h2>Total Stock: '+out_max+'</h2> Product In:</label><input class="form-control" type="number" max="'+max+'"name="in" value="'+pro_in+'" ><label>Product Out:</label><input class="form-control" type="number" max="'+out_max+'"name="out" value="'+out+'" ></form>');
-            // modal.find('.modal-body input').val(recipient)
-        });
+          $(".buttons-html5").addClass("ml-1 btn btn-sm");
+          $(".buttons-excel").addClass("btn-outline-secondary text-success");
+          $(".buttons-pdf").addClass("btn-outline-secondary text-danger");
 
-      $('#viewAppt').on('shown.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var data_id =$(event.relatedTarget).data('id');
-            var modal = $(this);
-            modal.find('.modal-title').text('Appointment Details');
-            modal.find('.modal-body').load('/view/appt/'+data_id+'');
-            //modal.find('.modal-footer').html('<a href="/appointment/'+data_id+'" class="btn btn-md btn-danger">Cancel</a>');
-            //modal.find('.modal-footer').html('<a href="/appointment/'+data_id+'" class="btn btn-md btn-danger">Cancel</a>');
-           // modal.find('.modal-body input').val(recipient)            }
-        });
 
         $(document).on('change','.species_id',function(){
 			// console.log("hmm its change");

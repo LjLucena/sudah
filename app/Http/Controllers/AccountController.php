@@ -321,4 +321,58 @@ class AccountController extends Controller
         return view('user.archives')->with('role',$role)->with('accounts',$accounts);
         
     }
+
+    public function superadmin(){
+        
+        $admins = User::where('role_id', 4)->get();
+        return view('superadmin.list')->with('admins',$admins);
+        
+    }
+
+    public function save_admin(Request $request){
+
+        
+        $admin = new User;
+        $admin->role_id = $request->role;
+        $admin->username = $request->un;
+        $admin->password = md5($request->pw);
+        $admin->stat = 1;
+        $admin->save();
+        
+        return redirect()->back();
+    }
+
+    public function admin_changepass($id){
+        
+        $admin = User::find($id);
+        return view('superadmin.changepass')->with('admin',$admin);
+        
+    }
+
+    public function admin_changepass_save(Request $request){
+        
+        $admin = User::find($request->id);
+        $admin->password = md5($request->pw);
+        return redirect()->back()->with('success','Password Changed!');
+        
+    }
+    
+    
+    public function admin_deact($id){
+        
+        $admin = User::find($id);
+        $admin->stat = 0;
+        $admin->save();
+        return redirect()->back()->with('success','Admin Deactivated!');
+        
+    }
+
+    public function admin_act($id){
+        
+        $admin = User::find($id);
+        $admin->stat = 1;
+        $admin->save();
+        return redirect()->back()->with('success','Admin Activated!');
+        
+    }
 }

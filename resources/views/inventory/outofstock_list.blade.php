@@ -10,7 +10,7 @@
 @section('content')
 <div class="row" style="margin-top:20px;">
     <div class="col-12">
-        <table class="table table-hover" id="table">
+        <table class="table table-hover" id="printable">
             <thead>
                 <tr style="text-transform: uppercase;">          
                     <th>Category</th>              
@@ -19,7 +19,7 @@
                     <th>Price</th>               
                     <th>Total Sales</th>                
                     <th>Total Cost</th>                
-                    <th class="text-center" width="20%">Option</th>
+                    <th class="text-center noExport" width="20%">Option</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,8 +32,8 @@
                     <td>{{$inventory->total_sales}}</td>
                     <td>P {{$inventory->total_sales * $inventory->price}}</td>
                     <td class="text-center">
-                        <a href="" class="btn btn-primary btn-sm"  data-id="{{$inventory->id}}" data-toggle="modal"  data-target="#addStock">Add Stock</a>
-                        <a href="" class="btn btn-danger btn-sm" data-name="{{$inventory->product_name}}" data-id="{{$inventory->id}}" data-toggle="modal"  data-target="#archiveProduct">Archive</a>
+                        <button class="btn btn-primary btn-sm" onclick="addStock({{$inventory->id}})" id="stock"  data-id="{{$inventory->id}}" data-toggle="modal"  data-target="#addStock">Add Stock</button>
+                        <button class="btn btn-danger btn-sm"  onclick="archiveProduct({{$inventory->id}},'{{$inventory->product_name}}')" data-name="{{$inventory->product_name}}" data-id="{{$inventory->id}}" data-toggle="modal"  data-target="#archiveProduct">Archive</button>
                       </td>
                   </tr>
               @endforeach

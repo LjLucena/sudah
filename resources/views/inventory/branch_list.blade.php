@@ -17,35 +17,35 @@
 @section('content')
 <div class="row" style="margin-top:20px;">
     <div class="col-12">
-        <table class="table table-hover" id="table">
+        <table class="table table-hover" id="printable">
             <thead>
                 <tr style="text-transform: uppercase;">                    
-                    <th>Date Added</th>              
-                    <th>Date Updated</th>              
-                    <th>Category</th>              
-                    <th>Product Code</th>              
-                    <th>Product Name</th>
-                    <th>Price</th>                  
-                    <th>In</th>                
-                    <th>Out</th>                
-                    <th>Total Stock</th>                
-                    <th class="text-center" width="20%">Option</th>
+                    <th class="text-center">Date Added</th>              
+                    <th class="text-center">Date Updated</th>              
+                    <th class="text-center">Category</th>              
+                    <th class="text-center">Product Code</th>              
+                    <th class="text-center">Product Name</th>
+                    <th class="text-center">Price</th>                  
+                    <th class="text-center">In</th>                
+                    <th class="text-center">Out</th>                
+                    <th class="text-center">Total Stock</th>                
+                    <th class="text-center noExport" width="20%">Option</th>
                 </tr>
             </thead>
             <tbody>
               @foreach ($inventories as $inventory)
                   <tr>
-                    <td>{{$inventory->created_at}}</td>
-                    <td>{{$inventory->updated_at}}</td>
-                    <td>{{$inventory->Product->Category->category_name}}</td>
-                    <td>{{$inventory->Product->code}}</td>
-                    <td>{{$inventory->Product->product_name}}</td>
-                    <td>{{$inventory->Product->price}}</td>
-                    <td>{{$inventory->in}}</td>
-                    <td>{{$inventory->out}}</td>
-                    <td>{{$inventory->stock}}</td>
+                    <td class="text-center">{{$inventory->created_at}}</td>
+                    <td class="text-center">{{$inventory->updated_at}}</td>
+                    <td class="text-center">{{$inventory->Product->Category->category_name}}</td>
+                    <td class="text-center">{{$inventory->Product->code}}</td>
+                    <td class="text-center">{{$inventory->Product->product_name}}</td>
+                    <td class="text-center">{{$inventory->Product->price}}</td>
+                    <td class="text-center">{{$inventory->in}}</td>
+                    <td class="text-center">{{$inventory->out}}</td>
+                    <td class="text-center">{{$inventory->stock}}</td>
                     <td class="text-center">
-                        <a href="" class="btn btn-primary btn-sm"  data-id="{{$inventory->id}}" data-max="{{$inventory->Product->quantity}}" data-out_max="{{$inventory->stock}}" data-in="{{$inventory->in}}" data-out="{{$inventory->out}}"  data-toggle="modal"  data-target="#editStock">Edit</a>
+                        <button class="btn btn-primary btn-sm" id="stock" onclick="editStock({{$inventory->id}},{{$inventory->Product->quantity}},{{$inventory->stock}})" data-id="{{$inventory->id}}" data-max="{{$inventory->Product->quantity}}" data-out_max="{{$inventory->stock}}" data-in="{{$inventory->in}}" data-out="{{$inventory->out}}" data-toggle="modal"  data-target="#editStock">Edit</button>
                       </td>
                   </tr>
               @endforeach
@@ -72,7 +72,7 @@
             
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" id="submitBtn">Save</button>
+          
         </div>
       </div>
     </div>

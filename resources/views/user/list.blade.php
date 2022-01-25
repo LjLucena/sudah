@@ -15,7 +15,7 @@
 @section('content')
   <div class="row" style="margin-top:20px;">
     <div class="col">
-      <table class="table table-hover" id="table">
+      <table class="table table-hover" id="printable">
               <thead>
                   <tr style="text-transform: uppercase;">
                       <th class="text-center">Name</th>
@@ -24,22 +24,22 @@
                       @if ($role == 'vet' || $role == 'secretary')                    
                       <th class="text-center">Branch</th>
                       @endif
-                      <th class="text-center" width="20%">Option</th>
+                      <th class="text-center noExport" width="20%">Option</th>
                   </tr>
               </thead>
               <tbody>
                 @foreach ($accounts as $account)
                     <tr>
-                      <td>{{$account->UserProfile->first_name}} {{$account->UserProfile->middle_name}} {{$account->UserProfile->last_name}}</td>
-                      <td>{{$account->username}}</td>
-                      <td>{{$account->email}}</td>
+                      <td class="text-center">{{$account->UserProfile->first_name}} {{$account->UserProfile->middle_name}} {{$account->UserProfile->last_name}}</td>
+                      <td class="text-center">{{$account->username}}</td>
+                      <td class="text-center">{{$account->email}}</td>
                       @if ($account->role_id == 2 || $account->role_id == 3)                     
-                      <td>{{$account->BranchName->name}}</td>
+                      <td class="text-center">{{$account->BranchName->name}}</td>
                       @endif
-                      <td>                         
-                          <a href="/view/details/{{base64_encode($account->id)}}" class="btn btn-primary btn-sm" >View</a>
+                      <td class="text-center">                         
+                          <a href="/view/details/{{base64_encode($account->id)}}" class="btn btn-primary btn-sm" title="View" > <i class="fa fa-eye" aria-hidden="true"></i></a>
                           <input type="hidden" id="acc_name" value="{{$account->UserProfile->first_name}}">
-                          <a href="" class="btn btn-danger btn-sm" id="acc_id" data-fn="{{$account->UserProfile->first_name}}" data-ln="{{$account->UserProfile->last_name}}" data-id="{{$account->id}}" data-toggle="modal"  data-target="#exampleModal">Deactivate</a>
+                          <button href="" class="btn btn-danger btn-sm" onclick='deactivate({{$account->id}},"{{$account->UserProfile->first_name}}","{{$account->UserProfile->last_name}}");' id="acc_id" data-fn="{{$account->UserProfile->first_name}}" data-ln="{{$account->UserProfile->last_name}}" data-id="{{$account->id}}" title="Deactivate" data-toggle="modal"  data-target="#exampleModal"><i class="fa fa-archive" aria-hidden="true"></i></button>
                       </td>
                     </tr>
                 @endforeach

@@ -8,6 +8,7 @@ use App\Inventory;
 use App\InvInOut;
 use App\Category;
 use App\User;
+use App\ActivityLog;
 use Auth;
 
 class InventoryController extends Controller
@@ -63,6 +64,11 @@ class InventoryController extends Controller
             $inv->in = $request->in;
             $inv->stock = $request->in;
             $inv->save();        
+
+            $main_inv = Inventory::find($inv->inventory_id);
+            $main_inv->quantity = $main_inv->quantity - $request->in;
+            $main_inv->save();
+
             return redirect()->back()->with('success','Product Stock Added!');
         
     }
@@ -71,23 +77,46 @@ class InventoryController extends Controller
         $inv = InvInOut::find($request->product);
         $in = $inv->in;
         $out = $inv->out;
-        if($in == $request->in && $out != $request->out){
-            $inv->stock = $inv->stock - $request->out;
-            $inv->out = $request->out;
-            $inv->save();
+        if($request->in == 0){
+            if ($request->out == 0) {
+                return redirect()->back()->with('fail','Nothing Changes');
+            } else {
+                $inv->stock = $inv->stock - $request->out;
+                $inv->out = $request->out;
+                $inv->save();
 
-            $main_inv = Inventory::find($inv->inventory_id);
-            $main_inv->quantity = $main_inv->quantity - $request->out;
-            $main_inv->total_sales = $main_inv->total_sales + $request->out;
-            $main_inv->save();
-            return redirect()->back()->with('success','Product "Out" Updated!');
+                $main_inv = Inventory::find($inv->inventory_id);
+                $main_inv->total_sales = $main_inv->total_sales + $request->out;
+                $main_inv->save();
+
+                $activity = new ActivityLog;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Branch product ".$main_inv->product_name."-out updated.";
+                $activity->save();
+
+                return redirect()->back()->with('success','Product "Out" Updated!');
+            }           
         }
-        elseif($in != $request->in && $out == $request->out){
-            $stock = $inv->stock + $in;
-            $inv->in = $request->in;
-            $inv->stock = $stock;
-            $inv->save();
-            return redirect()->back()->with('success','Product "In" Updated!');
+        elseif($request->out == 0){
+            if ($request->in == 0) {
+                return redirect()->back()->with('fail','Nothing Changes');
+            } else {
+                $stock = $inv->stock + $in;
+                $inv->in = $request->in;
+                $inv->stock = $stock;
+                $inv->save();
+    
+                $main_inv = Inventory::find($inv->inventory_id);
+                $main_inv->quantity = $main_inv->quantity - $request->in;
+                $main_inv->save();
+
+                $activity = new ActivityLog;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Branch product ".$main_inv->product_name."-in updated.";
+                $activity->save();
+    
+                return redirect()->back()->with('success','Product "In" Updated!');
+            }
         }
         else{
             $stock = ($inv->stock + $request->in) - $request->out;
@@ -97,9 +126,14 @@ class InventoryController extends Controller
             $inv->save();
 
             $main_inv = Inventory::find($inv->inventory_id);
-            $main_inv->quantity = $main_inv->quantity - $request->out;
+            $main_inv->quantity = $main_inv->quantity - $request->in;
             $main_inv->total_sales = $main_inv->total_sales + $request->out;
             $main_inv->save();
+
+            $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Branch product ".$main_inv->product_name."-in & out updated.";
+            $activity->save();
 
             return redirect()->back()->with('success','Inventory Updated!');
         }

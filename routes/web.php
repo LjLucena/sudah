@@ -25,6 +25,12 @@ Route::post('/forget-password', 'Auth\ForgotPasswordController@submitForgetPassw
 Route::get('/reset-password/{token}', 'Auth\ForgotPasswordController@showResetPasswordForm')->name('reset.password.get');
 Route::post('/reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
 
+Route::get('/superadmin', 'AccountController@superadmin')->middleware('auth');
+Route::post('/add/new/admin', 'AccountController@save_admin')->middleware('auth');
+Route::get('/admin/deact/{id}', 'AccountController@admin_deact')->middleware('auth');
+Route::get('/admin/act/{id}', 'AccountController@admin_act')->middleware('auth');
+Route::get('/admin/changepass/{id}', 'AccountController@admin_changepass')->middleware('auth');
+Route::post('/admin/changepass', 'AccountController@admin_changepass_save')->middleware('auth');
 Route::get('/branches', 'BranchController@branches')->middleware('auth');
 Route::get('/patient', 'PetController@pets')->middleware('auth');
 Route::get('/schedules', 'SchedulesController@schedules')->middleware('auth');
@@ -159,6 +165,8 @@ Route::post('/edit/account/{id}', 'AccountController@acc_details_update')->middl
 Route::get('/archive/{id}', 'AccountController@archive')->middleware('auth');
 Route::get('/activate/{id}', 'AccountController@activate')->middleware('auth');
 Route::get('/archive/list/{role}', 'AccountController@archive_list')->middleware('auth');
+Route::get('/userlog', 'UserLogController@list')->middleware('auth');
+Route::get('/activity_log', 'ActivityLogController@activity_list')->middleware('auth');
 
 //Products
 Route::get('/products', 'PagesController@products');

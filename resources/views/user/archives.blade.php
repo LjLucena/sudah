@@ -9,7 +9,7 @@
 @section('content')
 <div class="row" style="margin-top:20px;">
     <div class="col-12">
-        <table class="table table-hover" id="table">
+        <table class="table table-hover" id="printable">
             <thead>
                 <tr style="text-transform: uppercase;">
                     <th>Name</th>
@@ -18,7 +18,7 @@
                     @if ($role == 'vet' || $role == 'secretary')                    
                     <th>Branch</th>
                     @endif
-                    <th width="20%">Option</th>
+                    <th class="text-center noExport" width="20%">Option</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,9 +30,9 @@
                     @if ($account->role_id == 2 || $account->role_id == 3)                     
                     <td></td>
                     @endif
-                    <td>
+                    <td class="text-center">
                         <a href="/view/details/{{base64_encode($account->id)}}" class="btn btn-primary btn-sm" >View</a>   
-                        <a href="" class="btn btn-danger btn-sm" id="acc_id" data-fn="{{$account->UserProfile->first_name}}" data-ln="{{$account->UserProfile->last_name}}"  data-id="{{$account->id}}" data-toggle="modal"  data-target="#activate">Activate</a>
+                        <button class="btn btn-danger btn-sm" id="acc_id" onclick="activate({{$account->id}},'{{$account->UserProfile->first_name}}','{{$account->UserProfile->last_name}}');" data-fn="{{$account->UserProfile->first_name}}" data-ln="{{$account->UserProfile->last_name}}"  data-id="{{$account->id}}" data-toggle="modal"  data-target="#activate">Activate</button>
                     </td>
                   </tr>
               @endforeach

@@ -10,7 +10,7 @@
 @section('content')
 <div class="row" style="margin-top:20px;">
     <div class="col-12">
-        <table class="table table-hover" id="table">
+        <table class="table table-hover" id="printable">
             <thead>
                 <tr style="text-transform: uppercase;">           
                     <th>Category</th>              
@@ -26,7 +26,7 @@
                     <td>{{$inventory->Product->product_name}}</td>
                     <td>{{$inventory->Product->price}}</td>
                     <td class="text-center">
-                        <a href="" class="btn btn-primary btn-sm"  data-id="{{$inventory->id}}" data-max="{{$inventory->Product->quantity}}" data-toggle="modal"  data-target="#addStock">Add Stock</a>
+                        <button class="btn btn-primary btn-sm" id="stock" onclick="addStock({{$inventory->id}},{{$inventory->Product->quantity}})" data-id="{{$inventory->id}}" data-max="{{$inventory->Product->quantity}}" data-toggle="modal"  data-target="#addStock">Add Stock</button>
                       </td>
                   </tr>
               @endforeach
