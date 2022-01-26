@@ -13,6 +13,9 @@ use App\Account;
 use App\Branch;
 use App\Species;
 use App\Profile;
+use DB;
+
+use Mail;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -22,7 +25,17 @@ class AppointmentController extends Controller
         $appointment = Appointment::find($id);
         $appointment->status = "Approved";
         $appointment->save();
-        return redirect()->back()->with('success','Appoitment Approved');
+
+        $user = User::find($appointment->user_id);
+        $name = $user->UserProfile->first_name;
+        $email = $user->email;
+        $date = $appointment->date_appointment;
+        Mail::send('email.appointment_approve', ['date' => $date, 'name'=> $name ], function($message) use ($email) {
+
+            $message->to($email)->subject('Appointment Approved!');
+
+        });
+        return redirect()->back()->with('success','Appointment Approved');
     }
     
     public function vet_calendar(){
@@ -63,9 +76,10 @@ class AppointmentController extends Controller
 
     public function view($id){
         $appointment = Appointment::find($id);
-        $pet = Pet::find($appointment->pet_id);        
+        $pet = Pet::find($appointment->pet_id);   
+        $user = Auth::user()->role_id;     
         $services = Service::whereIn('id',json_decode($appointment->services))->get();
-        return view('branch_portal.appt_details')->with('appointment', $appointment)->with('pet',$pet)->with('services',$services);
+        return view('branch_portal.appt_details')->with('appointment', $appointment)->with('pet',$pet)->with('services',$services)->with('userRole',$user);
     }
     
     public function slot($v,$d,$t){
@@ -84,6 +98,15 @@ class AppointmentController extends Controller
         $appointment->status = "Cancelled";
         $success = 'Appointment for '.$pet->name.' Cancelled!';
         $appointment->save();
+
+        $schedule = Schedules::find($appointment->schedule_id);
+            if ($appointment->time_appointment == "08:00AM - 12:00AM") {
+                $schedule->am_max = $schedule->am_max + 1;
+            } else {
+                $schedule->pm_max = $schedule->pm_max + 1;
+            }
+            $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+            $schedule->save();
         return redirect()->back()->with('success',$success);
     }
 
@@ -94,6 +117,35 @@ class AppointmentController extends Controller
         $appointment->cancel_reason = $request->cancel_reason;
         $appointment->save();
         $success = 'Appointment for Pet '.$pet->name.' Cancelled!';
+
+        $schedule = Schedules::find($appointment->schedule_id);
+            if ($appointment->time_appointment == "08:00AM - 12:00AM") {
+                $schedule->am_max = $schedule->am_max + 1;
+            } else {
+                $schedule->pm_max = $schedule->pm_max + 1;
+            }
+            $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+            $schedule->save();
+
+            $user = User::find($appointment->user_id);
+            $name = $user->UserProfile->first_name;
+            $email = $user->email;
+            $date = $appointment->date_appointment;
+            if ($appointment->status == "Approved") {
+                Mail::send('email.appointment_cancel', ['date' => $date, 'name'=> $name ,'reason'=>$appointment->cancel_reason], function($message) use ($email) {
+
+                    $message->to($email)->subject('Appointment Cancellation!');
+        
+                });
+            } else {
+                Mail::send('email.appointment_cancel_pending', ['date' => $date, 'name'=> $name ,'reason'=>$appointment->cancel_reason], function($message) use ($email) {
+
+                    $message->to($email)->subject('Appointment Cancellation!');
+        
+                });
+            }
+            
+            
         return redirect()->back()->with('success',$success);
     }
 
@@ -121,6 +173,6 @@ class AppointmentController extends Controller
         $data->services = json_encode($request->services);
         $data->status = "Approved";
         $data->save();
-        return redirect()->back()->with('success','Appointment Addes Successfully');
+        return redirect()->back()->with('success','Appointment Added Successfully');
     }
 }

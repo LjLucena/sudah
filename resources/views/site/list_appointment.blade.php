@@ -48,7 +48,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="/list/appointments">Appointment</a></li>
+          <li><a class="nav-link scrollto active" href="/list/appointments">Appointment</a></li>
           <li><a class="nav-link scrollto" href="/list/pets">Pets Section</a></li>
           <li><a class="nav-link scrollto" href="/my-account">My Account</a></li>
         </ul>
@@ -112,7 +112,7 @@
                   <td>{{$appointment->AppointmentPet->name}}</td>
                   <td>{{$appointment->status}}</td>
                   <td width="10%">
-                      <a href="" class="btn btn-primary btn-sm" data-id="{{$appointment->id}}" data-status="{{$appointment->status}}" data-pet="{{$appointment->AppointmentPet->name}}" data-toggle="modal"  data-target="#appDetails">View</a>
+                      <a href="" class="btn btn-primary btn-sm" data-id="{{$appointment->id}}" data-services="<?=json_encode($appointment->services)?>" data-status="{{$appointment->status}}" data-pet="{{$appointment->AppointmentPet->name}}" data-toggle="modal"  data-target="#appDetails">View</a>
                   </td>
                 </tr>
               @endforeach
@@ -163,22 +163,19 @@
   <script>
     $(document).ready(function(){
       $('#appDetails').on('shown.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+              
             var data_id =$(event.relatedTarget).data('id');
             var status =$(event.relatedTarget).data('status');
             var pet =$(event.relatedTarget).data('pet');
             var modal = $(this);
             modal.find('.modal-title').text('Appointment Details for: '+pet);
-            modal.find('.modal-body').html('<b>Appointment Status:</b> '+status+'<br><b>Requested Services:</b> ');
+            modal.find('.modal-body').load('/view/appt/'+data_id);
             if (status == 'Approved') {
               modal.find('.modal-footer').html('<a href="/cancel/appt/'+data_id+'" class="btn btn-md btn-danger">Cancel Appointment?</a>'+
                                                 '<button class="btn btn-md btn-secondary" data-dismiss="modal">Close</button>'
               );
             } else {
-              modal.find('.modal-footer').html('<a href="/edit/appt/'+data_id+'" class="btn btn-md btn-primary">Edit</a>'+
+              modal.find('.modal-footer').html('<a href="/edit/appt/'+btoa(data_id)+'" class="btn btn-md btn-primary">Edit</a>'+
                                                 '<a href="/cancel/appt/'+data_id+'" class="btn btn-md btn-danger">Cancel Appointment?</a>'+
                                                 '<button class="btn btn-md btn-secondary" data-dismiss="modal">Close</button>'
               );

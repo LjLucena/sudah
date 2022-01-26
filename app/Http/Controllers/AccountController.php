@@ -10,8 +10,13 @@ use App\Breed;
 use App\Color;
 use Auth;
 use App\Branch;
+use App\UserActivation;
+use DB;
+
+use Mail;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AccountController extends Controller
 {
@@ -40,36 +45,82 @@ class AccountController extends Controller
     }
     public function account_save(Request $request){
         // return dd($request);
+        if ($request->role_id == 1) {
+            if (User::where('email', $request->email)->exists()){
+                return redirect()->back()->with('fail',"Registration Unsuccessful. Email already registered. Please use different email.");
+            } else {
+                $profile = new Profile;
+            $profile->last_name= $request->ln;
+            $profile->first_name= $request->fn;
+            $profile->middle_name= $request->mn;
+            $profile->suffix= $request->s;
+            $profile->contact= $request->contact;
+            $profile->house= $request->house;
+            $profile->brgy= $request->barangay;
+            $profile->municipality= $request->cm;
+            $profile->province= $request->province;
+            $profile->zipcode= " ";
+            $profile->dob= $request->dob;
+            $profile->status= "";
+            $profile->stat= "0";
+            $profile->save();
 
-        $profile = new Profile;
-        $profile->last_name= $request->ln;
-        $profile->first_name= $request->fn;
-        $profile->middle_name= $request->mn;
-        $profile->suffix= $request->s;
-        $profile->contact= $request->contact;
-        $profile->house= $request->house;
-        $profile->brgy= $request->barangay;
-        $profile->municipality= $request->cm;
-        $profile->province= $request->province;
-        $profile->zipcode= " ";
-        $profile->dob= $request->dob;
-        $profile->status= "Active";
-        $profile->stat= "1";
-        $profile->save();
+            $user = new User;
+            $user->profile_id = $profile->id;
+            $user->role_id = $request->role_id;
+            $user->email = $request->email;
+            $user->username = $request->u;
+            $user->password = md5($request->p);
+            $user->branch_id = $request->branch;
+            $user->stat = 0;
+            $user->is_activated = 0;
+            $user->save();
+            $email = $request->email;
+            
+            
+            $link = Str::random(30);
+            UserActivation::create(['user_id'=>$user->id,'token'=>$link]);
 
-        $user = new User;
-        $user->profile_id = $profile->id;
-        $user->role_id = $request->role_id;
-        $user->email = $request->email;
-        $user->username = $request->u;
-        $user->password = md5($request->p);
-        $user->branch_id = $request->branch;
-        $user->stat = 1;
-        $user->save();
-        if($request->role_id == 1) return redirect()->back()->with('success','Account Created Please Login');
-        else  return redirect()->back()->with('success','Account Created');
+            $userArray = $user->toArray();
+            Mail::send('email.activation', ['link' => $link], function($message) use ($email) {
+
+                $message->to($email)->subject('Account Activation');
+
+            });
+            return redirect()->back()->with('success','Account Created! Please Activate your account.');
+            }
+            
+        }
+        else{
+
+            $profile = new Profile;
+            $profile->last_name= $request->ln;
+            $profile->first_name= $request->fn;
+            $profile->middle_name= $request->mn;
+            $profile->suffix= $request->s;
+            $profile->contact= $request->contact;
+            $profile->house= $request->house;
+            $profile->brgy= $request->barangay;
+            $profile->municipality= $request->cm;
+            $profile->province= $request->province;
+            $profile->zipcode= " ";
+            $profile->dob= $request->dob;
+            $profile->status= "Active";
+            $profile->stat= "1";
+            $profile->save();
+    
+            $user = new User;
+            $user->profile_id = $profile->id;
+            $user->role_id = $request->role_id;
+            $user->email = $request->email;
+            $user->username = $request->u;
+            $user->password = md5($request->p);
+            $user->branch_id = $request->branch;
+            $user->stat = 1;
+            $user->save();
+            return redirect()->back()->with('success','Account Created');
+        }
     }
-
     
     public function myAccount_profile(){
         // return Auth::user();
@@ -268,6 +319,60 @@ class AccountController extends Controller
         $roles = Role::where('role',ucfirst($role))->first();
         $accounts = Account::where('role_id',$roles->id)->where('stat', 0)->get();
         return view('user.archives')->with('role',$role)->with('accounts',$accounts);
+        
+    }
+
+    public function superadmin(){
+        
+        $admins = User::where('role_id', 4)->get();
+        return view('superadmin.list')->with('admins',$admins);
+        
+    }
+
+    public function save_admin(Request $request){
+
+        
+        $admin = new User;
+        $admin->role_id = $request->role;
+        $admin->username = $request->un;
+        $admin->password = md5($request->pw);
+        $admin->stat = 1;
+        $admin->save();
+        
+        return redirect()->back();
+    }
+
+    public function admin_changepass($id){
+        
+        $admin = User::find($id);
+        return view('superadmin.changepass')->with('admin',$admin);
+        
+    }
+
+    public function admin_changepass_save(Request $request){
+        
+        $admin = User::find($request->id);
+        $admin->password = md5($request->pw);
+        return redirect()->back()->with('success','Password Changed!');
+        
+    }
+    
+    
+    public function admin_deact($id){
+        
+        $admin = User::find($id);
+        $admin->stat = 0;
+        $admin->save();
+        return redirect()->back()->with('success','Admin Deactivated!');
+        
+    }
+
+    public function admin_act($id){
+        
+        $admin = User::find($id);
+        $admin->stat = 1;
+        $admin->save();
+        return redirect()->back()->with('success','Admin Activated!');
         
     }
 }

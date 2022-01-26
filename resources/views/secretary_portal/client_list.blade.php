@@ -14,13 +14,13 @@
 @section('content')
   <div class="row" style="margin-top:20px;">
     <div class="col">
-      <table class="table table-hover" id="table">
+      <table class="table table-hover" id="printable">
               <thead>
                   <tr style="text-transform: uppercase;">
                       <th class="text-center">Name</th>
                       <th class="text-center">Username</th>                                                      
                       <th class="text-center">Email</th>
-                      <th class="text-center" width="20%">Option</th>
+                      <th class="text-center noExport" width="20%">Option</th>
                   </tr>
               </thead>
               <tbody>

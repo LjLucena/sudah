@@ -11,14 +11,14 @@ Add Schedule for {{$branch->name}} Branch
 <div class="row">
     <div class="col-12">
         <br />
-        <div class="row">
+        <div class="row"> 
             <div class="col-12">
                 <form action="" method="post">                  
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <input type="hidden" name="branch" value="{{$branch->id}}">
-                            <input type="hidden" id="disable" data-date="<?=json_encode($disableDate)?>">
+                            <input type="hidden" id="disable" data-date="{{$disableDate}}?>">
                             <label for="vet">Vet:</label>
                             <select required name="vet" class="form-control">
                                 @if(count($accounts) == 1)                                    
@@ -33,7 +33,7 @@ Add Schedule for {{$branch->name}} Branch
                             
                             <label for="date">Select Date:</label>
                               <input type="" autocomplete="off" name="date" id="datepicker" class="form-control" placeholder="Select date" required/>
-
+                              <input type="hidden" id="check" />
                             <!--<label for="date">Select Date:</label>  
                             <input name="dates" id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%" required>
                                 <i class="fa fa-calendar"></i>&nbsp;
@@ -59,8 +59,9 @@ Add Schedule for {{$branch->name}} Branch
     </div>
 </div>
 @endsection
-
-@section('script')
-<script type="text/javascript">
+<script>
+    
+    function check(){
+                console.log('hi');
+            }
 </script>
-@endsection

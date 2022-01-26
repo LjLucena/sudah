@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sudah | @yield('htitle')</title>
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}"><!--
     <link rel="stylesheet" href="{{asset('ui/assets/css/dataTables.bootstrap.min.css')}}">
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
     <style>
         #content {
-            background-color: #ccc;
-            background-image: url("ui/assets/img/paws.jpg");
-            opacity: 0.8;
             background-size: 6px 6px;
         /* height: 100vh; */
         }
@@ -33,6 +35,9 @@
         .pagination{
             float:right;
         }
+        .dataTables_wrapper .dt-buttons {
+            float:right;
+            }
     </style>
     
 </head>
@@ -104,11 +109,11 @@
                     <a class="nav-link {{Request::path() == 'breed' ?  'active' : ''}}" href="/breed">Breed</a>
                     <a class="nav-link {{Request::path() == 'species' ?  'active' : ''}}" href="/species">Species</a>
                     <a class="nav-link {{Request::path() == 'color' ?  'active' : ''}}" href="/color">Color</a>
-
                     
-                    <a class="nav-link nav-header" ><strong>Reports Management</strong></a>
+                    <a class="nav-link nav-header" ><strong>Logs Management</strong></a>
                     
-                    <a class="nav-link {{Request::path() == 'reports' ?  'active' : ''}}" href="/reports">Reports</a>
+                    <a class="nav-link {{Request::path() == 'userlog' ?  'active' : ''}}" href="/userlog">User Logs</a>
+                    <a class="nav-link {{Request::path() == 'activity_log' ?  'active' : ''}}" href="/activity_log">Activity Logs</a>
 
                   </nav>
             </div>
@@ -121,7 +126,7 @@
                             @yield('panel-option')
                         </div>
                         
-                        <h3 class="panel-title"  style="margin-top:-41px;width: 30% !important;">
+                        <h3 class="panel-title"  style="margin-top:-41px;width: 50% !important;">
                             <strong>
                                 @yield('panel-title')
                             </strong>
@@ -148,79 +153,99 @@
 
   
 </body>
+
 @yield('script')
 
 <script src="{{asset('js/app.js')}}"></script>
-
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<script>
-    $(document).ready(function() {
-          $('#table').DataTable({
-          });
 
-          $('#exampleModal').on('shown.bs.modal', function (event) {
-            // var button = $(event.relatedTarget) // Button that triggered the modal
-            // var recipient = button.data('whatever') // Extract info from data-* attributes
-            // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var data_id =$(event.relatedTarget).data('id');
-            var data_fn =$(event.relatedTarget).data('fn');
-            var data_ln =$(event.relatedTarget).data('ln');
-            var modal = $(this);
-            modal.find('.modal-title').text('Deactivate?');
-            modal.find('.modal-body').text('Account name: '+data_fn+' '+data_ln);
-            modal.find('.modal-footer').html('<a href="/archive/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
-           // modal.find('.modal-body input').val(recipient)
-        });
-
-        $('#activate').on('shown.bs.modal', function (event) {
-            var data_id =$(event.relatedTarget).data('id');
-            var data_fn =$(event.relatedTarget).data('fn');
-            var data_ln =$(event.relatedTarget).data('ln');
-            var modal = $(this);
-            modal.find('.modal-title').text('Activate');
-            modal.find('.modal-body').text('Account name: '+data_fn+' '+data_ln);
-            modal.find('.modal-footer').html('<a href="/activate/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
-        });
         
-        $('#addStock').on('shown.bs.modal', function (event) {
-            var data_id =$(event.relatedTarget).data('id');
-            var modal = $(this);
+
+<script>
+    function deactivate(id,fn,ln){
+            var modal = $('#exampleModal');
+            modal.find('.modal-title').text('Deactivate?');
+            modal.find('.modal-body').text('Account name: '+fn+' '+ln);
+            modal.find('.modal-footer').html('<a href="/archive/'+id+'" class="btn btn-md btn-danger">Yes</a>');
+    }
+
+    function activate(id,fn,ln){
+            var modal = $('#activate');
+            modal.find('.modal-title').text('Activate');
+            modal.find('.modal-body').text('Account name: '+fn+' '+ln);
+            modal.find('.modal-footer').html('<a href="/activate/'+id+'" class="btn btn-md btn-danger">Yes</a>');
+    }
+
+    function addStock(id){
+            var modal = $('#addStock');
             modal.find('.modal-title').text('Add Product Quantity');
-            modal.find('.modal-body').html('<form action="/addstock/inventory"  method="post"> @csrf <input type="hidden" name="id" value="'+data_id+'">'+
+            modal.find('.modal-body').html('<form action="/addstock/inventory"  method="post"> @csrf <input type="hidden" name="id" value="'+id+'">'+
                                             '<label>Product Quantity:</label>'+
                                             '<input class="form-control" type="number" name="qty" required>'+
                                             '<button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
-        });
+    }
 
-        $('#actProduct').on('shown.bs.modal', function (event) {
-            var data_id =$(event.relatedTarget).data('id');
-            var name =$(event.relatedTarget).data('name');
-            var modal = $(this);
+    function actProduct(id,name){
+            var modal = $('#actProduct');
             modal.find('.modal-title').text('Activate Product?');
             modal.find('.modal-body').text('Product name: '+name);
-            modal.find('.modal-footer').html('<a href="/activate/inventory/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
-        });
+            modal.find('.modal-footer').html('<a href="/activate/inventory/'+id+'" class="btn btn-md btn-danger">Yes</a>');
+    }
 
-        $('#archiveProduct').on('shown.bs.modal', function (event) {
-            var data_id =$(event.relatedTarget).data('id');
-            var name =$(event.relatedTarget).data('name');
-            var modal = $(this);
+    function archiveProduct(id, name){
+            var modal = $('#archiveProduct');
             modal.find('.modal-title').text('Archive Product?');
             modal.find('.modal-body').text('Product name: '+name);
-            modal.find('.modal-footer').html('<a href="/archive/inventory/'+data_id+'" class="btn btn-md btn-danger">Yes</a>');
-        });
+            modal.find('.modal-footer').html('<a href="/archive/inventory/'+id+'" class="btn btn-md btn-danger">Yes</a>');
+    }
+
+    $(document).ready(function() {
+          $('#table').DataTable({
+                
+          });
+          $('#printable').DataTable({
+                dom: 'lBfrtip',
+                buttons: [{
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'Excel',
+                    className: 'exportExcel',
+                    exportOptions: { modifier: { page: 'all'},columns:  ':not(.noExport)' }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'Pdf',
+                    className: 'exportPdf',
+                    exportOptions: { modifier: { page: 'all'},columns:  ':not(.noExport)' }
+                }],
+                initComplete: function () {
+                            var btns = $('.dt-button');
+                            btns.removeClass('dt-button');
+
+                        }
+          });
+
+          $(".buttons-html5").addClass("ml-1 btn btn-sm");
+          $(".buttons-excel").addClass("btn-outline-secondary text-success");
+          $(".buttons-pdf").addClass("btn-outline-secondary text-danger");
 
            // var disablethese = //json_encode($disableDate);
             
-            var disableDates = ["01-21-2022", "01-22-2022"];
+            var disableDates = ["2022-01-26", "2022-01-27"];
           $('#datepicker').datepicker({
             multidate: true,
-            format: 'mm/dd/yyyy',         
+            format: 'yyyy-mm-dd',         
             startDate: new Date(),
+            datesDisabled: disableDates,
+            
            
 
             });

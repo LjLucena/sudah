@@ -14,39 +14,39 @@
 </h4>
 <h4><b>Reason:</b> {{$appointment->reason}}</h4>
 <br>
+@if($userRole == 3)
+    @if($appointment->status == 'Pending')
+    <a href="/pet/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-primary">View Pet</a>
+    <button class="btn btn-sm btn-danger" id="cancelBtn">Cancel</button>
+    <a href="/approve/appoitment/{{base64_encode($appointment->id)}}" class="btn btn-sm btn-success">Approve</a>
+    <button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
+    @elseif($appointment->status == 'Done')
+    <a href="/pet/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-primary">View Pet</a>
+    <a href="/set/appt/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-warning">Set Another Appointment</a>
+    <button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
+    @elseif($appointment->status == 'Cancelled')
+    <h3 class="text-danger"><b>Cancellation Reason:</b></h3>{{$appointment->cancel_reason}} <br>
+    <button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
+    @else
+    <a href="/pet/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-primary">View Pet</a>
+    <button class="btn btn-sm btn-danger" id="cancelBtn">Cancel</button>
+    <button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
+    @endif
 
-@if($appointment->status == 'Pending')
 
-<a href="/pet/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-primary">View Pet</a>
-<button class="btn btn-sm btn-danger" id="cancelBtn">Cancel</button>
-<a href="/approve/appoitment/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-success">Approve</a>
-<button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
-@elseif($appointment->status == 'Done')
-<a href="/pet/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-primary">View Pet</a>
-<a href="/set/appt/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-warning">Set Another Appointment</a>
-<button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
-@elseif($appointment->status == 'Cancelled')
-<h3 class="text-danger"><b>Cancellation Reason:</b></h3>{{$appointment->cancel_reason}} <br>
-<button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
-@else
-<a href="/pet/{{base64_encode($appointment->pet_id)}}" class="btn btn-sm btn-primary">View Pet</a>
-<button class="btn btn-sm btn-danger" id="cancelBtn">Cancel</button>
-<button class="btn btn-sm btn-secondary float-right" data-dismiss="modal">Close</button>
+    <form action="/branch/cancel/appt" method="get" id="cancelForm" class="d-none">
+        <input type="hidden" name="id" value="{{$appointment->id}}">
+        <input type="hidden" name="sched" value="{{$appointment->schedule_id}}">
+        <label for="cancellation">Cancellation Reason:</label>
+        <input type="text" name="cancel_reason" id="cancel_reason" class="form-control" required> <br>
+        <button type="submit" class="btn btn-sm btn-success">Save</button>
+    </form>
+
+    <script>
+
+            $("#cancelBtn").click(function(){        
+            $("#cancelForm").removeAttr('class');
+            $("#canncelBtn").hide();
+            });
+    </script>
 @endif
-
-
-<form action="/branch/cancel/appt" method="get" id="cancelForm" class="d-none">
-    <input type="hidden" name="id" value="{{$appointment->id}}">
-    <input type="hidden" name="sched" value="{{$appointment->schedule_id}}">
-    <label for="cancellation">Cancellation Reason:</label>
-    <input type="text" name="cancel_reason" id="cancel_reason" class="form-control" required> <br>
-    <button type="submit" class="btn btn-sm btn-success">Save</button>
-</form>
-
-<script>
-
-        $("#cancelBtn").click(function(){        
-          $("#cancelForm").removeAttr('class');
-          $("#canncelBtn").hide();
-        });
-</script>

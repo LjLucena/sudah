@@ -47,7 +47,7 @@ class SchedulesController extends Controller
             $disable[] = $sched->date;
         }
         $accounts = Account::where('branch_id',$id)->where('role_id', 2)->get();
-        return view('schedules.form')->with(['branch'=> $branch,'accounts'=>$accounts,'disableDate' => $disable]);
+        return view('schedules.form')->with(['branch'=> $branch,'accounts'=>$accounts,'disableDate' => json_encode($disable)]);
     }
 
     public function save_sched(Request $request) {
@@ -57,13 +57,17 @@ class SchedulesController extends Controller
         $date = explode(',',$dates);
         $schedule = Schedules::where('branch_id',$request->branch)->get();
         foreach($date as $date) {
-            $sched = new Schedules;
-            $sched->date = $date;
-            $sched->branch_id = $request->branch;
-            $sched->vet_id = $request->vet;
-            $sched->am_max = $request->am;
-            $sched->pm_max = $request->pm;
-            $sched->save();
+            if(Schedules::where(['branch_id'=>$request->branch,'date'=>$date,'vet_id'=>$request->vet])->doesntExist()){
+                $sched = new Schedules;
+                $sched->date = $date;
+                $sched->branch_id = $request->branch;
+                $sched->vet_id = $request->vet;
+                $sched->am_max = $request->am;
+                $sched->pm_max = $request->pm;
+                $sched->day_max = $request->pm + $request->am;
+                $sched->save();
+            }
+            else break;
         }
         return redirect()->back()->with('success','Schedule Added!');
     }
@@ -76,6 +80,7 @@ class SchedulesController extends Controller
         $sched->vet_id = $request->vet;
         $sched->am_max = $request->am;
         $sched->pm_max = $request->pm;
+        $sched->day_max = $request->pm + $request->am;
         $sched->save();
 
     }

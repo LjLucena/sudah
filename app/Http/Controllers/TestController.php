@@ -30,5 +30,7 @@ class TestController extends Controller
         $data=Profile::select('breed_name','id')->where('species_id',$request->id)->take(100)->get();
         return response()->json($data);//then sent this data to ajax success
 	}
+
+    
     
 }

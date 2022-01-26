@@ -34,7 +34,7 @@
             </ul>
           </li>-->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="register">Register</a></li>
+          <li><a class="nav-link scrollto" href="\register">Register</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

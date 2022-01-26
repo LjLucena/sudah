@@ -47,7 +47,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="/list/appointments">Appointment</a></li>
+          <li><a class="nav-link scrollto active" href="/list/appointments">Appointment</a></li>
           <li><a class="nav-link scrollto" href="/list/pets">Pets Section</a></li>
           <li><a class="nav-link scrollto" href="/my-account">My Account</a></li>
         </ul>
@@ -87,6 +87,15 @@
                     </div>
                 </div>
                 @endif
+                @if(session('fail'))
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger">
+                            {{session('fail')}}
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div class="row">
                         <div class="col-md-6">
                           <h4>Select Branch First:</h4>  
@@ -99,7 +108,6 @@
                         </div>
                       </div>
                   <div class="row mt-4" id="setApp">
-
                   </div>
           
         </p>
@@ -157,13 +165,29 @@
       $('#setApp').load('/show/appointment/form/'+branch);
     }
 
+    function CheckAvailabilty(){
+      var branch = document.getElementById('branch').value;
+      var d = document.getElementById('app_date').value;
+      $('#showAvail').load('/show/avail/'+btoa(d)+'/'+btoa(branch));
+      $('#showSlot').hide();
+    }
+
+    function showAvail(){
+      var vetData = $('#vet option:selected').val();
+            var d = document.getElementById('app_date').value;
+            var branch = document.getElementById('branch').value;
+            if (vetData != null) {
+              $('#showSlot').show();
+              $('#showSlot').load('/show/time/'+btoa(vetData)+'/'+btoa(branch)+'/'+btoa(d));
+            } 
+    }
+
     function showTime(){
       $('#app_time').removeAttr('disabled');
       $('#pet').removeAttr('disabled');
       $('#reason').removeAttr('disabled');
     }
         
-
   </script>
 </body>
 

@@ -87,7 +87,7 @@
         <ul>
           <li><a class="nav-link scrollto " href="/list/appointments">Appointment</a></li>
           <li><a class="nav-link scrollto" href="/list/pets">Pets Section</a></li>
-          <li><a class="nav-link scrollto" href="/my-account">My Account</a></li>
+          <li><a class="nav-link scrollto active" href="/my-account">My Account</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

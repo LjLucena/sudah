@@ -22,14 +22,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($inventories as $item)
+                                     @foreach ($inventories as $item)
                                         <tr>
                                         <td>{{$item->Category->category_name}}</td>
                                         <td>{{$item->code}}</td>
                                         <td>{{$item->product_name}}</td>                   
                                         <td>{{$item->price}}</td>
                                         <td>
-                                            <a href="" class="btn btn-primary btn-sm" id="prod_id" data-id="{{$item->id}}" data-max="{{$item->quantity}}" data-toggle="modal"  data-target="#addProduct">Add</a>
+                                            <button class="btn btn-primary btn-sm" id="prod_id" onclick="addProduct({{$item->id}},{{$item->quantity}})" data-id="{{$item->id}}" data-max="{{$item->quantity}}" data-toggle="modal"  data-target="#addProduct">Add</button>
                                         </td>
                                         </tr>
                                     @endforeach
