@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!--section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section--><!-- End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -161,6 +161,16 @@
 </section>
 <!-- Close Content -->
 
+<div div="row">
+    <ul class="pagination pagination-lg justify-content-end">
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="kittycrunch">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="pedigree_adult" tabindex="-1">Next</a>
+        </li>
+    </ul>
+</div>
 
 <!-- Start Script-->
 <script src="ui/assets/js/jquery-1.11.0.min.js"></script>

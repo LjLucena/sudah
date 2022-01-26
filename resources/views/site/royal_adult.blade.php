@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!-- section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section><End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -125,12 +125,12 @@
                     <h6><b>Description</b></h6>
                     <p>
                     Royal Canin Adult Persian Dry Cat Food is a breed-specific diet for Persian pure breeds. Specialized kibble allows them to easily pick up, chew, and crunch away tartar buildup. Amino acids, vitamins, and omega-6 and omega-3 fatty acids promote healthy skin and a healthy coat. A complex blend of fibers helps control hairballs. And highly digestible proteins and prebiotics promote digestive health.
-
-<br/><br/><h6><b>FORMULATED FOR PUREBRED PERSIAN CATS:</b></h6> Royal Canin Persian Adult Cat Food is formulated to meet the nutritional needs of purebred Persian cats 1 year and older
-<br/><strong>SKIN AND COAT:</strong> Breed-specific nutrients promote skin and coat health, helping to keep a Persian's long hair soft and shiny
-<br/><strong>HAIRBALL MAINTENANCE:</strong> A complex blend of fibers to help cats pass ingested hair and reduce hairball formation
-<br/><strong>DIGESTIVE HEALTH:</strong> Highly digestible proteins and prebiotics help maintain healthy digestion
-<br/><strong>SPECIALIZED KIBBLE:</strong> Unique kibble is designed for the shortened jaw of a Persian cat and encourages chewing to help with oral care
+                        <br/><br/><h6><b>FORMULATED FOR PUREBRED PERSIAN CATS:</b></h6>
+                        Royal Canin Persian Adult Cat Food is formulated to meet the nutritional needs of purebred Persian cats 1 year and older
+                        <br/><br/><strong>SKIN AND COAT:</strong> Breed-specific nutrients promote skin and coat health, helping to keep a Persian's long hair soft and shiny
+                        <br/><br/><strong>HAIRBALL MAINTENANCE:</strong> A complex blend of fibers to help cats pass ingested hair and reduce hairball formation
+                        <br/><br/><strong>DIGESTIVE HEALTH:</strong> Highly digestible proteins and prebiotics help maintain healthy digestion
+                        <br/><br/><strong>SPECIALIZED KIBBLE:</strong> Unique kibble is designed for the shortened jaw of a Persian cat and encourages chewing to help with oral care
                     </p>
 
                     <h6><b>Guaranteed Analysis:</b></h6>
@@ -152,6 +152,16 @@
 </section>
 <!-- Close Content -->
 
+<div div="row">
+    <ul class="pagination pagination-lg justify-content-end">
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="royal_kitten">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="carrier" tabindex="-1">Next</a>
+        </li>
+    </ul>
+</div>
 
 <!-- Start Script-->
 <script src="ui/assets/js/jquery-1.11.0.min.js"></script>

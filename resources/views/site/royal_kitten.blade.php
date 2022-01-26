@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!--section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section>< End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -126,12 +126,13 @@
                     <p>Royal Canin Persian Kitten Dry Cat Food is an exclusive breed-specific diet formulated just for your Persian pure breed kitten. This kitten cat food gives your young cat a magnificent start with essential antioxidants and vitamins to strengthen immune systems. Highly digestible proteins and prebiotics support maturing digestive systems and healthy digestion. Essential nutrients like amino acids, vitamins, and omega-6 and omega-3 fatty acids promote healthy skin and a healthy coat, encouraging hair growth. And the specialized kibble is designed to make it easier for little Persian cat mouths to pick up and chew. For kittens under 4 months old, start with Royal Canin Mother & Babycat Dry or Wet Cat Food before transitioning to this formula.
 
                     <h6><b>Key Benefits</b></h6>
-Breed-specific dry kitten food formulated to meet the nutritional needs of a growing purebred Persian kitten up to 12 months old.
-<br/>Supports a young kitten’s immune system with an exclusive blend of antioxidants for optimal growth.
-<br/>Promotes healthy development of digestive systems with highly digestible proteins and prebiotics.
-<br/>Helps maintain skin and coat health with a precisely balanced formula of fatty acids and vitamins.
-<br/>Specialized kibble shape is designed for the small mouths of Persian kittens.</p>
-
+                    <ul>
+                      <li>Breed-specific dry kitten food formulated to meet the nutritional needs of a growing purebred Persian kitten up to 12 months old.</li>
+                      <li>Supports a young kitten’s immune system with an exclusive blend of antioxidants for optimal growth.</li>
+                      <li>Promotes healthy development of digestive systems with highly digestible proteins and prebiotics.</li>
+                      <li>Helps maintain skin and coat health with a precisely balanced formula of fatty acids and vitamins.</li>
+                      <li>Specialized kibble shape is designed for the small mouths of Persian kittens.</li>
+                    </ul>
                     <h6><b>Guaranteed Analysis:</b></h6>
                     <ul class="list-unstyled pb-3">
                         <li>Crude protein 30.1% min</li>
@@ -149,6 +150,16 @@ Breed-specific dry kitten food formulated to meet the nutritional needs of a gro
 </section>
 <!-- Close Content -->
 
+<div div="row">
+    <ul class="pagination pagination-lg justify-content-end">
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="royal_mini">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="royal_adult" tabindex="-1">Next</a>
+        </li>
+    </ul>
+</div>
 
 <!-- Start Script-->
 <script src="ui/assets/js/jquery-1.11.0.min.js"></script>

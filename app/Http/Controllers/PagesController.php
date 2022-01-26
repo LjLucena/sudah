@@ -195,6 +195,85 @@ class PagesController extends Controller
         return view ('site.royal_adult');
     }
 
+    public function products_others(){
+        return view ('site.products_others');
+    }
+
+    public function carrier(){
+        return view ('site.carrier');
+    }
+
+    public function gallon(){
+        return view ('site.gallon');
+    }
+
+    public function collar(){
+        return view ('site.collar');
+    }
+
+    public function pet_leash(){
+        return view ('site.pet_leash');
+    }
+
+    public function bowl(){
+        return view ('site.bowl');
+    }
+
+    public function bed(){
+        return view ('site.bed');
+    }
+
+    public function litter_box(){
+        return view ('site.litter_box');
+    }
+
+    public function pet_comb(){
+        return view ('site.pet_comb');
+    }
+
+    public function cat_condo(){
+        return view ('site.cat_condo');
+    }
+
+    public function products_health(){
+        return view ('site.products_health');
+    }
+
+    public function product_bioline_earmite(){
+        return view ('site.product_bioline_earmite');
+    }
+
+    public function product_bearing(){
+        return view ('site.product_bearing');
+    }
+
+    public function product_calcium(){
+        return view ('site.product_calcium');
+    }
+
+    public function product_dental(){
+        return view ('site.product_dental');
+    }
+
+    public function product_furmagic(){
+        return view ('site.product_furmagic');
+    }
+
+    public function product_lcvit(){
+        return view ('site.product_lcvit');
+    }
+
+    public function product_mondex(){
+        return view ('site.product_mondex');
+    }
+
+    public function product_nutrivet(){
+        return view ('site.product_nutrivet');
+    }
+
+    public function product_papimvp(){
+        return view ('site.product_papimvp');
+    }
 }
 
 
