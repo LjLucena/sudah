@@ -191,3 +191,26 @@ Route::get('/royal_puppy', 'PagesController@royal_puppy');
 Route::get('/royal_mini', 'PagesController@royal_mini');
 Route::get('/royal_kitten', 'PagesController@royal_kitten');
 Route::get('/royal_adult', 'PagesController@royal_adult');
+
+Route::get('/products_others', 'PagesController@products_others');
+Route::get('/carrier', 'PagesController@carrier');
+Route::get('/gallon', 'PagesController@gallon');
+Route::get('/collar', 'PagesController@collar');
+Route::get('/pet_leash', 'PagesController@pet_leash');
+Route::get('/bowl', 'PagesController@bowl');
+Route::get('/bed', 'PagesController@bed');
+Route::get('/litter_box', 'PagesController@litter_box');
+Route::get('/pet_comb', 'PagesController@pet_comb');
+Route::get('/cat_condo', 'PagesController@cat_condo');
+
+
+Route::get('/products_health', 'PagesController@products_health');
+Route::get('/product_bioline_earmite', 'PagesController@product_bioline_earmite');
+Route::get('/product_bearing', 'PagesController@product_bearing');
+Route::get('/product_calcium', 'PagesController@product_calcium');
+Route::get('/product_dental', 'PagesController@product_dental');
+Route::get('/product_furmagic', 'PagesController@product_furmagic');
+Route::get('/product_lcvit', 'PagesController@product_lcvit');
+Route::get('/product_mondex', 'PagesController@product_mondex');
+Route::get('/product_nutrivet', 'PagesController@product_nutrivet');
+Route::get('/product_papimvp', 'PagesController@papimvp');

@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!-- section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section><End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -116,23 +116,26 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Royal Canin Small Puppy 10kg</h1>
-                    <ul class="list-inline">
+                    <p>615php</p>
+                    <br/><ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Dog Food</b></h6>
                         </li>
                     </ul>
 
                     <h6><b>Description</b></h6>
-                    <p>Meets the high energy needs of small dogs while helping maintain a healthy weight with L-carnitine
-<br/>Supports skin and coat health with optimal levels of fatty acids like EPA and DHA
-<br/>Exclusive small, highly palatable kibble adapted for miniature jaws
-<br/>Your small dog has some big nutritional needs. That’s because small breed dogs actually have higher energy requirements than big dogs.
-<br/><br/>
-Not only that, these mini pooches have unique traits and are pretty picky when it comes to what’s put in their bowl.
-<br/><br/>
-Royal Canin Small Adult dry dog food is formulated to meet the unique nutritional needs of small breed adult dogs, as they actually require higher levels of calories per pound of body weight than large dogs. L-carnitine helps metabolize fat to help your dog maintain a healthy weight.
- Ideal levels of EPA and DHA support healthy skin and a beautiful, shiny coat. Plus, enhanced palatability helps satisfy even the pickiest eaters. Add a variety in texture with Royal Canin Adult Beauty wet dog food. And when your dog reaches their later years, there’s Royal Canin Small Adult 8+ and Small Aging 12+ to help keep them happy and healthy as they age.</p>
-
+                    <ul>
+                        <li>Meets the high energy needs of small dogs while helping maintain a healthy weight with L-carnitine.</li>
+                        <li>Supports skin and coat health with optimal levels of fatty acids like EPA and DHA.</li>
+                        <li>Exclusive small, highly palatable kibble adapted for miniature jaws.</li>
+                        <li>Your small dog has some big nutritional needs. That’s because small breed dogs actually have higher energy requirements than big dogs.</li>
+                        
+                        <li>Not only that, these mini pooches have unique traits and are pretty picky when it comes to what’s put in their bowl.</li>
+                        
+                        <li>Royal Canin Small Adult dry dog food is formulated to meet the unique nutritional needs of small breed adult dogs, as they actually require higher levels of calories per pound of body weight than large dogs. L-carnitine helps metabolize fat to help your dog maintain a healthy weight.</li>
+                        <li>Ideal levels of EPA and DHA support healthy skin and a beautiful, shiny coat. Plus, enhanced palatability helps satisfy even the pickiest eaters. Add a variety in texture with Royal Canin Adult Beauty wet dog food. And when your dog reaches their later years, there’s Royal Canin Small Adult 8+ and Small Aging 12+ to help keep them happy and healthy as they age.</li>
+                    </ul>
+                    <br/>
                     <h6><b>Guaranteed Analysis:</b></h6>
                     <ul class="list-unstyled pb-3">
                         <li>Crude protein 25% min</li>
@@ -153,6 +156,16 @@ Royal Canin Small Adult dry dog food is formulated to meet the unique nutritiona
 </section>
 <!-- Close Content -->
 
+<div div="row">
+    <ul class="pagination pagination-lg justify-content-end">
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="pedigree_puppy">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="royal_kitten" tabindex="-1">Next</a>
+        </li>
+    </ul>
+</div>
 
 <!-- Start Script-->
 <script src="ui/assets/js/jquery-1.11.0.min.js"></script>

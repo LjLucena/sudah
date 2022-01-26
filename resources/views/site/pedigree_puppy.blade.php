@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!-- section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section>< End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -116,7 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Pedigree Puppy Chicken, Egg and Milk 3kg</h1>
-                    <ul class="list-inline">
+                    <p>510php</p>
+                    <br/><ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Dog Food</b></h6>
                         </li>
@@ -142,13 +143,15 @@
                     </ul>
 
                     <h6><b>Feeding Guide</b></h6>
-                    <p>Toy dogs 3mos. (15-115g/day), 3-6mos. (35-130g/day), 6-9mos. (40-130g/day), 9-12mos. change to pedigree adult food
-                    <br/>Small dogs 3mos. (50-195g/day), 3-6mos. (115-220g/day), 6-9mos. (130-220g/day).
-                    <br/>Medium dogs 3mos. (90-375g/day), 3-6mos. (195-440g/day), 6-9mos. (220-440g/day), 9-12mos. (220-430g/day).
-                    <br/>Large dogs 3mos. (150-550g/day), 3-6mos. (375-731g/day), 6-9mos. (440-735g/day), 9-12mos. (440-740g/day), 12-18mos. (430-695g/day).
-                    <br/>You can increase or decrease the daily amount according to your dog’s activity level.
-                    <br/><br/>
-                    Always ensure fresh clean water is available.</p>
+                    <ul>
+                        <li>Toy dogs 3mos. (15-115g/day), 3-6mos. (35-130g/day), 6-9mos. (40-130g/day), 9-12mos. change to pedigree adult food</li>
+                        <li>Small dogs 3mos. (50-195g/day), 3-6mos. (115-220g/day), 6-9mos. (130-220g/day).</li>
+                        <li>Medium dogs 3mos. (90-375g/day), 3-6mos. (195-440g/day), 6-9mos. (220-440g/day), 9-12mos. (220-430g/day).</li>
+                        <li>Large dogs 3mos. (150-550g/day), 3-6mos. (375-731g/day), 6-9mos. (440-735g/day), 9-12mos. (440-740g/day), 12-18mos. (430-695g/day).</li>
+                        <li>You can increase or decrease the daily amount according to your dog’s activity level.</li>
+                        <br/><br/>
+                        <p>Always ensure fresh clean water is available.</p>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -157,6 +160,16 @@
 </section>
 <!-- Close Content -->
 
+<div div="row">
+    <ul class="pagination pagination-lg justify-content-end">
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="pedigree_adult">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="royal_puppy" tabindex="-1">Next</a>
+        </li>
+    </ul>
+</div>
 
 <!-- Start Script-->
 <script src="ui/assets/js/jquery-1.11.0.min.js"></script>

@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!-- section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section><End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -116,7 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Pedigree Adult with Beef & Vegetables 3kg</h1>
-                    <ul class="list-inline">
+                    <p>510php</p>
+                    <br/> <ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Dog Food</b></h6>
                         </li>
@@ -124,11 +125,14 @@
 
                     <h6><b>Description</b></h6>
                     <p>At Pedigree ®, everything we do is for the love of dogs. That's why we develop recipes based on research from the WALTHAM ® Center for Pet Nutrition to provide dogs the 5 signs of Good Health:
-                    <br/>1) Healthy Skin & Skiny Coat with Omega 6 & Zinc,  scientifically proven to promote healthier and shiner coat visible in 6 weeks!
-                    <br/>2) Strong Bones & Teeth with Calcium & Phosphorus
-                    <br/>3) Body System to work effectively with Vitamins & Minerals
-                    <br/>4) Digestive System with dietary fiber
-                    <br/>5) Strong musces with Protein</p>
+                    <br/>
+                    <ul>
+                    <li>1) Healthy Skin & Skiny Coat with Omega 6 & Zinc,  scientifically proven to promote healthier and shiner coat visible in 6 weeks!</li>
+                    <li>2) Strong Bones & Teeth with Calcium & Phosphorus</li>
+                    <li>3) Body System to work effectively with Vitamins & Minerals</li>
+                    <li>4) Digestive System with dietary fiber</li>
+                    <li>5) Strong musces with Protein</li>
+                    </ul>
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Avaliable Flavor :</b></h6>
@@ -153,6 +157,16 @@
 </section>
 <!-- Close Content -->
 
+<div div="row">
+    <ul class="pagination pagination-lg justify-content-end">
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="monello">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="pedigree_puppy" tabindex="-1">Next</a>
+        </li>
+    </ul>
+</div>
 
 <!-- Start Script-->
 <script src="ui/assets/js/jquery-1.11.0.min.js"></script>

@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!--section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section>< End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -116,7 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Royal Canin Small Puppy 10kg</h1>
-                    <ul class="list-inline">
+                    <p>850php</p>
+                    <br/><ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Dog Food</b></h6>
                         </li>
@@ -124,13 +125,14 @@
 
                     <h6><b>Description</b></h6>
                     <p>Royal Canin Small Puppy Dry Dog Food is targeted nutrition for your small dog’s healthy growth and development. It features all the proteins, minerals, and vitamins needed to support puppies as they grow. Small-sized, tasty dog kibble is designed for tiny teeth and picky eaters while promoting overall healthy development and well-being. And the highly digestible proteins and prebiotic ingredients in this puppy formula are easy on sensitive digestive systems and provide optimal stool quality.
-                    <<h6><b>Key Benefits</b></h6>
-                    Puppy dog food tailor-made for puppies up to 10 months old with an expected adult weight of 9-22 lb.
-                    <br/>Meets the high energy needs of small breed dogs during a puppy’s short, intense growth period.
-                    <br/>Exclusive small kibble size designed for little dogs with small jaws and picky appetites.
-                    <br/>Provides immune support with an exclusive blend of antioxidants and vitamins.
-                    <br/>Promotes healthy digestion through highly digestible proteins and prebiotics.</p>
-
+                    <h6><b>Key Benefits</b></h6>
+                    <ul>
+                        <li>Puppy dog food tailor-made for puppies up to 10 months old with an expected adult weight of 9-22 lb.</li>
+                        <li>Meets the high energy needs of small breed dogs during a puppy’s short, intense growth period.</li>
+                        <li>Exclusive small kibble size designed for little dogs with small jaws and picky appetites.</li>
+                        <li>Provides immune support with an exclusive blend of antioxidants and vitamins.</li>
+                        <li>Promotes healthy digestion through highly digestible proteins and prebiotics.</li>
+                    </ul>
                     <h6><b>Guaranteed Analysis:</b></h6>
                     <ul class="list-unstyled pb-3">
                         <li>Crude protein 29% min</li>

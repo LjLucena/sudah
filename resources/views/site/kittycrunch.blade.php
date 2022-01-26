@@ -44,7 +44,7 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center justify-content-center">
+<!--section id="hero" class="d-flex align-items-center justify-content-center">
 <div class="container" data-aos="fade-up">
 
     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -55,7 +55,7 @@
     </div>
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
 </div>
-</section><!-- End Hero -->
+</section--><!-- End Hero -->
 
 <main id="main">
 <!-- Start Content -->
@@ -116,7 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">KITTY CRUNCH 60g</h1>
-                    <ul class="list-inline">
+                    <p>70php</p>
+                    <br/><ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Cat Treats</b></h6>
                         </li>
@@ -148,10 +149,11 @@ KittyCrunch is produced to perfection for cats. With a range of tasty flavors an
                     </ul>
 
                     <h6><b>Feeding Instructions</b></h6>
-                    <p>Feed 47grams per 2kg of body weight per day.<br/>
-The amount fed can be adjusted according to the age, size and activity of your cat.<br/>
-Remember to provide fresh water for your cat at all time.
-                    </p>
+                    <ul>
+                    <li>Feed 47grams per 2kg of body weight per day.</li>
+                    <li>The amount fed can be adjusted according to the age, size and activity of your cat.</li>
+                    <li>Remember to provide fresh water for your cat at all time.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -160,6 +162,16 @@ Remember to provide fresh water for your cat at all time.
 </section>
 <!-- Close Content -->
 
+<div div="row">
+    <ul class="pagination pagination-lg justify-content-end">
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="jerhigh">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="monello" tabindex="-1">Next</a>
+        </li>
+    </ul>
+</div>
 
 <!-- Start Script-->
 <script src="ui/assets/js/jquery-1.11.0.min.js"></script>
