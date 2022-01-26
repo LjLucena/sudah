@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Species;
 use App\Breed;
+use App\ActivityLog;
 
 class BreedController extends Controller
 {
@@ -19,6 +20,10 @@ class BreedController extends Controller
         $breed->breed_name = $request->name;
         $breed->species_id = $request->species;
         $breed->save();
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Added Breed->".$breed->breed_name;
+                $activity->save();
         return redirect()->back()->with('success','New Breed Saved');
     }
 
@@ -33,6 +38,10 @@ class BreedController extends Controller
         $breed->breed_name = $request->name;
         $breed->species_id = $request->species;
         $breed->save();
+        $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Update Breed->".$breed->breed_name;
+                $activity->save();
         return redirect()->back()->with('success','Updated Breed');
     }
 }

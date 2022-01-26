@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Species;
+use App\ActivityLog;
 
 class SpeciesController extends Controller
 {
@@ -17,6 +18,12 @@ class SpeciesController extends Controller
         $species = new species;
         $species->species_name = strtolower($request->name);
         $species->save();
+
+        $activity = new ActivityLog;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "New Species saved";
+        $activity->save();
+
         return redirect()->back()->with('success','New Species Saved');
     }
 
@@ -29,6 +36,12 @@ class SpeciesController extends Controller
         $species = Species::find($request->id);
         $species->species_name = strtolower($request->name);
         $species->save();
+
+        $activity = new ActivityLog;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Species updated-> ".$species->species_name;
+        $activity->save();
+
         return redirect()->back()->with('success','Updated Species');
     }
 }

@@ -24,6 +24,7 @@ Route::get('/forget-password', 'Auth\ForgotPasswordController@showForgetPassword
 Route::post('/forget-password', 'Auth\ForgotPasswordController@submitForgetPasswordForm')->name('forget.password.post'); 
 Route::get('/reset-password/{token}', 'Auth\ForgotPasswordController@showResetPasswordForm')->name('reset.password.get');
 Route::post('/reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
+Route::get('/sms','SmsController@index');
 
 Route::get('/superadmin', 'AccountController@superadmin')->middleware('auth');
 Route::post('/add/new/admin', 'AccountController@save_admin')->middleware('auth');
@@ -52,6 +53,7 @@ Route::post('/add/new/branch_inventory', 'InventoryController@save_branchInvento
 
 //Main Inventory
 Route::get('/inventory', 'InventoryController@main_list')->middleware('auth');
+Route::get('/category/list', 'InventoryController@category_list')->middleware('auth');
 Route::get('/edit/inventory/{id}', 'InventoryController@inventory_edit')->middleware('auth');
 Route::post('/edit/inventory/{id}', 'InventoryController@inventory_update')->middleware('auth');
 Route::get('/outOfStock/inventory', 'InventoryController@outOfStock')->middleware('auth');
@@ -61,6 +63,8 @@ Route::get('/archives/inventory', 'InventoryController@archive_list')->middlewar
 Route::post('/addstock/inventory', 'InventoryController@stock')->middleware('auth');
 Route::get('/add/new/inventory', 'InventoryController@addInventory')->middleware('auth');
 Route::post('/add/new/inventory', 'InventoryController@saveInventory')->middleware('auth');
+Route::post('/add/new/category', 'InventoryController@saveCategory')->middleware('auth');
+Route::post('/update/category', 'InventoryController@updateCategory')->middleware('auth');
 
 // Accounts
 Route::get('/accounts/{role}', 'AccountController@accounts')->middleware('auth');
@@ -100,6 +104,14 @@ Route::post('/change/pet/photo', 'PagesController@pet_photo_update')->middleware
 Route::get('/show/time/{id}/{branch}/{date}', 'PagesController@show_time')->middleware('auth');
 Route::get('/show/pet/{date}', 'PagesController@show_pet')->middleware('auth');
 Route::get('/show/avail/{date}/{branch}', 'PagesController@available')->middleware('auth');
+Route::get('/show/slot/{id}/{branch}/{date}', 'PagesController@showAvailSlot')->middleware('auth');
+Route::get('/show/vet/{date}/{branch}', 'PagesController@showAvailVet')->middleware('auth');
+Route::post('/edit/apptDate', 'PagesController@updateApptDate')->middleware('auth');
+Route::get('/edit/apptTime/{id}', 'PagesController@editApptTime')->middleware('auth');
+Route::post('/edit/apptTime/{id}', 'PagesController@updateApptTime')->middleware('auth');
+Route::post('/update/reason', 'PagesController@updateApptReason')->middleware('auth');
+Route::post('/update/services', 'PagesController@updateApptServices')->middleware('auth');
+
 
 Route::get('/pet/{id}', 'PetController@pet_profile')->middleware('auth');
 Route::get('/teams', 'PagesController@teams');

@@ -11,6 +11,7 @@
     <div class="col-12">
         <div class="row" style="margin-top:10px;">
             <div class="col-12">
+<a href="/category/list" class="btn btn-sm btn-outline-primary">Product Category List</a>
                 <form action="" method="post">                  
                     @csrf
                     <div class="row justify-content-center mt-3">

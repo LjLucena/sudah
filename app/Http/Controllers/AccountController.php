@@ -48,7 +48,11 @@ class AccountController extends Controller
         if ($request->role_id == 1) {
             if (User::where('email', $request->email)->exists()){
                 return redirect()->back()->with('fail',"Registration Unsuccessful. Email already registered. Please use different email.");
-            } else {
+            } 
+            elseif(User::where('username', $request->u)->exists()){
+                return redirect()->back()->with('fail',"Registration Unsuccessful. Username already registered. Please use different username.");
+            }
+            else {
                 $profile = new Profile;
             $profile->last_name= $request->ln;
             $profile->first_name= $request->fn;
@@ -77,7 +81,7 @@ class AccountController extends Controller
             $user->save();
             $email = $request->email;
             
-            
+            $name = $user->UserProfile->first_name." ".$user->UserProfile->middle_name." ".$user->UserProfile->last_name." ".$user->UserProfile->suffix;
             $link = Str::random(30);
             UserActivation::create(['user_id'=>$user->id,'token'=>$link]);
 
@@ -87,6 +91,12 @@ class AccountController extends Controller
                 $message->to($email)->subject('Account Activation');
 
             });
+
+            $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Created client account->".$name;
+                $activity->save();
+
             return redirect()->back()->with('success','Account Created! Please Activate your account.');
             }
             
@@ -118,6 +128,11 @@ class AccountController extends Controller
             $user->branch_id = $request->branch;
             $user->stat = 1;
             $user->save();
+            $name = $user->UserProfile->first_name." ".$user->UserProfile->middle_name." ".$user->UserProfile->last_name." ".$user->UserProfile->suffix;
+            $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Created ".$user->UserRoleI." account->".$name;
+                $activity->save();
             return redirect()->back()->with('success','Account Created');
         }
     }
@@ -175,6 +190,11 @@ class AccountController extends Controller
         $profile->dob= $request->dob;
         $profile->save();
 
+        $name = $user->UserProfile->first_name." ".$user->UserProfile->middle_name." ".$user->UserProfile->last_name." ".$user->UserProfile->suffix;
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Updated account->".$name;
+                $activity->save();
         
         return redirect()->back()->with('success','Account Updated!');
     }
@@ -209,6 +229,11 @@ class AccountController extends Controller
             $acc->password = md5($request->pw);
             $acc->save();
 
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Update Password";
+                $activity->save();
+
             return redirect()->back()->with('success','Password Changed!');
         } else {
             $input_old_pass = md5($request->p);
@@ -217,6 +242,11 @@ class AccountController extends Controller
             if($current_pass ===  $input_old_pass){
                 $user->password = md5($request->pw);
                 $user->save();
+
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Update Password";
+                $activity->save();
 
                 return redirect()->back()->with('success','Password Changed!');
             }
@@ -243,6 +273,7 @@ class AccountController extends Controller
             $user->am_app = $request->max_am_app;
             $user->pm_app = $request->max_pm_app;
         }
+        
         $user->save();
         return redirect("/accounts"."/".strtolower($user->UserRoleI->role))->with('success','Assign Branch Save');
     }
@@ -289,8 +320,11 @@ class AccountController extends Controller
         $profile->province= $request->province;
         $profile->dob= $request->dob;
         $profile->save();
-
-        
+        $name = $user->UserProfile->first_name." ".$user->UserProfile->middle_name." ".$user->UserProfile->last_name." ".$user->UserProfile->suffix;
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Changed account details->".$name;
+                $activity->save();
         return redirect()->back()->with('success','Account Details Updated!');
     }
 
@@ -299,7 +333,11 @@ class AccountController extends Controller
         $acc = User::find($id); 
         $acc->stat = 0;
         $acc->save();
-
+        $name = $acc->UserProfile->first_name." ".$acc->UserProfile->middle_name." ".$acc->UserProfile->last_name." ".$acc->UserProfile->suffix;
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Archive account details->".$name;
+                $activity->save();
         return redirect()->back()->with('success','Account Decativated!');
         
     }
@@ -310,6 +348,11 @@ class AccountController extends Controller
         $acc->stat = 1;
         $acc->save();
 
+        $name = $acc->UserProfile->first_name." ".$acc->UserProfile->middle_name." ".$acc->UserProfile->last_name." ".$acc->UserProfile->suffix;
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Activate account details->".$name;
+                $activity->save();
         return redirect()->back()->with('success','Account Activated!');
         
     }

@@ -13,6 +13,7 @@ use App\Account;
 use App\Branch;
 use App\Species;
 use App\Profile;
+use App\ActivityLog;
 use DB;
 
 use Mail;
@@ -35,6 +36,12 @@ class AppointmentController extends Controller
             $message->to($email)->subject('Appointment Approved!');
 
         });
+
+        $activity = new ActivityLog;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Approve Appointment for ".$appointment->AppointmentPet->name;
+        $activity->save();
+
         return redirect()->back()->with('success','Appointment Approved');
     }
     
@@ -107,6 +114,24 @@ class AppointmentController extends Controller
             }
             $schedule->day_max = $schedule->pm_max + $schedule->am_max;
             $schedule->save();
+
+            $date= $appointment->date_appointment;
+
+            $user = User::find(Auth::user()->id);
+            $email = $user->email;
+            $name = $user->UserProfile->first_name;
+
+            Mail::send('email.appointment_client_cancel', ['date' => $date,'name'=>$name], function($message) use ($date, $email) {
+
+                $message->to($email)->subject('Appointment Cancellation on '.$date.' ');
+
+            });
+
+            $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Cancel Appointment for ".$pet->name;
+            $activity->save();
+
         return redirect()->back()->with('success',$success);
     }
 
@@ -144,7 +169,10 @@ class AppointmentController extends Controller
         
                 });
             }
-            
+            $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Cancel Appointment for ".$pet->name;
+            $activity->save();
             
         return redirect()->back()->with('success',$success);
     }
@@ -159,20 +187,46 @@ class AppointmentController extends Controller
 
     public function save_appt(Request $request){
         // return dd($request);
-        $pet = Pet::find($request->pet);
-        $vet = Schedules::where('date', $request->date)->where('branch_id', Auth::user()->branch_id)->first();
+        $check = Appointment::where('date_appointment',$request->date_appointment)->where('pet_id',$request->patient_id)->whereIn('status',['Approved'])->first();
+        if ($check == null) {
+            $pet = Pet::find($request->pet);
+            $vet = Schedules::where('date', $request->date)->where('branch_id', Auth::user()->branch_id)->first();
 
-        $data = new Appointment;
-        $data->user_id = $pet->user_id;
-        $data->pet_id= $pet->id;
-        $data->branch_id = Auth::user()->branch_id;
-        $data->vet_id = $vet->vet_id;
-        $data->schedule_id = $vet->id;
-        $data->date_appointment = $request->date;
-        $data->time_appointment = $request->time;
-        $data->services = json_encode($request->services);
-        $data->status = "Approved";
-        $data->save();
-        return redirect()->back()->with('success','Appointment Added Successfully');
+            $data = new Appointment;
+            $data->user_id = $pet->user_id;
+            $data->pet_id= $pet->id;
+            $data->branch_id = Auth::user()->branch_id;
+            $data->vet_id = $vet->vet_id;
+            $data->schedule_id = $vet->id;
+            $data->date_appointment = $request->date;
+            $data->time_appointment = $request->time;
+            $data->services = json_encode($request->services);
+            $data->status = "Approved";
+            $data->save();
+
+            $date= $date->date_appointment;
+
+            $user = User::find($data->user_id);
+            $email = $user->email;
+            $name = $user->UserProfile->first_name;
+
+            Mail::send('email.appointment_made_Secretary', ['date' => $date,'name'=>$name,'pet'=>$pet->name], function($message) use ($date, $email) {
+
+                $message->to($email)->subject('Scheduled Appointment on '.$date.' ');
+            
+            });
+
+            $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Added Appointment for ".$pet->name;
+            $activity->save();
+
+            return redirect()->back()->with('success','Appointment Added Successfully');
+        }
+        
+        else {
+            $pet = Pet::find($request->patient_id);
+            return redirect()->back()->with('fail','Appointment not Allowed! Pet: '.$pet->name.' has already a "'.$check->status.'" appointment');
+        }
     }
 }

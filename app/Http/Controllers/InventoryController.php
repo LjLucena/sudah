@@ -22,6 +22,11 @@ class InventoryController extends Controller
         return view('inventory.branch_list')->with('inventories',$inventories)->with('branch',Auth::user()->branch_id);
     }
 
+    public function category_list(){
+        $categories = Category::all();
+        return view('inventory.category_list')->with('categories',$categories);
+    }
+
     public function branchOutOfStock_list(){
         $inventories = InvInOut::where('branch_id',Auth::user()->branch_id)->where('stock', 0)->where('stat',1)->paginate(10);
         return view('inventory.outofstock')->with('inventories',$inventories)->with('branch',Auth::user()->branch_id);
@@ -49,7 +54,11 @@ class InventoryController extends Controller
             $inv->out = 0;
             $inv->stock = $request->in;
             $inv->stat = 1;
-            $inv->save();        
+            $inv->save();      
+            $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Update Inventory,product added->".$inv->Product->product_name;
+                $activity->save();  
             return redirect()->back()->with('success','Product Added!');
         }
         else {    
@@ -68,6 +77,11 @@ class InventoryController extends Controller
             $main_inv = Inventory::find($inv->inventory_id);
             $main_inv->quantity = $main_inv->quantity - $request->in;
             $main_inv->save();
+
+            $activity = new Activity;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Update Inventory,product stock added->".$inv->Product->product_name;
+            $activity->save();  
 
             return redirect()->back()->with('success','Product Stock Added!');
         
@@ -157,6 +171,12 @@ class InventoryController extends Controller
         $inv->quantity = $request->qty;
         $inv->remarks = $request->remarks;
         $inv->save();
+
+            $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Inventory updated-> ".$inv->product_name;
+            $activity->save();
+
         return redirect()->back()->with('success','Inventory Updated!');
     }
 
@@ -169,7 +189,11 @@ class InventoryController extends Controller
         $inv = Inventory::find($request->id);
         
         $inv->quantity = $request->qty;
-        $inv->save();        
+        $inv->save();     
+        $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Product stock added->".$inv->product_name;
+            $activity->save();   
         return redirect()->back()->with('success','Product Stock Added!');
         
     }
@@ -196,6 +220,12 @@ class InventoryController extends Controller
         $inv = Inventory::find($id);
         $inv->stat = 0;
         $inv->save();
+
+        $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Inventory product ".$inv->product_name."-archived.";
+            $activity->save();
+
         return redirect()->back()->with('success','Product Archived!');
     }
 
@@ -210,6 +240,10 @@ class InventoryController extends Controller
         $inv = Inventory::find($id);
         $inv->stat = 1;
         $inv->save();
+        $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Inventory product ".$inv->product_name."-activated.";
+            $activity->save();
         return redirect()->back()->with('success','Product Activated!');
     }
 
@@ -228,9 +262,43 @@ class InventoryController extends Controller
             $inv->remarks = $request->remarks;
             $inv->stat = 1;
             $inv->save();
+
+            $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Inventory product->".$main_inv->product_name."added.";
+            $activity->save();
+
            return redirect()->back()->with('success','Inventory Added!');
         
     }
+
+    public function saveCategory(Request $request){
+            $cat = new Category;
+            $cat->category_name = $request->name;
+            $cat->save();
+
+            $activity = new ActivityLog;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "New Category added.";
+            $activity->save();
+
+           return redirect()->back()->with('success','Category Added!');
+        
+    }
+
+    public function updateCategory(Request $request){
+        $cat = Category::find($request->id);
+        $cat->category_name = $request->name;
+        $cat->save();
+
+        $activity = new ActivityLog;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Category ".$cat->category_name." updated.";
+        $activity->save();
+
+       return redirect()->back()->with('success','Category Updated!');
+    
+}
 
     
 }

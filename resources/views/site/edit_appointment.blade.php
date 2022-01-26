@@ -87,7 +87,8 @@
                     </div>
                 </div>
                 @endif
-                @if(session('fail'))
+</p><p>
+@if(session('fail'))
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-danger">
@@ -96,95 +97,110 @@
                     </div>
                 </div>
                 @endif
+</p>
+                
                 <div class="row">
-                    <div class="col">
-                            <div class="row">
-                                    <h4>
-                                        Pet Name: {{$appointment->AppointmentPet->name}}
-                                    </h4>
-                                <div class="col-md-6">
-                                    <label for="branch">Branch:</label> 
-                                    <select id="branch" onchange="seeForm()" class="form-control" required>
-                                        <option value="{{$appointment->branch_id}}" selected="true">{{$appointment->AppointmentBranch->name}}</option>
-                                        @foreach ($branches as $branch)
-                                            <option value="{{$branch->id}}">{{$branch->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                    <div class="col-md-8 border-end">
+                        <h2>Appointment Details for Pet: <b>{{$appointment->AppointmentPet->name}}</b></h2>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Branch:</strong></td>
+                                            <td>{{$appointment->AppointmentBranch->name}}</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Vet:</strong></td>
+                                            <td>{{$appointment->AppointmentVet->UserProfile->first_name}} {{$appointment->AppointmentVet->UserProfile->middle_name}} {{$appointment->AppointmentVet->UserProfile->last_name}} {{$appointment->AppointmentVet->UserProfile->suffix}}</td>
+                                            <td></td>
+                                          </tr>
+                                        <tr>
+                                            <td><strong>Date:</strong></td>
+                                            <td>{{$appointment->date_appointment}}</td>
+                                            <td class="text-center"><button class="btn btn-sm btn-secondary" onclick="showDateForm()">Change</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Time:</strong></td>
+                                            <td>{{$appointment->time_appointment}}</td>
+                                            <td class="text-center"><button class="btn btn-sm btn-secondary" onclick="showTimeForm({{$appointment->id}})">Change</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Reason:</strong></td>
+                                            <td>{{$appointment->reason}}</td>
+                                            <td class="text-center"><button class="btn btn-sm btn-secondary" onclick="showReasonForm()">Edit</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Services Requested:</strong></td>
+                                            <td>
+                                              @foreach ($services as $service)
+                                                  {{$service->service}} @if($services->count() > 1) | @endif
+                                              @endforeach
+                                            </td>
+                                            <td class="text-center"><button class="btn btn-sm btn-secondary" id="showServices" data-id="{{$services}}">Edit</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="row" id="showForm">
-
-                            </div>
-                        
-                            <div class="row" id="Form">
-                            <form action="" method="post"> @csrf
-                                
-                            <div class="row" id="row1">
-                                <div class="col-md">
-                                    <input type="hidden" name="branch_id" value="{{$appointment->branch_id}}">
-                                    Date of Appointment
-                                    <input type="date"  onchange="CheckAvailabilty()" name="date_appointment" min='<?php echo date("Y-m-d"); ?>' value="{{$appointment->date_appointment}}" class="form-control" required>
-                                </div>
-                                <div class="col-md">
-                                        Veterinarian:
-                                        <select name="vet" id="vet" onchange="showAvail()" class="form-control" required>
-                                        @if($appointment->VetName)
-                                            <option value="{{$appointment->vet_id}}" selected="true">{{$appointment->VetName->UserProfile->first_name}} {{$appointment->VetName->UserProfile->middle_name}} {{$appointment->VetName->UserProfile->last_name}} {{$appointment->VetName->UserProfile->suffix}}</option>
-                                        @endif
-                                        </select>
-                                </div>
-                            </div>
-                            <div class="row" id="row2">
-                                @if($appointment->time_appointment == "08:00AM - 12:00AM")
-                                    <div class="col-md-6">
-                                        Time of Appointment
-                                        <input type="hidden" name="sched" value="{{$slot->id}}">
-                                        <select name="time_appointment" id="app_time" class="form-control" required>
-                                            <option value="08:00AM - 12:00AM" selected="true">Morning (08:00AM - 11:00AM)</option>
-                                            <option value="01:00PM - 05:00PM">Afternoon (01:00PM - 04:00PM)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6" id="slot">
-                                    
-                                    </div>
-                                @else
-                                    <div class="col-md-6">
-                                        Time of Appointment
-                                        <select name="time_appointment" id="app_time" class="form-control" required>
-                                            <option value="08:00AM - 12:00AM">Morning (08:00AM - 11:00AM)</option>
-                                            <option value="01:00PM - 05:00PM" selected="true">Afternoon (01:00PM - 04:00PM)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6" id="slot">
-                                    
-                                    </div>
-                                @endif
-                                <div class="col-md">
-                                    Reason
-                                    <textarea name="reason" id="reason" value="{{$appointment->reason}}" placeholder="{{$appointment->reason}}" class="form-control" required></textarea>
-                                </div>
-                            </div>
-                            <div class="row">  
-                                <h3>Services</h3>
-                                <div class="col-md-6">
-                                <input type="checkbox" name="services[]" id="s1" value="1" Checked> <label for="s1">Consultation (Php 100)</label><br />                       
-                                <input type="checkbox" name="services[]" id="s2" value="2"> <label for="s2">Vaccination (Php 350)</label><br />                 
-                                <input type="checkbox" name="services[]" id="s3" value="3"> <label for="s3">Deworming (Php 100)</label><br />         
-                                <input type="checkbox" name="services[]" id="s4" value="4"> <label for="s4">Pet Grooming (Php 300)</label><br />   
-                                <input type="checkbox" name="services[]" id="s5" value="5"> <label for="s5">Vet Dental Care</label><br />             
-                                <input type="checkbox" name="services[]" id="s10"value="10"> <label for="s10"> Pet Lodging</label><br />     
-                                <input type="checkbox" name="services[]" id="s11"value="11"> <label for="s11"> Pet Wellness</label><br />
-                                </div>
-                            </div>
-
-
-                        </form>
-
-                            </div>
+                        </div>
                     </div>
-                </div>
-          
-        </p>
+                    
+                    <div class="col-md-4" id="show">
+                              <div class="row" id="changeDateForm">
+                              <h4>Change Date of Appointment</h4>
+                                  <form action="/edit/apptDate" method="post">
+                                    @csrf
+                                    <div class="col-md">
+                                        <input type="hidden" name="branch_id" value="{{$appointment->branch_id}}">
+                                        <input type="hidden" name="appt_id" value="{{$appointment->id}}">
+                                        Date of Appointment
+                                        <input type="date"  onchange="CheckAvailabilty(document.getElementById('app_date').value,{{$appointment->branch_id}})" name="date_appointment" min='<?php echo date("Y-m-d"); ?>' class="form-control" id="app_date" required>
+                                    </div>
+                                    <div class="col-md" id="showAvail">
+
+                                    </div>
+                                    
+                                    <div class="col-md" id="showSlot">
+
+                                    </div>
+                                    <div class="col-md">
+                                          <button type="submit" id="submitBtn" class="btn btn-sm btn-success mt-3 float-right">Save</button>
+                                    </div>
+                                  </form>
+                              </div>
+                              <div class="row" id="changeTimeForm">
+                                  
+                              </div>
+                              <div class="row" id="changeReasonForm">
+                                <h4>Update Reason</h4>
+                                  <form action="/update/reason" method="post">
+                                    @csrf 
+                                    <input type="hidden" name="appt_id" value="{{$appointment->id}}">
+                                    <label for="reason">Reason:</label>
+                                    <input type="textarea" name="reason" class="form-control">
+                                    <button type="submit" class="mt-3 btn btn-sm btn-success">Save</button>
+                                  </form>
+                              </div>
+                              <div class="row" id="changeServicesForm">  
+                                <h4>Update Services</h4>
+                                <form action="/update/services" method="post">
+                                  @csrf 
+                                  <div class="col-md-6">
+                                    <input type="hidden" name="appt_id" value="{{$appointment->id}}">
+                                    <input type="checkbox" class="service1" name="services[]" id="s1" value="1"> <label for="s1">Consultation (Php 100)</label><br />                       
+                                    <input type="checkbox" class="service2" name="services[]" id="s2" value="2"> <label for="s2">Vaccination (Php 350)</label><br />                 
+                                    <input type="checkbox" class="service3" name="services[]" id="s3" value="3"> <label for="s3">Deworming (Php 100)</label><br />         
+                                    <input type="checkbox" class="service4" name="services[]" id="s4" value="4"> <label for="s4">Pet Grooming (Php 300)</label><br />   
+                                    <input type="checkbox" class="service5" name="services[]" id="s5" value="5"> <label for="s5">Vet Dental Care</label><br />             
+                                    <input type="checkbox" class="service10" name="services[]" id="s10"value="10"> <label for="s10"> Pet Lodging</label><br />     
+                                    <input type="checkbox" class="service11" name="services[]" id="s11"value="11"> <label for="s11"> Pet Wellness</label><br />
+                                    <button type="submit" class="btn btn-sm btn-success mt-4" >Save</button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                </div>  
       </div>
     </section>
 
@@ -208,29 +224,90 @@
   
   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script>
-    
+      $(document).ready(function(){
 
-    function seeForm(){
-      var branch = document.getElementById('branch').value;
-      $('#Form').remove();
-      $('#showForm').load('/show/appointment/form/'+branch);
-    }
+        $('#changeDateForm').hide();
+        $('#submitBtn').hide();
+        $('#changeReasonForm').hide();
+        $('#changeServicesForm').hide();
 
-    function CheckAvailabilty(){
-      var branch = document.getElementById('branch_id').value;
-      var d = document.getElementById('app_date').value;
-      $('#showAvail').load('/show/avail/'+btoa(d)+'/'+btoa(branch));
-      $('#showSlot').hide();
-    }
-
-    function showAvail(){
-      var vetData = $('#vet option:selected').val();
+        $('#app_time').change(function(){
             var d = document.getElementById('app_date').value;
-            var branch = document.getElementById('branch').value;
-            if (vetData != null) {
+                var time = $('#app_time option:selected').val();
+                if (time == "08:00AM - 12:00AM") {
+                    var am = $('#amMax').val();
+                    $('#slot').html('Slot:<input type="text" placeholder="'+am+'" class="form-control" disabled>');
+                } else {
+                    var pm = $('#pmMax').val();
+                    $('#slot').html('Slot:<input type="text" placeholder="'+pm+'" class="form-control" disabled>');
+                }
+            });
+        
+            $('#showServices').click(function(){
+              $('#changeDateForm').hide();
+                $('#changeTimeForm').hide();
+                $('#changeReasonForm').hide();
+                $('#changeServicesForm').show();
+                var services = $('#showServices').data('id');
+                for (let index = 0; index < services.length; index++) {
+                  var one = document.getElementById('s1');
+                  var two = document.getElementById('s2');
+                  var three = document.getElementById('s3');
+                  var four = document.getElementById('s4');
+                  var five = document.getElementById('s5');
+                  var six = document.getElementById('s10');
+                  var seven = document.getElementById('s11');
+                  if(services[index]['id'] == 1) one.checked = true;
+                  else if(services[index]['id'] == 2) two.checked = true;
+                  else if(services[index]['id'] == 3) three.checked = true;
+                  else if(services[index]['id'] == 4) four.checked = true;
+                  else if(services[index]['id'] == 5) five.checked = true;
+                  else if(services[index]['id'] == 10) six.checked = true;
+                  else if(services[index]['id'] == 11) seven.checked = true;
+                }
+            });
+       
+            
+      });
+
+      function CheckAvailabilty(date,branch){
+        $('#showAvail').load('/show/vet/'+btoa(date)+'/'+btoa(branch));
+        //$('#showSlot').hide();
+      }
+
+      function showDateForm(){
+        $('#changeTimeForm').hide();
+        $('#changeReasonForm').hide();
+        $('#changeServicesForm').hide();
+        $('#changeDateForm').show();
+      }
+
+      function showTimeForm(id){
+        $('#changeDateForm').hide();
+        $('#changeReasonForm').hide();
+        $('#changeServicesForm').hide();
+        $('#changeTimeForm').show();
+        $('#changeTimeForm').load('/edit/apptTime/'+id);
+      }
+
+      function showReasonForm(){
+        $('#changeDateForm').hide();
+        $('#changeTimeForm').hide();
+        $('#changeServicesForm').hide();
+        $('#changeReasonForm').show();
+      }
+
+      
+
+      
+    function showAvail(){
+            var vet = $('#vet option:selected').val();
+            var d = document.getElementById('app_date').value;
+            var branch = $('#sched_branch').data('id');
+            if (vet != null) {
               $('#showSlot').show();
-              $('#showSlot').load('/show/time/'+btoa(vetData)+'/'+btoa(branch)+'/'+btoa(d));
-            } 
+              $('#showSlot').load('/show/slot/'+btoa(vet)+'/'+btoa(branch)+'/'+btoa(d));
+            }
     }
         
   </script>

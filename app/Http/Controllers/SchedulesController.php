@@ -7,6 +7,7 @@ use App\Account;
 use App\Role;
 use App\Profile;
 use App\User;
+use App\ActivityLog;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -36,7 +37,14 @@ class SchedulesController extends Controller
         $sched = Schedules::find($request->id);
         $sched->am_max = $request->am;
         $sched->pm_max = $request->pm;
+        $sched->day_max = $sched->am_max + $sched->pm_max;
         $sched->save();
+        
+        $activity = new ActivityLog;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Schedule- max appointment updated";
+        $activity->save();
+
         return redirect()->back()->with('success','Max Appointment Updated!');
     }
 
@@ -66,6 +74,11 @@ class SchedulesController extends Controller
                 $sched->pm_max = $request->pm;
                 $sched->day_max = $request->pm + $request->am;
                 $sched->save();
+                
+                $activity = new ActivityLog;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Schedule Added for Branch: ".$sched->Branch_Name->name." Date: ".$sched->date;
+                $activity->save();
             }
             else break;
         }

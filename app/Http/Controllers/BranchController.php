@@ -12,9 +12,12 @@ use App\Species;
 use App\Color;
 use App\Profile;
 use App\User;
+use App\ActivityLog;
 use App\Medical;
 use Auth;
+use Mail;
 
+use Illuminate\Support\Str;
 class BranchController extends Controller
 {
     public function branches(){
@@ -34,6 +37,11 @@ class BranchController extends Controller
         $branch->status ="Active";
         $branch->stat ="1";
         $branch->save();
+
+        $activity = new Activity;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "New branch created";
+        $activity->save();
         return redirect()->back()->with('success','New Branch Saved');
     }
 
@@ -69,6 +77,11 @@ class BranchController extends Controller
         $branch->b_number = $request->contact;
         $branch->save();
 
+        $activity = new Activity;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Branch".$branch->name." updated";
+        $activity->save();
+
         return redirect()->back()->with('success','Branch Updated!');
 
 
@@ -100,8 +113,18 @@ class BranchController extends Controller
         $user->email = $request->email;
         $user->username = $request->u;
         $user->password = md5($request->p);
-        $user->stat = 1;
+        $user->stat = 0;
         $user->save();
+        $email = $request->email;
+        $link = Str::random(30);
+            UserActivation::create(['user_id'=>$user->id,'token'=>$link]);
+
+            $userArray = $user->toArray();
+            Mail::send('email.activation', ['link' => $link], function($message) use ($email) {
+
+                $message->to($email)->subject('Account Activation');
+
+            });
 
         $pet = new Pet;
         $pet->user_id = $user->id;
@@ -133,6 +156,12 @@ class BranchController extends Controller
         $med->appointment_id = $data->id;
         $med->assessment = $request->assessment;
         $med->save();  
+
+        $activity = new Activity;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Account created for walk in client.";
+        $activity->save();
+
         return redirect()->back()->with('success','Client Account Created');
     }
 

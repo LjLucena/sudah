@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Color;
+use App\ActivityLog;
 
 class ColorController extends Controller
 {
@@ -17,6 +18,10 @@ class ColorController extends Controller
         $color = new color;
         $color->color_name = strtolower($request->name);
         $color->save();
+        $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Added Color->".$color->color_name;
+                $activity->save();
         return redirect()->back()->with('success','New Color Saved');
     }
 
@@ -29,6 +34,10 @@ class ColorController extends Controller
         $color = Color::find($request->id);
         $color->color_name = strtolower($request->name);
         $color->save();
+        $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Updated Color->".$color->color_name;
+                $activity->save();
         return redirect()->back()->with('success','Updated Color');
     }
 }

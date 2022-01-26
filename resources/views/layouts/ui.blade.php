@@ -192,6 +192,24 @@
                                             '<button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
     }
 
+    function addCat(){
+            var modal = $('#addCat');
+            modal.find('.modal-title').text('Add Category');
+            modal.find('.modal-body').html('<form action="/add/new/category"  method="post"> @csrf'+
+                                            '<label>Category Name:</label>'+
+                                            '<input class="form-control" type="text" name="name" required>'+
+                                            '<button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+    }
+
+    function editCat(id,name){
+            var modal = $('#editCat');
+            modal.find('.modal-title').text('Edit Category');
+            modal.find('.modal-body').html('<form action="/update/category"  method="post"> @csrf <input type="hidden" name="id" value="'+id+'">'+
+                                            '<label>Category Name::</label>'+
+                                            '<input class="form-control" type="text" name="name" value="'+name+'" placeholder="'+name+'" required>'+
+                                            '<button type="submit" class="btn btn-sm btn-success mt-3 float-right">Save</button></form>');
+    }
+
     function actProduct(id,name){
             var modal = $('#actProduct');
             modal.find('.modal-title').text('Activate Product?');

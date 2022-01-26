@@ -8,6 +8,7 @@ use App\Medical;
 use App\Pet;
 use App\Service;
 use App\Appointment;
+use App\ActivityLog;
 use Auth;
 
 class MedicalController extends Controller
@@ -27,7 +28,13 @@ class MedicalController extends Controller
         $data->pet_id = $pet->id;
         $data->appointment_id = $appointment->id;
         $data->assessment = $request->assessment;
-        $data->save();        
+        $data->save();   
+        
+        $activity = new ActivityLog;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Save Appointment Assessment for ".$pet->name;
+        $activity->save();
+
         return redirect()->back()->with('success','Completed Appointment');
     }
 

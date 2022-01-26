@@ -14,7 +14,9 @@ use App\Color;
 use App\Profile;
 use App\User;
 use App\Appointment;
+use App\Service;
 use App\Schedules;
+use App\ActivityLog;
 use Carbon\Carbon;
 use Mail;
 
@@ -137,6 +139,11 @@ class PagesController extends Controller
                 $message->to($email)->subject('Request for Appointment on '.$date.' ');
 
             });
+
+            $activity = new Activity;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Client request for appointment.";
+            $activity->save();
             return redirect('/list/appointments')->with('success','Appointment Requested,  Please wait for confirmation/approval');
         } else {
             $pet = Pet::find($request->patient_id);
@@ -149,7 +156,9 @@ class PagesController extends Controller
         $id = base64_decode($id);
         $appt = Appointment::find($id);
         $branches = Branch::whereNotIn('id',[$appt->branch_id])->get();
-        return view ('site.edit_appointment')->with('appointment',$appt)->with('branches',$branches);
+        $services = Service::whereIn('id',json_decode($appt->services))->get();
+        $allServices = Service::all();
+        return view ('site.edit_appointment')->with('appointment',$appt)->with('branches',$branches)->with('services',$services)->with('allServices',$allServices);
         //return view ('site.appointment')->with('patients',$patients)->with('branches',$branches)->with('vets',$vets );
         
     }
@@ -188,9 +197,17 @@ class PagesController extends Controller
                 $message->to($email)->subject('Changes for Appointment on '.$date.' ');
 
             });
+
+            $activity = new Activity;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Client request appointment";
+            $activity->save();
+            return redirect()->back()->with('success','Appointment Requested, Please wait for confirmation.');
+
+
         } else {
             $pet = Pet::find($request->patient_id);
-            return redirect()->back()->with('fail','Appointment not Allowed! Your Pet: '.$pet->name.' has already a "'.$check->status.'" appointment');
+            return redirect()->back()->with('fail','Appointment not Allowed! Pet: '.$pet->name.' has already a "'.$check->status.'" appointment');
         }
     }
 
@@ -247,6 +264,12 @@ class PagesController extends Controller
         $pet->gender = $request->gender;
         $pet->image = $fileName;
         $pet->save();
+
+        $activity = new Activity;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Client added new pet. Pet name: ".$pet->name;
+        $activity->save();
+
         return redirect()->back()->with('success','The details of your Pet '.$request->name.' is saved!');
         
     } 
@@ -278,6 +301,12 @@ class PagesController extends Controller
         $pet->bday = $request->bday;
         $pet->gender = $request->gender;
         $pet->save();
+
+        $activity = new Activity;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Client updated pet ".$pet->name." details";
+        $activity->save();
+
         return redirect()->back()->with('success','The details of your Pet '.$request->name.' is updated!');
         
     }
@@ -291,9 +320,223 @@ class PagesController extends Controller
         $pet = Pet::find($request->pet);
         $pet->image = $fileName;
         $pet->save();
+
+        $activity = new Activity;
+        $activity->user_id = Auth::user()->id;
+        $activity->activity = "Client change ".$pet->name."'s photo";
+        $activity->save();
+
         return redirect()->back()->with('success','Photo updated!');
         
     }
+
+    public function showAvailVet($date,$branch){  
+        $branch = base64_decode($branch);   
+        $date = base64_decode($date);   
+        if ($date == date('Y-m-d')) {
+            $time = date('H:i:s', time());
+            if ($time < "09:00:00") {
+                $scheds = Schedules::where(['branch_id'=>$branch,'date'=>$date,['day_max','!=', 0]])->get();
+                return view ('site.edit_showAvailDate')->with('scheds', $scheds)->with('today', '');
+            }
+            elseif($time > "09:00:00" && $time < "15:00:00"){
+                $scheds = Schedules::where('branch_id',$branch)->where('date',$date)->where('pm_max','!=',0)->get();
+                return view ('site.edit_showAvailDate')->with('scheds', $scheds)->with('today', '');
+            }
+            else {
+                $scheds = 0;
+                return view ('site.edit_showAvailDate')->with('scheds', $scheds)->with('today', 'eve');
+            }
+            
+        } else {
+            $scheds = Schedules::where('branch_id',$branch)->where('date',$date)->get();
+            return view ('site.edit_showAvailDate')->with('scheds', $scheds)->with('date',$date)->with('today', 'not');
+        }
+        
+    }
+
+    public function showAvailSlot($id, $branch, $date){   
+        $id = base64_decode($id);  
+        $date = base64_decode($date);  
+        $branch = base64_decode($branch);  
+        $sched = Schedules::where('vet_id',$id)->where('branch_id',$branch)->where('date', $date)->first();
+        return view ('site.edit_showAvailTime')->with('slot', $sched);
+    }
+
+
+    public function updateApptDate(Request $request){
+       
+        $pet = Appointment::find($request->appt_id);
+        $check = Appointment::where('date_appointment',$request->date_appointment)->where('pet_id',$pet->pet_id)->whereIn('status',['Approved','Pending'])->first();
+        if ($check == null) {
+            if($pet->date_appointment != $request->date_appointment){
+                $schedule = Schedules::find($pet->schedule_id);
+                if ($request->time_appointment == "08:00AM - 12:00AM") {
+                    $schedule->am_max = $schedule->am_max + 1;
+                } else {
+                    $schedule->pm_max = $schedule->pm_max + 1;
+                }
+                $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+                $schedule->save();
+
+                $pet->date_appointment = $request->date_appointment;
+                $pet->time_appointment = $request->time_appointment;
+                $pet->schedule_id = $request->sched;
+                $pet->vet_id = $request->vet;
+                $pet->save();
+
+                $schedule = Schedules::find($request->sched);
+                if ($request->time_appointment == "08:00AM - 12:00AM") {
+                    $schedule->am_max = $schedule->am_max - 1;
+                } else {
+                    $schedule->pm_max = $schedule->pm_max - 1;
+                }
+                $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+                $schedule->save();
+
+                $date= $pet->date_appointment;
+
+                $user = User::find(Auth::user()->id);
+                $email = $user->email;
+
+                Mail::send('email.appointment_changes', ['date' => $date], function($message) use ($date, $email) {
+
+                    $message->to($email)->subject('Changes for Appointment ');
+
+                });
+
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Client updates requested appointment(date info)";
+                $activity->save();
+
+                return redirect()->back()->with('success','The details of your appointment is updated!');
+            }else{
+                
+                $pet->date_appointment = $request->date_appointment;
+                $pet->time_appointment = $request->time_appointment;
+                $pet->schedule_id = $request->sched;
+                $pet->vet_id = $request->vet;
+                $pet->save();
+
+                $schedule = Schedules::find($request->sched);
+                    if ($request->time_appointment == "08:00AM - 12:00AM") {
+                        $schedule->am_max = $schedule->am_max - 1;
+                    } else {
+                        $schedule->pm_max = $schedule->pm_max - 1;
+                    }
+                    $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+                    $schedule->save();
+
+                    $date= $pet->date_appointment;
+
+                $user = User::find(Auth::user()->id);
+                $email = $user->email;
+
+                Mail::send('email.appointment_changes', ['date' => $date], function($message) use ($date, $email) {
+
+                    $message->to($email)->subject('Changes for Appointment ');
+
+                });
+
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Client updates requested appointment(date info)";
+                $activity->save();
+
+                return redirect()->back()->with('success','The details of your appointment is updated!');
+            }
+        }
+         else {
+            $pet = Pet::find($pet->pet_id);
+            return redirect()->back()->with('fail','Appointment not Allowed! Pet: '.$pet->name.' has already a "'.$check->status.'" appointment');
+        }
+    }
+
+    public function editApptTime($id){   
+        $appt = Appointment::find($id);
+        $sched = Schedules::find($appt->schedule_id);
+        return view ('site.edit_apptTime')->with('slot', $sched)->with('appt',$id);
+    }
+
+    public function updateApptTime(Request $request){
+       $appt = Appointment::find($request->appt_id);
+       if($appt->time_appointment != $request->time_appointment){
+            $schedule = Schedules::find($appt->schedule_id);
+            if ($request->time_appointment == "08:00AM - 12:00AM") {
+                $schedule->am_max = $schedule->am_max + 1;
+            } else {
+                $schedule->pm_max = $schedule->pm_max + 1;
+            }
+            $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+            $schedule->save();
+
+          $appt->time_appointment = $request->time_appointment;
+          $schedule = Schedules::find($request->sched);
+          if ($request->time_appointment == "08:00AM - 12:00AM") {
+              $schedule->am_max = $schedule->am_max - 1;
+          } else {
+              $schedule->pm_max = $schedule->pm_max - 1;
+          }
+          $schedule->day_max = $schedule->pm_max + $schedule->am_max;
+          $schedule->save();
+          
+          $date= $appt->date_appointment;
+
+            $user = User::find(Auth::user()->id);
+            $email = $user->email;
+
+            Mail::send('email.appointment_changes', ['date' => $date], function($message) use ($date, $email) {
+
+                $message->to($email)->subject('Changes for Appointment');
+
+            });
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Client updates requested appointment(time info)";
+                $activity->save();
+
+          return redirect()->back()->with('success','The details of your appointment is updated!');
+       }
+       
+       return redirect()->back()->with('success','The details of your appointment is updated!');
+        
+    }
+
+    public function updateApptReason(Request $request){
+        $appt = Appointment::find($request->appt_id);
+        $appt->reason = $request->reason;
+        $appt->save();
+                $activity = new Activity;
+                $activity->user_id = Auth::user()->id;
+                $activity->activity = "Client updates requested appointment(reason info)";
+                $activity->save();
+        return redirect()->back()->with('success','The details of your appointment is updated!');
+         
+     }
+
+     public function updateApptServices(Request $request){
+        $appt = Appointment::find($request->appt_id);
+        $appt->services = json_encode($request->services);
+        $appt->save();
+
+        $date= $appt->date_appointment;
+
+            $user = User::find(Auth::user()->id);
+            $email = $user->email;
+
+            Mail::send('email.appointment_changes', ['date' => $date], function($message) use ($date, $email) {
+
+                $message->to($email)->subject('Changes for Appointment ');
+
+            });
+            $activity = new Activity;
+            $activity->user_id = Auth::user()->id;
+            $activity->activity = "Client updates requested appointment(services info)";
+            $activity->save();
+        return redirect()->back()->with('success','The details of your appointment is updated!');
+         
+     }
 
     public function services(){
         // return Auth::user();
