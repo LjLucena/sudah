@@ -116,7 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">MONELLO Cat Salmon, Tuna & Chicken 1kg</h1>
-                    <ul class="list-inline">
+                    <p>160php</p>
+                    <br/><ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Cat Food</b></h6>
                         </li>

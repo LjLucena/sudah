@@ -116,6 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Pet Hair Slicker condo</h1>
+                    <p>1,200php</p>
                     <br/>
                     <h6><b>Description</b></h6>
                     <p>Very comfortable, they will love them = They are specially made for your cute kittens! √Stable column structure, accurate size, combined design. Cat climbing trees is definitely your cat's safety!</p>

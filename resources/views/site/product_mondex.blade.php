@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="ui/assets/img/products/bioline3.png" alt="Card image cap" id="product-detail">
+                    <img class="card-img img-fluid" src="ui/assets/img/products/mondex1.png" alt="Card image cap" id="product-detail">
                 </div>
                 <div class="row">
                     <!--Start Controls-->
@@ -83,17 +83,17 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="ui/assets/img/products/bioline3.png" alt="Product Image 1">
+                                            <img class="card-img img-fluid" src="ui/assets/img/products/mondex1.png" alt="Product Image 1">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                     <a href="#">
-                                        <img class="card-img img-fluid" src="ui/assets/img/products/bioline2.png" alt="Product Image 2">
+                                        <img class="card-img img-fluid" src="ui/assets/img/products/mondex2.png" alt="Product Image 2">
                                     </a>
                                 </div>
                                 <div class="col-4">
                                     <a href="#">
-                                        <img class="card-img img-fluid" src="ui/assets/img/products/bioline1.png" alt="Product Image 3">
+                                        <img class="card-img img-fluid" src="ui/assets/img/products/mondex3.png" alt="Product Image 3">
                                     </a>
                                 </div>
                             </div>
@@ -115,19 +115,31 @@
         <div class="col-lg-7 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="h2">Bioline: Earmite Treatment for Cats and Dogs (30ml)</h1>
+                    <h1 class="h2">Mondex D-Glucose Monohydrate 100grams</h1>
+                    <p>80php</p>
                     <br/><br/>
                     <h6><b>Description</b></h6>
-                    <p>Pet ear structure determine their ear in poor ventilation. humidity, it is easy to cause the breeding of bacteria or fungi. Sometimes ear mite parasitism, stimulate secretion also can cause the ear smelly, ear infections.</p>
-                    <p>EAR MITE TREATMENT contains many kinds of plant essential oil, with an ear mites pet use, can remove parasitize ear mites, alleviate and eliminate itching, earsmelly; to prevent infection.</p>
-                    <p>The product passes actual test safe, mild, and no stimulation.</p>
-                    
-                    <h6><b>Notes:</b></h6>
                     <ul>
-                        <li>The product can not be used in the ear canal atopic pets. If there is an allergic reaction, should suspend using.</li>
-                        <li>The product should be placed in out of the reach of children and pets.</li>
-                        <li>The product can't swallow, ingestion of this product should be vomiting immediately.</li>
+                        <li>Monosaccharide sugar that is fast absorbed from the diegstive tract to provide instant energy.</li>
+                        <li>Palatable taste</li>
                     </ul>
+                    <br/><br/>
+
+                    <h6><b>Usage (Sdult pets)</b></h6>
+                    <ul>
+                        <li>given as energy supplement for training, pet show, travel and breeding</li>
+                        <li>useful in building stamina and vigor after every activities</li>
+                        <li>useful as an aid in providing energy to sick and recovering dogs</li>
+                    </ul>
+                    <br/><br/>
+
+                    <h6><b>Usage (puppies and kkitten)</b></h6>
+                    <ul>
+                        <li>useful as energy supplement for new born pets where milk from their mother is insufficient.</li>
+                        <li>used as a rehydrating supplement during and after conditions of diarrhea and vomiting.</li>
+                        <li>provides instant energy to highly active pets.</li>
+                    </ul>
+
                 </div>
             </div>
         </div>
@@ -139,10 +151,10 @@
 <div div="row">
     <ul class="pagination pagination-lg justify-content-end">
         <li class="page-item">
-            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="cat_condo">Previous</a>
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="product_lcvit">Previous</a>
         </li>
         <li class="page-item">
-            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="carrier" tabindex="-1">Next</a>
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="product_nutrivet" tabindex="-1">Next</a>
         </li>
     </ul>
 </div>

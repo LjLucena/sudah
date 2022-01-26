@@ -116,6 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Royal Canin Small Puppy 10kg</h1>
+                    <p>5,090php</p>
+                    <br/>
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Cat Food</b></h6>

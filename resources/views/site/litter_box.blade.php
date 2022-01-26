@@ -116,6 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Cat and Puppy Litter Box with Scoop</h1>
+                    <p>300php</p>
                     <br/><br/>
                     <h6><b>Features:</b></h6>
                     <ul>

@@ -116,6 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Pet Carrier Transparent Bag Portable</h1>
+                    <p>500php</p>
                     <br/><br/>
                     <h6><b>Features:</b></h6>
                     <ul>

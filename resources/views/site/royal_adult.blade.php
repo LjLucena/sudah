@@ -116,6 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Royal Canin Small Puppy 10kg</h1>
+                    <p>5,090php</p>
+                    <br/>
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Cat Food</b></h6>
@@ -123,6 +125,7 @@
                     </ul>
 
                     <h6><b>Description</b></h6>
+                    
                     <p>
                     Royal Canin Adult Persian Dry Cat Food is a breed-specific diet for Persian pure breeds. Specialized kibble allows them to easily pick up, chew, and crunch away tartar buildup. Amino acids, vitamins, and omega-6 and omega-3 fatty acids promote healthy skin and a healthy coat. A complex blend of fibers helps control hairballs. And highly digestible proteins and prebiotics promote digestive health.
                         <br/><br/><h6><b>FORMULATED FOR PUREBRED PERSIAN CATS:</b></h6>

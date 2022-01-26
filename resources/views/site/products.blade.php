@@ -99,17 +99,7 @@
                         </div>
                         <div class="card-body">
                             <a href="jerhigh" class="h4 text-decoration-none">Jerhigh Strawberry</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li> 70g</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
-                            <p class="text-center mb-0">90php</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -120,18 +110,8 @@
                         </div>
                         <div class="card-body">
                             <a href="kittycrunch" class="h4 text-decoration-none">KittyCrunch</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li> 60g</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
+                           
                              
-                            <p class="text-center mb-0">70php</p>
                         </div>
                     </div>
                 </div>
@@ -142,18 +122,7 @@
                         </div>
                         <div class="card-body">
                             <a href="monello" class="h4 text-decoration-none">Monello Cat</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li> 1kg</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
-                             
-                            <p class="text-center mb-0">160php</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -165,18 +134,8 @@
                         </div>
                         <div class="card-body">
                             <a href="pedigree_adult" class="h4 text-decoration-none">Pedigree Adult</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>3kg</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
+                            
                              
-                            <p class="text-center mb-0">510php</p>
                         </div>
                     </div>
                 </div>
@@ -188,18 +147,8 @@
                         </div>
                         <div class="card-body">
                             <a href="pedigree_puppy" class="h4 text-decoration-none">Pedigree Puppy</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>3kg</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
+                            
                              
-                            <p class="text-center mb-0">510php</p>
                         </div>
                     </div>
                 </div>
@@ -211,18 +160,8 @@
                         </div>
                         <div class="card-body">
                             <a href="royal_puppy" class="h4 text-decoration-none">Royal Canin Puppy </a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>10kg</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
+                            
                              
-                            <p class="text-center mb-0">821php</p>
                         </div>
                     </div>
                 </div>
@@ -234,18 +173,8 @@
                         </div>
                         <div class="card-body">
                             <a href="royal_mini" class="h4 text-decoration-none">Royal Canin Mini</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>85g</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
+                           
                              
-                            <p class="text-center mb-0">615php</p>
                         </div>
                     </div>
                 </div>
@@ -257,18 +186,8 @@
                         </div>
                         <div class="card-body">
                             <a href="royal_kitten" class="h4 text-decoration-none">Royal Canin Kitten</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>10kg</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
+                            
                              
-                            <p class="text-center mb-0">5,090php</p>
                         </div>
                     </div>
                 </div>
@@ -280,18 +199,8 @@
                         </div>
                         <div class="card-body">
                             <a href="royal_adult" class="h4 text-decoration-none">Royal Canin Adult</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>10kg</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
+                          
                              
-                            <p class="text-center mb-0">5,090php</p>
                         </div>
                     </div>
                 </div>

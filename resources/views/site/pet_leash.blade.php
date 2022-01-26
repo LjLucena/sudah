@@ -116,6 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Adjustable Pet Leash </h1>
+                    <p>45php</p>
                     <br/><br/>
                     <h6><b>Features:</b></h6>
                     <ul>

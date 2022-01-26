@@ -116,6 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Bearing Tick & Flea Dog Shampoo Short Hair 150ml</h1>
+                    <p>250php</p>
                     <br/><br/>
                     <h6><b>Description</b></h6>
                     <p>Effectively removes ticks and fleas with regular usage.</p>

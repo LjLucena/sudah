@@ -116,7 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Pedigree Puppy Chicken, Egg and Milk 3kg</h1>
-                    <ul class="list-inline">
+                    <p>510php</p>
+                    <br/><ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Dog Food</b></h6>
                         </li>

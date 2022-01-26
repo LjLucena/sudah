@@ -116,6 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Bioline: Earmite Treatment for Cats and Dogs (30ml)</h1>
+                    <p>280php</p>
                     <br/><br/>
                     <h6><b>Description</b></h6>
                     <p>Pet ear structure determine their ear in poor ventilation. humidity, it is easy to cause the breeding of bacteria or fungi. Sometimes ear mite parasitism, stimulate secretion also can cause the ear smelly, ear infections.</p>

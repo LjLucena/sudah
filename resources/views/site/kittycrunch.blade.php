@@ -116,7 +116,8 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">KITTY CRUNCH 60g</h1>
-                    <ul class="list-inline">
+                    <p>70php</p>
+                    <br/><ul class="list-inline">
                         <li class="list-inline-item">
                             <h6><b>Cat Treats</b></h6>
                         </li>

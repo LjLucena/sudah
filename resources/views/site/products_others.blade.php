@@ -100,7 +100,6 @@
                         <div class="card-body">
                             <a href="carrier" class="h4 text-decoration-none">Carrier</a>
                             
-                            <p class="text-left mb-0">500php</p>
                         </div>
                     </div>
                 </div>
@@ -112,7 +111,6 @@
                         <div class="card-body">
                             <a href="gallon" class="h4 text-decoration-none">Automatic Feeder</a>
                             
-                            <p class="text-left mb-0">350php</p>
                         </div>
                     </div>
                 </div>
@@ -124,7 +122,6 @@
                         <div class="card-body">
                             <a href="collar" class="h4 text-decoration-none">Reflective Collar</a>
                              
-                            <p class="text-left mb-0">30php</p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +133,7 @@
                         </div>
                         <div class="card-body">
                             <a href="pet_leash" class="h4 text-decoration-none">Pet Leash</a>
-                            <p class="text-left mb-0">45php</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -148,7 +145,7 @@
                         </div>
                         <div class="card-body">
                             <a href="bowl" class="h4 text-decoration-none">Stainless Steel Bowl</a>
-                            <p class="text-left mb-0">100php</p>
+  
                         </div>
                     </div>
                 </div>
@@ -160,7 +157,7 @@
                         </div>
                         <div class="card-body">
                             <a href="bed" class="h4 text-decoration-none">Pet Cozy Bed</a>
-                            <p class="text-left mb-0">550php-750php</p>
+       
                         </div>
                     </div>
                 </div>
@@ -172,7 +169,7 @@
                         </div>
                         <div class="card-body">
                             <a href="litter_box" class="h4 text-decoration-none">Litter Box</a>
-                            <p class="text-left mb-0">300php</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -185,7 +182,6 @@
                         <div class="card-body">
                             <a href="pet_comb" class="h4 text-decoration-none">Pet Hair Comb</a>
                              
-                            <p class="text-left mb-0">100php</p>
                         </div>
                     </div>
                 </div>
@@ -197,7 +193,7 @@
                         </div>
                         <div class="card-body">
                             <a href="cat_condo" class="h4 text-decoration-none">Cat Condo</a>
-                            <p class="text-left mb-0">1,200php</p>
+                    
                         </div>
                     </div>
                 </div>

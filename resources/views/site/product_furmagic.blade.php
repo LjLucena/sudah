@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="ui/assets/img/products/bioline3.png" alt="Card image cap" id="product-detail">
+                    <img class="card-img img-fluid" src="ui/assets/img/products/furmagic1.png" alt="Card image cap" id="product-detail">
                 </div>
                 <div class="row">
                     <!--Start Controls-->
@@ -83,17 +83,17 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="ui/assets/img/products/bioline3.png" alt="Product Image 1">
+                                            <img class="card-img img-fluid" src="ui/assets/img/products/furmagic1.png" alt="Product Image 1">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                     <a href="#">
-                                        <img class="card-img img-fluid" src="ui/assets/img/products/bioline2.png" alt="Product Image 2">
+                                        <img class="card-img img-fluid" src="ui/assets/img/products/furmagic2.png" alt="Product Image 2">
                                     </a>
                                 </div>
                                 <div class="col-4">
                                     <a href="#">
-                                        <img class="card-img img-fluid" src="ui/assets/img/products/bioline1.png" alt="Product Image 3">
+                                        <img class="card-img img-fluid" src="ui/assets/img/products/furmagic3.png" alt="Product Image 3">
                                     </a>
                                 </div>
                             </div>
@@ -115,19 +115,16 @@
         <div class="col-lg-7 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="h2">Bioline: Earmite Treatment for Cats and Dogs (30ml)</h1>
+                    <h1 class="h2">Furmagic 1000ml</h1>
+                    <p>100php</p>
                     <br/><br/>
                     <h6><b>Description</b></h6>
-                    <p>Pet ear structure determine their ear in poor ventilation. humidity, it is easy to cause the breeding of bacteria or fungi. Sometimes ear mite parasitism, stimulate secretion also can cause the ear smelly, ear infections.</p>
-                    <p>EAR MITE TREATMENT contains many kinds of plant essential oil, with an ear mites pet use, can remove parasitize ear mites, alleviate and eliminate itching, earsmelly; to prevent infection.</p>
-                    <p>The product passes actual test safe, mild, and no stimulation.</p>
+                    <p>Furmagic came from the great minds of the Council of Wizards to keep you furbabies' coat shiny, smooth, and always smelling fresh.</p>
+                    <br/><br/>
+                    <p>It is made from the most magical ingredients including Madre de Cacao oil extract, Neem oil extract, and Aloe Vera extract. To make it more effective, the Council of Wizards infused it with their very own Fast Acting Stemcell Technology (F.A.S.T.) which makes it one of the most marvelous dog shampoo in all the land.</p>
+                    <br/><br/>
+                    <p>Fast Acting Stemcell Technology is designed and formulated on the cellular level in order to achieve magical effects instantly. Furmagic dog shampoo contains the following herb oil extracts for the following benefits: MADRE DE CACAO OIL EXTRACT - A herb extract well known to be very effective in treating mange and other skin disease NEEM OIL EXTRACT - A proven effective herb extract that kills ticks  fleas and mites ALOE VERA OIL EXTRACT - A herb extract popularly know to enhance the volume  silkiness  smoothness  and shininess of a dog's coat.</p>
                     
-                    <h6><b>Notes:</b></h6>
-                    <ul>
-                        <li>The product can not be used in the ear canal atopic pets. If there is an allergic reaction, should suspend using.</li>
-                        <li>The product should be placed in out of the reach of children and pets.</li>
-                        <li>The product can't swallow, ingestion of this product should be vomiting immediately.</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -139,10 +136,10 @@
 <div div="row">
     <ul class="pagination pagination-lg justify-content-end">
         <li class="page-item">
-            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="cat_condo">Previous</a>
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="product_dental">Previous</a>
         </li>
         <li class="page-item">
-            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="carrier" tabindex="-1">Next</a>
+            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" href="product_lcvit" tabindex="-1">Next</a>
         </li>
     </ul>
 </div>

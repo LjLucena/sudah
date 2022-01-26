@@ -94,7 +94,6 @@
                         <div class="card-body">
                             <a href="product_bioline_earmite" class="h4 text-decoration-none">Bioline Earmite</a>
                             
-                            <p class="text-left mb-0">280php</p>
                         </div>
                     </div>
                 </div>
@@ -105,8 +104,7 @@
                         </div>
                         <div class="card-body">
                             <a href="product_bearing" class="h4 text-decoration-none">Bearing Tick & Flea Dog Shampoo</a>
-                             
-                            <p class="text-left mb-0">250php</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -116,21 +114,20 @@
                             <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/gallon3.png">
                         </div>
                         <div class="card-body">
-                            <a href="gallon" class="h4 text-decoration-none">Automatic Feeder</a>
+                            <a href="product_calcium" class="h4 text-decoration-none">Nutrical Calcium Syrup</a>
                             
-                            <p class="text-left mb-0">350php</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
-                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/leash1.png">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/dental1.png">
  
                         </div>
                         <div class="card-body">
-                            <a href="pet_leash" class="h4 text-decoration-none">Pet Leash</a>
-                            <p class="text-left mb-0">45php</p>
+                            <a href="product_dental" class="h4 text-decoration-none">Beaphar Toothpaste and Toothbrush</a>
+                           
                         </div>
                     </div>
                 </div>
@@ -141,45 +138,43 @@
  
                         </div>
                         <div class="card-body">
-                            <a href="bowl" class="h4 text-decoration-none">Stainless Steel Bowl</a>
-                            <p class="text-left mb-0">100php</p>
+                            <a href="product_furmagic" class="h4 text-decoration-none">Furmagic Shampoo</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
-                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/bed2.png">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/lcvit1.png">
  
                         </div>
                         <div class="card-body">
-                            <a href="bed" class="h4 text-decoration-none">Pet Cozy Bed</a>
-                            <p class="text-left mb-0">550php-750php</p>
+                            <a href="product_lcvit" class="h4 text-decoration-none">LC Vit Multi-vitamins</a>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
-                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/litter1.png">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/mondex1.png">
  
                         </div>
                         <div class="card-body">
-                            <a href="litter_box" class="h4 text-decoration-none">Litter Box</a>
-                            <p class="text-left mb-0">300php</p>
+                            <a href="product_mondex" class="h4 text-decoration-none">Mondex D-Glucose Monohydrate</a>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
-                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/comb1.png">
+                            <img class="card-img rounded-0 img-fluid" src="ui/assets/img/products/nutrivet1.png">
  
                         </div>
                         <div class="card-body">
-                            <a href="pet_comb" class="h4 text-decoration-none">Pet Hair Comb</a>
+                            <a href="product_nutrivet" class="h4 text-decoration-none">Nutrivet Brewers Yeast</a>
                              
-                            <p class="text-left mb-0">100php</p>
                         </div>
                     </div>
                 </div>
@@ -190,8 +185,7 @@
  
                         </div>
                         <div class="card-body">
-                            <a href="cat_condo" class="h4 text-decoration-none">Cat Condo</a>
-                            <p class="text-left mb-0">1,200php</p>
+                            <a href="product_papimvp" class="h4 text-decoration-none">Papi MVP Multivitamins</a>
                         </div>
                     </div>
                 </div>

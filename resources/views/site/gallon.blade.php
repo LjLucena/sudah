@@ -116,6 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="h2">Pet Automatic Feeders and Water Bottle 3.8L</h1>
+                    <p>350php</p>
                     <br/><br/>
                     <h6><b>Features:</b></h6>
                     <ul>
